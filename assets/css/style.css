@@ -1,0 +1,88 @@
+body {
+
+}
+
+div#header {
+
+	/*margin: 1em;*/
+}
+
+div#menu {
+
+	height: 40px;
+}
+
+span#namestring,
+span#logout-link {
+
+	float: right;
+	margin-right: 3em;
+}
+
+div#wrapper {
+
+	width: 80%;
+	margin: auto;
+	margin-top: 100px;
+	border-style: solid;
+}
+
+div#wrapper > div {
+
+	margin-left: 1.3em;
+	margin-right: 1.3em;
+}
+
+div#content-wrapper {
+
+	width: 90%;
+	margin-bottom: 50px;
+	margin-top: 50px;
+	min-height: 300px;
+}
+
+div#content {
+
+	width:100%;
+	margin-left: 0.7em;
+	margin-right: 0.7em;
+}
+
+span.hot-text {
+	
+	color: blue;
+}
+
+span.hot-text:hover {
+
+	cursor: pointer;
+}
+
+div#message-view {
+
+/*	position: absolute;
+	bottom: 10px;*/
+	height: 20px;
+}
+
+span#menu-items {
+
+	/*margin-left: 1.3em;*/
+}
+
+div#login-form {
+
+	width: 200px;
+}
+
+/* Homepage form */
+div.ir-form {
+
+
+}
+
+div.form-row {
+
+	display: inline-flex;
+}
+

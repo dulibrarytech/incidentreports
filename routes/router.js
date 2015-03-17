@@ -5,15 +5,15 @@ $(function() {
     }
 
     Path.map("#/login").to(function(){
-        alert("LL");
+        
     }); 
 
     Path.map("#/home").to(function(){
-        alert("Lh");
+        
     }); 
 
     Path.map("#/dashboard").to(function(){
-        alert("Ld");
+        
     }); 
 
     Path.root("#/home");
