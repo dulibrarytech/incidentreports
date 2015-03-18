@@ -11,7 +11,7 @@ $(function() {
 
     Path.map("#/home").to(function(){
         
-        $("#test").load('views/test-template.html', function() {alert('template load callback')});
+        $("#content").load('templates/home.html', function() {alert('home load callback')});
     }); 
 
     Path.map("#/dashboard").to(function(){
