@@ -1,0 +1,5 @@
+userUtils = (function($) {
+
+
+
+}(jQuery));

@@ -1,0 +1,5 @@
+viewUtils = (function($) {
+
+
+
+}(jQuery));
