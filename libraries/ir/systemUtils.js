@@ -6,9 +6,9 @@ systemUtils = (function($) {
 	var doAjax,
 		sendMessage,
 		validateLocalSession,
-		loadView,
+		// loadView,
 		submitLoginForm,
-		initDashboard,
+		// initDashboard,
 		logout;
 
 	doAjax = function(requestObj) {
@@ -82,28 +82,28 @@ systemUtils = (function($) {
 		doAjax(requestObj);
 	};
 
-	loadView = function(viewPath) {
+	// loadView = function(viewPath) {
 
-		var viewPath = viewPath;
-		requestObj = {
+	// 	var viewPath = viewPath;
+	// 	requestObj = {
 
-			type: "GET",
-			url: base_url + viewPath,
-			dataType: "text",// *** TODO Switch to json response
-			success: function (response) {
+	// 		type: "GET",
+	// 		url: base_url + viewPath,
+	// 		dataType: "text",// *** TODO Switch to json response
+	// 		success: function (response) {
 
-				$('#content').html("");
-				$('#content').append(response);	// *** TODO Switch to json response
-			},
-            error: function ( jqXHR, textStatus, errorThrown ) {
+	// 			$('#content').html("");
+	// 			$('#content').append(response);	// *** TODO Switch to json response
+	// 		},
+ //            error: function ( jqXHR, textStatus, errorThrown ) {
 
-                console.log("loadView View: " + viewPath + " Status: '" + textStatus + "' Message: " + errorThrown);
-                sendMessage("Server error: Please contact Systems support");
-            }
-		};
+ //                console.log("loadView View: " + viewPath + " Status: '" + textStatus + "' Message: " + errorThrown);
+ //                sendMessage("Server error: Please contact Systems support");
+ //            }
+	// 	};
 
-		doAjax(requestObj);
-	};
+	// 	doAjax(requestObj);
+	// };
 
 	submitLoginForm = function() {
 
@@ -148,16 +148,16 @@ systemUtils = (function($) {
 		$('#login-passwd').val("");
 	};
 
-	initHome = function() {
+	// initHome = function() {
 
-		var profile = JSON.parse(sessionStorage.getItem("user_profile"));
-		var namestring = 'Welcome, <span id="username">' + profile['email'] + '</span><span id="logout-link" class="hot-text" onclick="systemUtils.logout()">&nbsp&nbsp&nbspLogout</span>';
-		$("#namestring").html(namestring);
-	};
+	// 	var profile = JSON.parse(sessionStorage.getItem("user_profile"));
+	// 	var namestring = 'Welcome, <span id="username">' + profile['email'] + '</span><span id="logout-link" class="hot-text" onclick="systemUtils.logout()">&nbsp&nbsp&nbspLogout</span>';
+	// 	$("#namestring").html(namestring);
+	// };
 
-	initDashboard = function() {
+	// initDashboard = function() {
 
-	};
+	// };
 
 	// System calls to remove session token will land here.  These calls will be initiated by ajax refusals by the server.  
 	// Any messages to the user should be created elsewhere, such as in the AJAX response error handler.
@@ -187,14 +187,14 @@ systemUtils = (function($) {
 
 			submitLoginForm();
 		},
-		initHome: function() {
+		// initHome: function() {
 
-			initHome();
-		},
-		initDashboard: function() {
+		// 	initHome();
+		// },
+		// initDashboard: function() {
 
-			initDashboard();
-		},
+		// 	initDashboard();
+		// },
 		login: function() {
 
 			//loadView("login");
