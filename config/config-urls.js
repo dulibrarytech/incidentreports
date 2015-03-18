@@ -13,3 +13,7 @@ else {
 var loginUrl = base_url + "login";
 var dashboardUrl = base_url + "dashboard";
 var homeUrl = base_url + "home";
+
+// Service API endpoints
+var _submitIRForm = "submit/incidentReport";
+var _submitLoginForm = "login/authenticate";

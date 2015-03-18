@@ -90,7 +90,7 @@ systemUtils = (function($) {
 		requestObj = {
 
 			type: "POST",
-			url: base_url + "login/authenticate",
+			url: base_url + _submitLoginForm,
 			dataType: "json", // json
 			data: postData,
 			success: function (response) {
