@@ -6,14 +6,17 @@ $(function() {
 
     Path.map("#/login").to(function(){
         
+
     }); 
 
     Path.map("#/home").to(function(){
         
+        $("#test").load('views/test-template.html', function() {alert('template load callback')});
     }); 
 
     Path.map("#/dashboard").to(function(){
         
+
     }); 
 
     Path.root("#/home");
