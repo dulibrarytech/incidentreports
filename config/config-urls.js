@@ -10,10 +10,8 @@ else {
 	base_url     = "http://" + document.domain + "/incidentReports/";		// DEV
 }
 
-var loginUrl = base_url + "login";
-var dashboardUrl = base_url + "dashboard";
-var homeUrl = base_url + "home";
+var service_url = "http://" + document.domain + "/incidentReports_SERVICE/";
 
 // Service API endpoints
-var _submitIRForm = "submit/incidentReport";
+var _submitIRForm = "submit/report";
 var _submitLoginForm = "login/authenticate";
