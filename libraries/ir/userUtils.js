@@ -6,7 +6,7 @@ userUtils = (function($) {
 
 		// Get data from form
 		// serialize all 4 forms and concat ?
-		var postData = [];
+		var postData = {DateOfReport:123};
 
 		requestObj = {
 
@@ -17,7 +17,7 @@ userUtils = (function($) {
 			success: function (response) {
 
 				alert(response);
-				if(response != "invalid") {
+				if(response == "SUCCESS") {
 
 					//sendMessage("Incident Report submitted.");
 				}
@@ -46,4 +46,4 @@ userUtils = (function($) {
 		}
 	};
 
-}(jQuery));
+}(jQuery))
