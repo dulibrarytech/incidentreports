@@ -17,7 +17,7 @@ userUtils = (function($) {
 
 				if(response == "SUCCESS") {
 
-					//sendMessage("Incident Report submitted.");
+					systemUtils.sendMessage("Incident Report submitted.");
 
 					// Clear form
 					$('#incident-report').trigger("reset");

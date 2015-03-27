@@ -2,6 +2,7 @@
 	<!--h4>Home</h4-->
 	<!-- <div class="ir-form"> -->
 		<form class="ir-form" id="incident-report" method="post">
+			<legend>Incident Report</legend>
 			<fieldset id="incident-report-base">
 				<div class="form-row">
 					<div class="input-group">
@@ -63,6 +64,7 @@
 					</div>
 				</div><br />
 			</fieldset>
+			<legend>Victim Info</legend>
 			<fieldset id="victim-info">
 				<div class="form-row">
 					<div class="input-group">
@@ -89,6 +91,7 @@
 					</div>
 				</div><br />
 			</fieldset>
+			<legend>Suspect Info</legend>
 			<fieldset id="suspect-info">
 				<div class="form-row">
 					<div class="input-group">
@@ -115,6 +118,7 @@
 					</div>
 				</div><br />
 			</fieldset>
+			<legend>Suspect Description</legend>
 			<fieldset id="suspect-description">
 				<div class="form-row">
 					<div class="input-group">
@@ -154,7 +158,8 @@
 					</div>
 				</div><br />
 			</fieldset>
-			<input type="button" onclick="userUtils.submitIncidentReportForm()" value="Submit"/>
+			<input type="button" onclick="userUtils.submitIncidentReportForm()" value="Submit"/><span id="message-view"></span>
 		</form>
+
 	<!-- </div> --><!-- end ir form section -->
 </div>
