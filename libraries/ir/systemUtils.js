@@ -48,25 +48,26 @@ systemUtils = (function($) {
 			type: "POST",
 			dataType: "text",
 			data: postData,
-			url: base_url + "session/validate",
+			url: service_url + "session/validate",
 			success: function (response) {
 
+				alert(response);
 				if(response != "invalid") {
 
 					// Store updated token, load dashboard view
 					sessionStorage.setItem("user_token", response);
-					loadView("home");
+					//loadView("home");
 				}
 				else {
 
 					if(sessionStorage.getItem("user_token") != null) {
 
-						logout();
-						$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
+						//logout();
+						//$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
 					}
-					else {
+				else {
 
-						loadView("login");
+						//loadView("login");
 					}
 				}
 			},
@@ -90,7 +91,7 @@ systemUtils = (function($) {
 		requestObj = {
 
 			type: "POST",
-			url: base_url + _submitLoginForm,
+			url: service_url + _submitLoginForm,
 			dataType: "json", // json
 			data: postData,
 			success: function (response) {
@@ -100,13 +101,13 @@ systemUtils = (function($) {
 					// Store updated token, load dashboard view
 					sessionStorage.setItem("user_token", response.token);
 					sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
-					loadView("home");
-					sendMessage("Authentication successful");
+					//loadView("home");
+					//sendMessage("Authentication successful");
 				}
 				else {
 
 					sendMessage("Incorrect username or password.  Please try again");
-					loadView("login");
+					//loadView("login");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
@@ -154,7 +155,7 @@ systemUtils = (function($) {
 		login: function() {
 
 			//loadView("login");
-			window.location.replace(base_url);
+			//window.location.replace(base_url);
 		},
 		/* External calls to logout() land here.  Display a universal message and re-login link to the user */  
 		logout: function() {

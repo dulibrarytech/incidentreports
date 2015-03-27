@@ -12,6 +12,7 @@ $(function() {
     Path.map("#/home").to(function(){
         
         $("#content").load('templates/home.html');
+        systemUtils.validateLocalSession();
     }); 
 
     Path.map("#/dashboard").to(function(){
