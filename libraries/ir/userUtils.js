@@ -24,6 +24,8 @@ userUtils = (function($) {
 				}
 				else {
 
+					console.log("submitIncidentReportForm: Server reports error when writing to the database");
+					systemUtils.sendMessage("Database error: Please contact Systems support");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
