@@ -5,21 +5,23 @@ userUtils = (function($) {
 	submitIncidentReportForm = function() {
 
 		// Get data from form
-		// serialize all 4 forms and concat ?
-		var postData = {DateOfReport:123};
+		var formData = $('#incident-report').serialize();
 
 		requestObj = {
 
 			type: "POST",
 			url: service_url + _submitIRForm,
-			dataType: "text", // json
-			data: postData,
+			dataType: "text", 
+			data: formData,
 			success: function (response) {
 
 				alert(response);
 				if(response == "SUCCESS") {
 
 					//sendMessage("Incident Report submitted.");
+
+					// Clear form
+					$('#incident-report').reset();
 				}
 				else {
 
@@ -33,9 +35,6 @@ userUtils = (function($) {
 		};
 
 		systemUtils.doAjax(requestObj);
-
-		// Clear form
-
 	};
 
 	return {
