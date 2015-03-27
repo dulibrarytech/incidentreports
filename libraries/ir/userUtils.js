@@ -15,13 +15,12 @@ userUtils = (function($) {
 			data: formData,
 			success: function (response) {
 
-				alert(response);
 				if(response == "SUCCESS") {
 
 					//sendMessage("Incident Report submitted.");
 
 					// Clear form
-					$('#incident-report').reset();
+					$('#incident-report').trigger("reset");
 				}
 				else {
 
