@@ -81,8 +81,24 @@ div.ir-form {
 
 }
 
+form.inner-form {
+
+
+}
+
+fieldset.ir-fieldset {
+
+	
+}
+
 div.form-row {
 
 	display: inline-flex;
 }
+
+div.input-group {
+
+
+}
+
 
