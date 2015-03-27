@@ -1,143 +1,143 @@
 <div id="home-wrapper">
 	<!--h4>Home</h4-->
-	<div class="ir-form">
-		<form class="inner-form" id="incident-report">
-			<fieldset class="ir-fieldset">
+	<!-- <div class="ir-form"> -->
+		<form class="ir-form" id="incident-report" method="post">
+			<fieldset id="incident-report-base">
 				<div class="form-row">
 					<div class="input-group">
-						<label>Label</label><br />
+						<label for="dateOfReport">Date of Report</label><br />
 						<input name="dateOfReport" type="text" />
 					</div>
 				</div><br />
 				<div class="form-row">
 					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>Report Completed By:</label><br />
+						<input name="reportCompletedBy" type="text" />
 					</div>
 					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>Title:</label><br />
+						<input name="title" type="text" />
 					</div>
 					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
-					</div>
-				</div><br />
-				<div class="form-row">
-					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
-					</div>
-					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
-					</div>
-					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>Department:</label><br />
+						<input name="department" type="text" />
 					</div>
 				</div><br />
 				<div class="form-row">
 					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>Extension:</label><br />
+						<input name="extension" type="text" />
+					</div>
+					<div class="input-group">
+						<label>Date of Offense:</label><br />
+						<input name="dateOfOffense" type="text" />
+					</div>
+					<div class="input-group">
+						<label>Time of Offense:</label><br />
+						<input name="timeOfOffense" type="text" />
 					</div>
 				</div><br />
 				<div class="form-row">
 					<div class="input-group">
-						<label>Label</label><br />
+						<label>Nature of Offense:</label><br />
+						<input name="natureOfOffense" type="text" />
+					</div>
+				</div><br />
+				<div class="form-row">
+					<div class="input-group">
+						<label>Was Campus Security Notified:</label><br />
 						<input name="wasCampusSafetyNotified" type="radio" value="Yes" />Yes
 						<input name="wasCampusSafetyNotified" type="radio" value="No" checked />No
 					</div>
 				</div><br />
 				<div class="form-row">
 					<div class="input-group">
-						<label>Label</label><br />
-						<textarea name="dateOfReport" rows="4" cols="50" />
+						<label>Location of Offense:</label><br />
+						<textarea name="locationOfOffense" rows="4" cols="50" />
 					</div>
 				</div><br />
 				<div class="form-row">
 					<div class="input-group">
-						<label>Label</label><br />
-						<textarea name="dateOfReport" rows="4" cols="50" />
-					</div>
-				</div><br />
-			</fieldset>
-			<fieldset class="ir-fieldset">
-				<div class="form-row">
-					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
-					</div>
-					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
-					</div>
-					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
-					</div>
-				</div><br />
-				<div class="form-row">
-					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
-					</div>
-					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>Offense Narative:</label><br />
+						<textarea name="offenseNarrative" rows="4" cols="50" />
 					</div>
 				</div><br />
 			</fieldset>
-			<fieldset class="ir-fieldset">
+			<fieldset id="victim-info">
 				<div class="form-row">
 					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>Name:</label><br />
+						<input name="victimName" type="text" />
 					</div>
 					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>Gender:</label><br />
+						<input name="victimGender" type="text" />
 					</div>
 					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>Approximate Age:</label><br />
+						<input name="victimApproximateAge" type="text" />
 					</div>
 				</div><br />
 				<div class="form-row">
 					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>Race:</label><br />
+						<input name="victimRace" type="text" />
 					</div>
 					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>University Affiliation:</label><br />
+						<input name="victimUniversityAffiliation" type="text" />
 					</div>
 				</div><br />
 			</fieldset>
-			<fieldset class="ir-fieldset">
+			<fieldset id="suspect-info">
 				<div class="form-row">
 					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>Name:</label><br />
+						<input name="suspectName" type="text" />
 					</div>
 					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>Gender:</label><br />
+						<input name="suspectGender" type="text" />
 					</div>
 					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>Approximate Age:</label><br />
+						<input name="suspectApproximateAge" type="text" />
 					</div>
 				</div><br />
 				<div class="form-row">
 					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>Race:</label><br />
+						<input name="suspectRace" type="text" />
 					</div>
 					<div class="input-group">
-						<label>Label</label><br />
-						<input name="dateOfReport" type="text" />
+						<label>Univesity Affiliation:</label><br />
+						<input name="suspectUniversityAffiliation" type="text" />
+					</div>
+				</div><br />
+			</fieldset>
+			<fieldset id="suspect-description">
+				<div class="form-row">
+					<div class="input-group">
+						<label>Clothing:</label><br />
+						<input name="suspectClothing" type="text" />
+					</div>
+					<div class="input-group">
+						<label>Hair:</label><br />
+						<input name="suspectHair" type="text" />
+					</div>
+					<div class="input-group">
+						<label>Approximate Height:</label><br />
+						<input name="suspectApproximateHeight" type="text" />
+					</div>
+				</div><br />
+				<div class="form-row">
+					<div class="input-group">
+						<label>Approximate Weight:</label><br />
+						<input name="suspectApproximateWeight" type="text" />
+					</div>
+					<div class="input-group">
+						<label>Beard/Moustache:</label><br />
+						<input name="suspectFacialHair" type="text" />
 					</div>
 				</div><br />
 				<div class="form-row">
@@ -149,11 +149,12 @@
 				</div><br />
 				<div class="form-row">
 					<div class="input-group">
-						<label>Label</label><br />
-						<textarea name="dateOfReport" rows="4" cols="50" />
+						<label>Other Physical Characteristics:</label><br />
+						<textarea name="otherPhysicalCharacteristics" rows="4" cols="50" />
 					</div>
 				</div><br />
 			</fieldset>
+			<input type="submit" onclick="alert('click')" value="Submit"/>
 		</form>
-	</div><!-- end ir form section -->
+	<!-- </div> --><!-- end ir form section -->
 </div>
