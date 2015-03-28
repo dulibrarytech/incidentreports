@@ -55,15 +55,15 @@ systemUtils = (function($) {
 				if(response != "invalid") {
 
 					// Store updated token, load dashboard view
-					sessionStorage.setItem("user_token", response);
+					//sessionStorage.setItem("user_token", response);
 					//loadView("home");
 				}
 				else {
 
-					if(sessionStorage.getItem("user_token") != null) {
+					if(ssessionToken != null) {
 
 						//logout();
-						//$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
+						$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
 					}
 				else {
 
@@ -154,6 +154,7 @@ systemUtils = (function($) {
 		},
 		login: function() {
 
+			alert("login");
 			//loadView("login");
 			//window.location.replace(base_url);
 		},
