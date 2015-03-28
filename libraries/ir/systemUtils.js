@@ -7,6 +7,8 @@ systemUtils = (function($) {
 		sendMessage,
 		validateLocalSession,
 		submitLoginForm,
+		initFrame,
+		login,
 		logout;
 
 	doAjax = function(requestObj) {
@@ -51,24 +53,22 @@ systemUtils = (function($) {
 			url: service_url + "session/validate",
 			success: function (response) {
 
-				alert(response);
 				if(response != "invalid") {
 
 					// Store updated token, load dashboard view
 					//sessionStorage.setItem("user_token", response);
 					//loadView("home");
 				}
-				else {
-
-					if(ssessionToken != null) {
+				else if(sessionToken != null) {
 
 						//logout();
 						$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
-					}
+				}
 				else {
 
+						alert("googoo");
 						//loadView("login");
-					}
+					
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
@@ -124,6 +124,11 @@ systemUtils = (function($) {
 		$('#login-passwd').val("");
 	};
 
+	initFrame = function() {
+
+		alert("initF");
+	};
+
 	// System calls to remove session token will land here.  These calls will be initiated by ajax refusals by the server.  
 	// Any messages to the user should be created elsewhere, such as in the AJAX response error handler.
 	logout = function() {
@@ -151,6 +156,10 @@ systemUtils = (function($) {
 		submitLoginForm: function() {
 
 			submitLoginForm();
+		},
+		initFrame: function() {
+
+			initFrame();
 		},
 		login: function() {
 

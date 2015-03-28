@@ -11,6 +11,7 @@ $(function() {
 
     Path.map("#/home").to(function(){
         
+        systemUtils.initFrame();
         $("#content").load('templates/home.html');
         systemUtils.validateLocalSession();
     }); 
