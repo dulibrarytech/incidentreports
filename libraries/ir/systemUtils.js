@@ -98,7 +98,6 @@ systemUtils = (function($) {
 			data: postData,
 			success: function (response) {
 
-				alert(response);
 				if(response != "invalid") {
 
 					// Store updated token, load dashboard view
@@ -112,7 +111,7 @@ systemUtils = (function($) {
 				else {
 
 					sendMessage("Incorrect username or password.  Please try again");
-					//loadView("login");
+					loginView.reset();	// add gobal array to access this object
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {

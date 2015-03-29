@@ -15,7 +15,7 @@ login = {
 
 	reset: function() {
 
-
+		
 	},
 
 	close: function() {
