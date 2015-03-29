@@ -100,6 +100,7 @@ systemUtils = (function($) {
 
 				if(response != "invalid") {
 
+					alert("valid");
 					// Store updated token, load dashboard view
 					//sessionStorage.setItem("user_token", response.token);
 					//sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
@@ -107,11 +108,12 @@ systemUtils = (function($) {
 					//sendMessage("Authentication successful");
 
 					// TODO unhide dashboard link, home link, hide login
+					loginView.close();
 				}
 				else {
 
 					sendMessage("Incorrect username or password.  Please try again");
-					loginView.reset();	// add gobal array to access this object
+					loginView.reset();	
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
@@ -122,10 +124,6 @@ systemUtils = (function($) {
 		};
 
 		doAjax(requestObj);
-
-		// Clear form
-		$('#login-uname').val("");
-		$('#login-passwd').val("");
 	};
 
 	initFrame = function() {

@@ -1,27 +1,31 @@
 login = {
 
 	element: '#content',
-	template: 'login',
 
 	init: function() {
 
-
+		this.bindEvents();
 	},
 
-	submit: function() {
+	bindEvents: function() {
 
-		systemUtils.submitLoginForm();
+		$('#login-submit').click(function(event) {
+            event.preventDefault();
+            systemUtils.submitLoginForm();
+        });
 	},
 
 	reset: function() {
 
-		
+		// Clear form
+		$('#login-uname').val("");
+		$('#login-passwd').val("");
 	},
 
 	close: function() {
 
-		$(element).find('*').attr('disabled', false);
-		$(element).empty();
+		//$(element).find('*').attr('disabled', false);
+		$('#login-dialog').remove();
 	}
 };
 
