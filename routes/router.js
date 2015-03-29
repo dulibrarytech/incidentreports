@@ -7,8 +7,16 @@ $(function() {
     Path.map("#/login").to(function(){
         
         // check for local session?
+        
+        // Disable login route if content has not been loaded yet
+        if(/*$('#content').children().length > 0*/true) {   // DEV no modal, just clear content...
 
-        loginView.doModal();
+            loginView.doModal();
+        }
+        else {
+
+            window.location.href = '#/home';
+        }
     }); 
 
     Path.map("#/home").to(function(){
@@ -20,6 +28,8 @@ $(function() {
 
     Path.map("#/dashboard").to(function(){
         
+        // Verify session
+
         alert("dashboard route");
     }); 
 

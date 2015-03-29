@@ -70,9 +70,25 @@ span#menu-items {
 	/*margin-left: 1.3em;*/
 }
 
-form#login-form {
+div#login-dialog {
 
+	position: fixed;
+	top: 300px;
+	left: 300px;
 	width: 200px;
+
+	border-style: solid;
+	border-radius: 3px;
+	border-width: 2px;
+	border-color: #181818;
+
+	opacity: 1;
+	background-color: #e5e5e5;
+}
+
+div#login-dialog form {
+
+	
 }
 
 /* Homepage form */
