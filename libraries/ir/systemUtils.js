@@ -8,7 +8,7 @@ systemUtils = (function($) {
 		validateLocalSession,
 		submitLoginForm,
 		initFrame,
-		loadView,
+		renderTemplate,
 		login,
 		logout;
 
@@ -136,11 +136,13 @@ systemUtils = (function($) {
 		$('#dashboard-link').hide();
 	};
 
-	loadView = function(view) {
+	renderTemplate = function(template) {
 
+		var view = tempate + "View";
 		$(viewFrame).empty();
-		$.get('templates/' + view + '.html', function(data) {
+		$.get('templates/' + template + '.html', function(data) {
 			$(viewFrame).append(data);
+
 		});
 	};
 
@@ -176,9 +178,9 @@ systemUtils = (function($) {
 
 			initFrame();
 		},
-		loadView: function(view) {
+		renderTemplate: function(template) {
 
-			loadView(view);
+			renderTemplate(template);
 		},
 		login: function() {
 

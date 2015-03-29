@@ -8,12 +8,12 @@ $(function() {
         
         // check for local session?
 
-        systemUtils.loadView('login');
+        systemUtils.loadView('loginView');
     }); 
 
     Path.map("#/home").to(function(){
 ;
-        systemUtils.loadView('home');
+        systemUtils.loadView('homeView');
         systemUtils.validateLocalSession(); // Will set menu links
     }); 
 
