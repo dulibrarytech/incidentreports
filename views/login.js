@@ -1,26 +1,24 @@
 loginView = (function($) {
 
-	var doModal,
+	var init,
 		render,
 		submit,
 		reset,
 		exit;
 
-	var frame = '#content',
+	var element = '#content',
 		template = 'login';
 
-	doModal = function() {
+	init = function() {
 
-		//$('#content').find('*').attr('disabled', true);
-		$('#content').empty();
-		render();
+
 	};
 
 	render = function() {
 
+		$(element).empty();
 		$.get('templates/login.html', function(data) {
-
-			$(frame).append(data);
+			$(element).append(data);
 		});
 	};
 
@@ -36,18 +34,19 @@ loginView = (function($) {
 
 	close = function() {
 
-		$('#content').find('*').attr('disabled', false);
+		$(element).find('*').attr('disabled', false);
+		$(element).empty();
 	};
 
 	return {
 
-		doModal: function() {
+		render: function() {
 
-			doModal();
+			render();
 		},
 		submit: function() {
 
-			doModal();
+			submit();
 		},
 		reset: function() {
 

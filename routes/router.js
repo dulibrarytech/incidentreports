@@ -7,23 +7,14 @@ $(function() {
     Path.map("#/login").to(function(){
         
         // check for local session?
-        
-        // Disable login route if content has not been loaded yet
-        if(/*$('#content').children().length > 0*/true) {   // DEV no modal, just clear content...
 
-            loginView.doModal();
-        }
-        else {
-
-            window.location.href = '#/home';
-        }
+        systemUtils.loadView('login');
     }); 
 
     Path.map("#/home").to(function(){
-        
-        systemUtils.initFrame();
-        $("#content").load('templates/home.html');
-        systemUtils.validateLocalSession();
+;
+        systemUtils.loadView('home');
+        systemUtils.validateLocalSession(); // Will set menu links
     }); 
 
     Path.map("#/dashboard").to(function(){
@@ -33,6 +24,7 @@ $(function() {
         alert("dashboard route");
     }); 
 
+    systemUtils.initFrame();
     Path.root("#/home");
     Path.listen();
 });

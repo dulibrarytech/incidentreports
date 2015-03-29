@@ -8,8 +8,11 @@ systemUtils = (function($) {
 		validateLocalSession,
 		submitLoginForm,
 		initFrame,
+		loadView,
 		login,
 		logout;
+
+	var viewFrame = "#content";
 
 	doAjax = function(requestObj) {
 
@@ -95,11 +98,12 @@ systemUtils = (function($) {
 			data: postData,
 			success: function (response) {
 
+				alert(response);
 				if(response != "invalid") {
 
 					// Store updated token, load dashboard view
-					sessionStorage.setItem("user_token", response.token);
-					sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
+					//sessionStorage.setItem("user_token", response.token);
+					//sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
 					//loadView("home");
 					//sendMessage("Authentication successful");
 
@@ -130,6 +134,14 @@ systemUtils = (function($) {
 		$('#menu-items').append('<a href="#/home" id="home-link">Home</a><a href="#/login" id="login-link">Login</a><a href="#/dashboard" id="dashboard-link">Dashboard</a>');
 		$('#home-link').hide();
 		$('#dashboard-link').hide();
+	};
+
+	loadView = function(view) {
+
+		$(viewFrame).empty();
+		$.get('templates/' + view + '.html', function(data) {
+			$(viewFrame).append(data);
+		});
 	};
 
 	// System calls to remove session token will land here.  These calls will be initiated by ajax refusals by the server.  
@@ -163,6 +175,10 @@ systemUtils = (function($) {
 		initFrame: function() {
 
 			initFrame();
+		},
+		loadView: function(view) {
+
+			loadView(view);
 		},
 		login: function() {
 
