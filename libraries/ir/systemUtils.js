@@ -61,13 +61,12 @@ systemUtils = (function($) {
 				}
 				else if(sessionToken != null) {
 
-						//logout();
-						$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
+					//logout();
+					$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
 				}
 				else {
 
-						alert("googoo");
-						//loadView("login");
+					//loadView("login");
 					
 				}
 			},
@@ -103,6 +102,8 @@ systemUtils = (function($) {
 					sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
 					//loadView("home");
 					//sendMessage("Authentication successful");
+
+					// TODO unhide dashboard link, home link, hide login
 				}
 				else {
 
@@ -126,7 +127,9 @@ systemUtils = (function($) {
 
 	initFrame = function() {
 
-		alert("initF");
+		$('#menu-items').append('<a href="#/home" id="home-link">Home</a><a href="#/login" id="login-link">Login</a><a href="#/dashboard" id="dashboard-link">Dashboard</a>');
+		$('#home-link').hide();
+		$('#dashboard-link').hide();
 	};
 
 	// System calls to remove session token will land here.  These calls will be initiated by ajax refusals by the server.  

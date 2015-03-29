@@ -6,7 +6,9 @@ $(function() {
 
     Path.map("#/login").to(function(){
         
+        // check for local session?
 
+        loginView.doModal();
     }); 
 
     Path.map("#/home").to(function(){
@@ -18,7 +20,7 @@ $(function() {
 
     Path.map("#/dashboard").to(function(){
         
-
+        alert("dashboard route");
     }); 
 
     Path.root("#/home");

@@ -1,17 +1,15 @@
 <div id="login-dialog">
 	<h4>Login</h4>
-	<div id="login-form">
-		<form>
-			<fieldset>
-				<label for="login-uname">Username:</label><br>
-				<input id="login-uname" type="text"/>
-				<br>
-				<label for="login-passwd">Password:</label><br>
-				<input id="login-passwd" type="text"/>
+	<form id="login-form" method="post">
+		<fieldset>
+			<label for="login-uname">Username:</label><br>
+			<input id="login-uname" type="text"/>
+			<br>
+			<label for="login-passwd">Password:</label><br>
+			<input id="login-passwd" type="text"/>
 
-				<br />
-				<input type="button" class="form-button" value="Submit" onclick="systemUtils.submitLoginForm();"/>
-			</fieldset>
-		</form>
-	</div>
+			<br />
+			<input type="button" class="form-button" value="Submit" onclick="systemUtils.submitLoginForm();"/>
+		</fieldset>
+	</form>
 </div>
