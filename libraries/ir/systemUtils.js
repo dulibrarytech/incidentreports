@@ -138,11 +138,12 @@ systemUtils = (function($) {
 
 	renderTemplate = function(template) {
 
-		var view = tempate + "View";
 		$(viewFrame).empty();
 		$.get('templates/' + template + '.html', function(data) {
+			
 			$(viewFrame).append(data);
-
+			var view = window[template];
+			view.init();
 		});
 	};
 

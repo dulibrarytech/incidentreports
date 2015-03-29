@@ -1,4 +1,4 @@
-homeView = {
+home = {
 
 	element: "#content",
 	template: "home",
