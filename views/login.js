@@ -1,63 +1,27 @@
-loginView = (function($) {
+login = {
 
-	var init,
-		render,
-		submit,
-		reset,
-		exit;
+	element: '#content',
+	template: 'login',
 
-	var element = '#content',
-		template = 'login';
-
-	init = function() {
+	init: function() {
 
 
-	};
+	},
 
-	render = function() {
+	submit: function() {
 
-		$(element).empty();
-		$.get('templates/login.html', function(data) {
-			$(element).append(data);
-		});
-	};
+		systemUtils.submitLoginForm();
+	},
 
-	submit = function() {
+	reset: function() {
 
 
-	};
+	},
 
-	reset = function() {
-
-
-	};
-
-	close = function() {
+	close: function() {
 
 		$(element).find('*').attr('disabled', false);
 		$(element).empty();
-	};
-
-	return {
-
-		render: function() {
-
-			render();
-		},
-		submit: function() {
-
-			submit();
-		},
-		reset: function() {
-
-			reset();
-		},
-		close: function() {
-
-			close();
-		}
-	};
-
-
-}(jQuery));
+	}
+};
 

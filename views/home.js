@@ -5,7 +5,7 @@ home = {
 
 	init: function() {
 
-		alert("HVinit");
+		
 	}
 };
 

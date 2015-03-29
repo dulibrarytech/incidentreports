@@ -72,9 +72,6 @@ span#menu-items {
 
 div#login-dialog {
 
-	position: fixed;
-	top: 300px;
-	left: 300px;
 	width: 200px;
 
 	border-style: solid;
@@ -84,6 +81,10 @@ div#login-dialog {
 
 	opacity: 1;
 	background-color: #e5e5e5;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 7em;
 }
 
 div#login-dialog form {
