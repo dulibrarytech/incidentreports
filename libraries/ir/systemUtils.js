@@ -61,6 +61,8 @@ systemUtils = (function($) {
 					// Store updated token, load dashboard view
 					//sessionStorage.setItem("user_token", response);
 					//loadView("home");
+
+					// update menu links
 				}
 				else if(sessionToken != null) {
 
@@ -164,9 +166,9 @@ systemUtils = (function($) {
 
 			sendMessage(message);
 		},
-		validateLocalSession: function() {
-			
-			validateLocalSession();
+		getLocalSession: function() {
+
+			getLocalSession();
 		},
 		submitLoginForm: function() {
 

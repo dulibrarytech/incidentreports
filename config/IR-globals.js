@@ -4,3 +4,10 @@
 
 var loginView = login;
 var homeView = home;
+
+// IR = {
+
+// 	System: {},
+
+// 	Views: {}
+// }
