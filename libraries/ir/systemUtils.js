@@ -3,16 +3,24 @@ systemUtils = (function($) {
 	var testVal = true;
 	var msgTimeout = 3000;
 
-	var doAjax,
+	var initIRApp,
+		doAjax,
+		initMenu,
 		sendMessage,
 		validateLocalSession,
 		submitLoginForm,
-		initFrame,
 		renderTemplate,
+		showAuthenticatedMenulinks,
 		login,
 		logout;
 
 	var viewFrame = "#content";
+
+	initIRApp = function() {
+
+		initMenu();
+		showAuthenticatedMenulinks(false);
+	};
 
 	doAjax = function(requestObj) {
 
@@ -34,6 +42,11 @@ systemUtils = (function($) {
 		$.ajax(requestObj);
 	};
 
+	initMenu = function() {
+
+		$('#menu-items').append('<a href="#/home" id="home-link">Home</a><a href="#/login" id="login-link">Login</a><a href="#/dashboard" id="dashboard-link">Dashboard</a><a href="#/logout" id="logout-link">Logout</a>');
+	};
+
 	sendMessage = function(message) {
 
 		$('#message-view').html("");
@@ -44,6 +57,9 @@ systemUtils = (function($) {
 		}, msgTimeout);
 	};
 
+	// Set appropriate menu links for authenticated users
+	// If not valid, redirect to home and set menu links for unauthenticated user
+	// If present but not valid, logout() to be safe and display 'possible expired session' message  		<-- done
 	validateLocalSession = function() {
 
 		var sessionToken = sessionStorage.getItem("user_token");
@@ -56,23 +72,21 @@ systemUtils = (function($) {
 			url: service_url + "session/validate",
 			success: function (response) {
 
+				// Only update local token and menu links
 				if(response != "invalid") {
 
-					// Store updated token, load dashboard view
 					//sessionStorage.setItem("user_token", response);
-					//loadView("home");
-
-					// update menu links
+					showAuthenticatedMenulinks(true);
 				}
 				else if(sessionToken != null) {
 
-					//logout();
+					logout();
 					$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
+					showAuthenticatedMenulinks(false);
 				}
 				else {
 
-					//loadView("login");
-					
+					showAuthenticatedMenulinks(false);
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
@@ -104,13 +118,14 @@ systemUtils = (function($) {
 
 					alert("valid");
 					// Store updated token, load dashboard view
-					//sessionStorage.setItem("user_token", response.token);
-					//sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
+					sessionStorage.setItem("user_token", response.token);
+					sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
 					//loadView("home");
 					//sendMessage("Authentication successful");
+					showAuthenticatedMenulinks(true);
 
-					// TODO unhide dashboard link, home link, hide login
 					loginView.close();
+					renderTemplate("dashboard");
 				}
 				else {
 
@@ -128,13 +143,6 @@ systemUtils = (function($) {
 		doAjax(requestObj);
 	};
 
-	initFrame = function() {
-
-		$('#menu-items').append('<a href="#/home" id="home-link">Home</a><a href="#/login" id="login-link">Login</a><a href="#/dashboard" id="dashboard-link">Dashboard</a>');
-		$('#home-link').hide();
-		$('#dashboard-link').hide();
-	};
-
 	renderTemplate = function(template) {
 
 		$(viewFrame).empty();
@@ -142,41 +150,71 @@ systemUtils = (function($) {
 			
 			$(viewFrame).append(data);
 			var view = window[template];
-			view.init();
+			if(typeof view != "undefined") {
+				view.init();
+			}
 		});
+
+		// var state = {
+		//   "thisIsOnPopState": true
+		// };
+		// history.pushState(state, "Test", base_url + "#/" + template);
+		// expect(history.state).toEqual(state);
 	};
+
+	showAuthenticatedMenulinks = function(show) {
+
+		if(show == true) {
+
+			$('#login-link').hide();
+			$('#logout-link').show();
+			$('#dashboard-link').show();	
+		}
+		else if(show == false) {
+
+			$('#login-link').show();
+			$('#logout-link').hide();
+			$('#dashboard-link').hide();	
+		}
+	}
 
 	// System calls to remove session token will land here.  These calls will be initiated by ajax refusals by the server.  
 	// Any messages to the user should be created elsewhere, such as in the AJAX response error handler.
 	logout = function() {
 
-		$('#message-view').html("");
-			
-		$('#namestring').html("");
-		sessionStorage.removeItem("user_token");		
+		//$('#message-view').html("");
+		//$('#namestring').html("");
+		sessionStorage.removeItem("user_token");	
+		sessionStorage.removeItem("user_profile");	
+
+		showAuthenticatedMenulinks(false);
 	};
 
 	return {
 
+		initIRApp: function() {
+
+			initIRApp();
+		},
 		doAjax: function(requestObj) {
 
 			doAjax(requestObj);
+		},
+		initMenu: function() {
+
+			initMenu();
 		},
 		sendMessage: function(message) {
 
 			sendMessage(message);
 		},
-		getLocalSession: function() {
+		validateLocalSession: function() {
 
-			getLocalSession();
+			validateLocalSession();
 		},
 		submitLoginForm: function() {
 
 			submitLoginForm();
-		},
-		initFrame: function() {
-
-			initFrame();
 		},
 		renderTemplate: function(template) {
 
@@ -184,23 +222,24 @@ systemUtils = (function($) {
 		},
 		login: function() {
 
-			alert("login");
 			//loadView("login");
-			//window.location.replace(base_url);
+			renderTemplate('login');
 		},
 		/* External calls to logout() land here.  Display a universal message and re-login link to the user */  
 		logout: function() {
 
-			if(sessionStorage.getItem("user_token") != null) {
+			logout();
+			renderTemplate('home');
+			// if(sessionStorage.getItem("user_token") != null) {
 
-				// sendMessage("Goodbye");
-				$('#namestring').html("Goodbye");
+			// 	// sendMessage("Goodbye");
+			// 	$('#namestring').html("Goodbye");
 
-				setTimeout( function() { 
-					logout();
-					$('#content').html("<h3>You are now logged out. <span class='hot-text' onclick='systemUtils.login()'>Login</span> again</h3>");
-				}, 2000);
-			}
+			// 	setTimeout( function() { 
+			// 		logout();
+			// 		$('#content').html("<h3>You are now logged out. <span class='hot-text' onclick='systemUtils.login()'>Login</span> again</h3>");
+			// 	}, 2000);
+			// }
 			// $('#content').html("<h3>You are now logged out. <span class='hot-text' onclick='systemUtils.login()'>Login</span> again</h3>");
 		}
 	};
