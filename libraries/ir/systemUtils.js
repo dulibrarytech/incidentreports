@@ -8,6 +8,7 @@ systemUtils = (function($) {
 		sendMessage,
 		validateLocalSession,
 		submitLoginForm,
+		isValidSession,
 		login,
 		logout;
 
@@ -47,9 +48,6 @@ systemUtils = (function($) {
 		}, msgTimeout);
 	};
 
-	// Set appropriate menu links for authenticated users
-	// If not valid, redirect to home and set menu links for unauthenticated user
-	// If present but not valid, logout() to be safe and display 'possible expired session' message  		<-- done
 	validateLocalSession = function() {
 
 		var sessionToken = sessionStorage.getItem("user_token");
@@ -89,6 +87,11 @@ systemUtils = (function($) {
 		doAjax(requestObj);
 	};
 
+	isValidSession = function() {
+
+		return sessionStorage.getItem("user_token") != null;
+	};
+
 	submitLoginForm = function() {
 
 		// Get credentials from form, construct post string
@@ -106,14 +109,9 @@ systemUtils = (function($) {
 
 				if(response != "invalid") {
 
-					alert("valid");
-					// Store updated token, load dashboard view
 					sessionStorage.setItem("user_token", response.token);
 					sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
-					//loadView("home");
-					//sendMessage("Authentication successful");
 					viewUtils.showAuthenticatedMenulinks(true);
-
 					loginView.close();
 					viewUtils.renderTemplate("dashboard");
 				}
@@ -168,6 +166,10 @@ systemUtils = (function($) {
 		submitLoginForm: function() {
 
 			submitLoginForm();
+		},
+		isValidSession: function() {
+
+			return isValidSession();
 		},
 		login: function() {
 

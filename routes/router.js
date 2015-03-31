@@ -14,18 +14,18 @@ $(function() {
     Path.map("#/logout").to(function(){
 
         viewUtils.renderTemplate('home');
-        systemUtils.logout(); // Will set menu links.  
+        systemUtils.logout(); 
     }); 
 
     Path.map("#/home").to(function(){
 
         viewUtils.renderTemplate('home');
-        systemUtils.validateLocalSession(); // Will set menu links.  
+        systemUtils.validateLocalSession(); 
     }); 
 
     Path.map("#/dashboard").to(function(){
         
-        if(sessionStorage.getItem("user_token") != null) {
+        if(systemUtils.isValidSession()) {
 
             viewUtils.renderTemplate('dashboard'); // if not null but bad, server will return message to dashboard.init(), which will display it in div
         }
