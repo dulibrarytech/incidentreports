@@ -81,7 +81,7 @@ systemUtils = (function($) {
 				else if(sessionToken != null) {
 
 					logout();
-					$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
+					//$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
 					showAuthenticatedMenulinks(false);
 				}
 				else {
@@ -188,6 +188,8 @@ systemUtils = (function($) {
 		sessionStorage.removeItem("user_profile");	
 
 		showAuthenticatedMenulinks(false);
+
+		renderTemplate("home");
 	};
 
 	return {
