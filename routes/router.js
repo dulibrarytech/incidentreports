@@ -19,12 +19,13 @@ $(function() {
 
     Path.map("#/home").to(function(){
 
-        viewUtils.renderTemplate('home');
         systemUtils.validateLocalSession(); 
+        viewUtils.renderTemplate('home');
     }); 
 
     Path.map("#/dashboard").to(function(){
         
+        systemUtils.validateLocalSession(); 
         if(systemUtils.isValidSession()) {
 
             viewUtils.renderTemplate('dashboard'); // if not null but bad, server will return message to dashboard.init(), which will display it in div
@@ -32,6 +33,7 @@ $(function() {
         else {
 
             $("#main").html("<h2>401 Forbidden</h2>");
+            viewUtils.setURL("error");
         }
 
         // have to assume token is valid if present... 

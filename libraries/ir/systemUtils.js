@@ -63,7 +63,7 @@ systemUtils = (function($) {
 				// Only update local token and menu links
 				if(response != "invalid") {
 
-					//sessionStorage.setItem("user_token", response);
+					sessionStorage.setItem("user_token", response);
 					viewUtils.showAuthenticatedMenulinks(true);
 				}
 				else if(sessionToken != null) {
