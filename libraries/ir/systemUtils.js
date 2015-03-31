@@ -5,21 +5,16 @@ systemUtils = (function($) {
 
 	var initIRApp,
 		doAjax,
-		initMenu,
 		sendMessage,
 		validateLocalSession,
 		submitLoginForm,
-		renderTemplate,
-		showAuthenticatedMenulinks,
 		login,
 		logout;
 
-	var viewFrame = "#content";
-
 	initIRApp = function() {
 
-		initMenu();
-		showAuthenticatedMenulinks(false);
+		viewUtils.initMenu();
+		viewUtils.showAuthenticatedMenulinks(false);
 	};
 
 	doAjax = function(requestObj) {
@@ -40,11 +35,6 @@ systemUtils = (function($) {
         });
 
 		$.ajax(requestObj);
-	};
-
-	initMenu = function() {
-
-		$('#menu-items').append('<a href="#/home" id="home-link">Home</a><a href="#/login" id="login-link">Login</a><a href="#/dashboard" id="dashboard-link">Dashboard</a><a href="#/logout" id="logout-link">Logout</a>');
 	};
 
 	sendMessage = function(message) {
@@ -76,17 +66,17 @@ systemUtils = (function($) {
 				if(response != "invalid") {
 
 					//sessionStorage.setItem("user_token", response);
-					showAuthenticatedMenulinks(true);
+					viewUtils.showAuthenticatedMenulinks(true);
 				}
 				else if(sessionToken != null) {
 
 					logout();
 					//$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
-					showAuthenticatedMenulinks(false);
+					viewUtils.showAuthenticatedMenulinks(false);
 				}
 				else {
 
-					showAuthenticatedMenulinks(false);
+					viewUtils.showAuthenticatedMenulinks(false);
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
@@ -122,10 +112,10 @@ systemUtils = (function($) {
 					sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
 					//loadView("home");
 					//sendMessage("Authentication successful");
-					showAuthenticatedMenulinks(true);
+					viewUtils.showAuthenticatedMenulinks(true);
 
 					loginView.close();
-					renderTemplate("dashboard");
+					viewUtils.renderTemplate("dashboard");
 				}
 				else {
 
@@ -143,41 +133,6 @@ systemUtils = (function($) {
 		doAjax(requestObj);
 	};
 
-	renderTemplate = function(template) {
-
-		$(viewFrame).empty();
-		$.get('templates/' + template + '.html', function(data) {
-			
-			$(viewFrame).append(data);
-			var view = window[template];
-			if(typeof view != "undefined") {
-				view.init();
-			}
-		});
-
-		// var state = {
-		//   "thisIsOnPopState": true
-		// };
-		// history.pushState(state, "Test", base_url + "#/" + template);
-		// expect(history.state).toEqual(state);
-	};
-
-	showAuthenticatedMenulinks = function(show) {
-
-		if(show == true) {
-
-			$('#login-link').hide();
-			$('#logout-link').show();
-			$('#dashboard-link').show();	
-		}
-		else if(show == false) {
-
-			$('#login-link').show();
-			$('#logout-link').hide();
-			$('#dashboard-link').hide();	
-		}
-	}
-
 	// System calls to remove session token will land here.  These calls will be initiated by ajax refusals by the server.  
 	// Any messages to the user should be created elsewhere, such as in the AJAX response error handler.
 	logout = function() {
@@ -187,9 +142,9 @@ systemUtils = (function($) {
 		sessionStorage.removeItem("user_token");	
 		sessionStorage.removeItem("user_profile");	
 
-		showAuthenticatedMenulinks(false);
+		viewUtils.showAuthenticatedMenulinks(false);
 
-		renderTemplate("home");
+		viewUtils.renderTemplate("home");
 	};
 
 	return {
@@ -201,10 +156,6 @@ systemUtils = (function($) {
 		doAjax: function(requestObj) {
 
 			doAjax(requestObj);
-		},
-		initMenu: function() {
-
-			initMenu();
 		},
 		sendMessage: function(message) {
 
@@ -218,20 +169,16 @@ systemUtils = (function($) {
 
 			submitLoginForm();
 		},
-		renderTemplate: function(template) {
-
-			renderTemplate(template);
-		},
 		login: function() {
 
 			//loadView("login");
-			renderTemplate('login');
+			viewUtils.renderTemplate('login');
 		},
 		/* External calls to logout() land here.  Display a universal message and re-login link to the user */  
 		logout: function() {
 
 			logout();
-			renderTemplate('home');
+			viewUtils.renderTemplate('home');
 			// if(sessionStorage.getItem("user_token") != null) {
 
 			// 	// sendMessage("Goodbye");

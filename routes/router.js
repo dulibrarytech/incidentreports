@@ -8,18 +8,18 @@ $(function() {
         
         // check for local session?
 
-        systemUtils.renderTemplate('login');
+        viewUtils.renderTemplate('login');
     }); 
 
     Path.map("#/logout").to(function(){
 
-        systemUtils.renderTemplate('home');
+        viewUtils.renderTemplate('home');
         systemUtils.logout(); // Will set menu links.  
     }); 
 
     Path.map("#/home").to(function(){
 
-        systemUtils.renderTemplate('home');
+        viewUtils.renderTemplate('home');
         systemUtils.validateLocalSession(); // Will set menu links.  
     }); 
 
@@ -27,7 +27,7 @@ $(function() {
         
         if(sessionStorage.getItem("user_token") != null) {
 
-            systemUtils.renderTemplate('dashboard'); // if not null but bad, server will return message to dashboard.init(), which will display it in div
+            viewUtils.renderTemplate('dashboard'); // if not null but bad, server will return message to dashboard.init(), which will display it in div
         }
         else {
 
