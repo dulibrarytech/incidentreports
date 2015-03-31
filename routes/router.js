@@ -6,9 +6,15 @@ $(function() {
 
     Path.map("#/login").to(function(){
         
-        // check for local session?
+        // check for local session.  If present do not load login view
+        if(systemUtils.isValidSession() == false) {
 
-        viewUtils.renderTemplate('login');
+            viewUtils.renderTemplate('login');
+        }
+        else {
+
+            history.go(-1);
+        }
     }); 
 
     Path.map("#/logout").to(function(){

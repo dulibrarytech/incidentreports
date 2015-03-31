@@ -69,11 +69,12 @@ systemUtils = (function($) {
 				else if(sessionToken != null) {
 
 					logout();
-					//$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
+					$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
 					viewUtils.showAuthenticatedMenulinks(false);
 				}
 				else {
 
+					logout();
 					viewUtils.showAuthenticatedMenulinks(false);
 				}
 			},
