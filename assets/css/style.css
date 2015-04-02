@@ -27,7 +27,7 @@ div#wrapper {
 	border-style: solid;
 }
 
-div#wrapper > div {
+div#wrapper > div#content-wrapper {
 
 	margin-left: 1.3em;
 	margin-right: 1.3em;
@@ -65,14 +65,19 @@ div#message-view {
 	height: 20px;
 }
 
-span#menu-items {
+div.navbar {
 
-	/*margin-left: 1.3em;*/
+	background-color: #e5e3e1;
+}
+
+span#menu-items a {
+
+	padding-right: 0.9em;
 }
 
 div#login-dialog {
 
-	width: 200px;
+	width: 300px;
 
 	border-style: solid;
 	border-radius: 3px;
@@ -122,5 +127,6 @@ div#dashboard-wrapper > div#table-section {
 
 
 }
+
 
 
