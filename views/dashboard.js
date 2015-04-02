@@ -1,6 +1,7 @@
 dashboard = {
 
-	element: '#content',
+	element: "#content",
+	template: "dashboard",
 
 	init: function() {
 
@@ -11,11 +12,6 @@ dashboard = {
 		// Server API returns "invalid" or [array of user dash data] 
 		// if invalid, since this was run, assume dashboard link was present and/or 
 		//     local session was not null; display message [expired maybe? login again?] in empty dashboard table frame
-	},
-
-	bindEvents: function() {
-
-		
 	}
 };
 
