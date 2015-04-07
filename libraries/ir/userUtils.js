@@ -1,6 +1,7 @@
 userUtils = (function($) {
 
-	var submitIncidentReportForm;
+	var submitIncidentReportForm,
+		retrieveAllIncidentReports;
 
 	submitIncidentReportForm = function() {
 

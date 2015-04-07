@@ -19,7 +19,7 @@ $(function() {
 
     Path.map("#/logout").to(function(){
 
-        viewUtils.renderTemplate('home');
+        //viewUtils.renderTemplate('home');
         systemUtils.logout(); 
     }); 
 

@@ -12,15 +12,18 @@ viewUtils = (function($) {
 			$('#menu-items').append('<a href="#/home" id="home-link">Home</a><a href="#/login" id="login-link">Login</a><a href="#/dashboard" id="dashboard-link">Dashboard</a><a href="#/logout" id="logout-link">Logout</a>');
 		};
 
-		renderTemplate = function(template) {
+		renderTemplate = function(template,data) {
 
 			$(viewFrame).empty();
-			$.get('templates/' + template + '.html', function(data) {
+			$.get('templates/' + template + '.html', function(html) {
 				
-				$(viewFrame).append(data);
+				$(viewFrame).append(html);
 				var view = window[template];
 				if(typeof view != "undefined") {
-					view.init();
+					view.init(data);
+				}
+				else {
+					console.log("renderTemplate() error: view not found for template '" + template + "'!");
 				}
 			});
 
@@ -54,9 +57,9 @@ viewUtils = (function($) {
 
 			initMenu();
 		},
-		renderTemplate: function(template) {
+		renderTemplate: function(template,data) {
 
-			renderTemplate(template);
+			renderTemplate(template,data);
 		},
 		showAuthenticatedMenulinks: function(show) {
 

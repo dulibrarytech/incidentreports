@@ -1,8 +1,10 @@
 systemUtils = (function($) {
 
+	// Variables
 	var testVal = true;
 	var msgTimeout = 3000;
 
+	// Functions
 	var initIRApp,
 		doAjax,
 		sendMessage,
@@ -74,7 +76,6 @@ systemUtils = (function($) {
 				}
 				else {
 
-					logout();
 					viewUtils.showAuthenticatedMenulinks(false);
 				}
 			},
@@ -90,7 +91,8 @@ systemUtils = (function($) {
 
 	isValidSession = function() {
 
-		return sessionStorage.getItem("user_token") != null;
+		return sessionStorage.getItem("user_token") != null; 
+		// check token 
 	};
 
 	submitLoginForm = function() {
@@ -114,6 +116,9 @@ systemUtils = (function($) {
 					sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
 					viewUtils.showAuthenticatedMenulinks(true);
 					loginView.close();
+
+					// get data array from response
+					// cache data
 					viewUtils.renderTemplate("dashboard");
 				}
 				else {
@@ -139,10 +144,10 @@ systemUtils = (function($) {
 		//$('#message-view').html("");
 		//$('#namestring').html("");
 		sessionStorage.removeItem("user_token");	
-		sessionStorage.removeItem("user_profile");	
+		sessionStorage.removeItem("user_profile");
+		// remove data cache	
 
 		viewUtils.showAuthenticatedMenulinks(false);
-
 		viewUtils.renderTemplate("home");
 	};
 
@@ -181,7 +186,7 @@ systemUtils = (function($) {
 		logout: function() {
 
 			logout();
-			viewUtils.renderTemplate('home');
+			//viewUtils.renderTemplate('home');
 			// if(sessionStorage.getItem("user_token") != null) {
 
 			// 	// sendMessage("Goodbye");
