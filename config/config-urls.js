@@ -15,3 +15,4 @@ var service_url = "http://" + document.domain + "/incidentReports_SERVICE/";
 // Service API endpoints
 var _submitIRForm = "submit/report";
 var _submitLoginForm = "login/authenticate";
+var _getReportData = "reports/all";

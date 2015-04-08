@@ -11,6 +11,7 @@ systemUtils = (function($) {
 		validateLocalSession,
 		submitLoginForm,
 		isValidSession,
+		getSessionData,
 		login,
 		logout;
 
@@ -91,7 +92,7 @@ systemUtils = (function($) {
 
 	isValidSession = function() {
 
-		return sessionStorage.getItem("user_token") != null; 
+		return (sessionStorage.getItem("user_token") != null) && (sessionStorage.getItem("report_data") != null); 
 		// check token 
 	};
 
@@ -112,14 +113,19 @@ systemUtils = (function($) {
 
 				if(response != "invalid") {
 
+					// establishSesion() ?
 					sessionStorage.setItem("user_token", response.token);
 					sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
+					
+					// Get all reports, store in local storage
+					userUtils.loadIncidentReports();
+
 					viewUtils.showAuthenticatedMenulinks(true);
 					loginView.close();
 
-					// get data array from response
-					// cache data
-					viewUtils.renderTemplate("dashboard");
+					// Get reports from cache and render the dashboard
+					//var data = userUtils.getIncidentReports();
+					//viewUtils.renderTemplate('dashboard', data);
 				}
 				else {
 
@@ -145,7 +151,7 @@ systemUtils = (function($) {
 		//$('#namestring').html("");
 		sessionStorage.removeItem("user_token");	
 		sessionStorage.removeItem("user_profile");
-		// remove data cache	
+		sessionStorage.removeItem("report_data");	
 
 		viewUtils.showAuthenticatedMenulinks(false);
 		viewUtils.renderTemplate("home");

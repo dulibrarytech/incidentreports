@@ -6,12 +6,13 @@ dashboard = {
 	init: function(tableData) {
 
 		// namestring
-		// construct(tableData);
+		this.construct(tableData);
 	},
 
 	construct: function(tableData) {
 
-
+		//alert(tableData.field4);
+		//$("#reports-table").html(tableData);
 	}
 };
 
