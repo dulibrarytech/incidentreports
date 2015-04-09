@@ -11,7 +11,7 @@ systemUtils = (function($) {
 		validateLocalSession,
 		submitLoginForm,
 		isValidSession,
-		getSessionData,
+		updateSessionToken,
 		login,
 		logout;
 
@@ -115,14 +115,14 @@ systemUtils = (function($) {
 					sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
 					
 					// Get all reports, store in local storage
-					userUtils.loadIncidentReports();
+					loadIncidentReports();
 
 					viewUtils.showAuthenticatedMenulinks(true);
 					loginView.close();
 
 					// Get reports from cache and render the dashboard
-					//var data = userUtils.getIncidentReports();
-					//viewUtils.renderTemplate('dashboard', data);
+					var data = getIncidentReports();
+					viewUtils.renderTemplate('dashboard', data);
 				}
 				else {
 
@@ -138,6 +138,51 @@ systemUtils = (function($) {
 		};
 
 		doAjax(requestObj);
+	};
+
+	updateSessionToken = function(token) {
+
+		sessionStorage.setItem("user_token", token);
+	};
+
+	storeIncidentReports = function(reports) {
+
+		sessionStorage.setItem("report_data");
+	};
+
+	getIncidentReports = function() {
+
+		return sessionStorage.getItem("report_data");
+	};
+
+	loadIncidentReports = function() {
+
+		requestObj = {
+
+			type: "GET",
+			url: service_url + _getReportData,
+			dataType: "json", 
+			success: function (response) {
+
+				if(typeof response.status != 'undefined' && response.status == "success") { 		
+
+					systemUtils.storeIncidentReports(response.data);
+					systemUtils.updateSessionToken(response.token);
+				}
+				else {
+
+					console.log("loadIncidentReports: Cannot retrieve report data");
+					systemUtils.sendMessage("Server error: Please contact Systems support");
+				}
+			},
+            error: function ( jqXHR, textStatus, errorThrown ) {
+
+                console.log("loadIncidentReports Status: " + textStatus + " Message: " + errorThrown);
+               	systemUtils.sendMessage("Server error: Please contact Systems support");
+            }
+		};
+
+		systemUtils.doAjax(requestObj);
 	};
 
 	// System calls to remove session token will land here.  These calls will be initiated by ajax refusals by the server.  
@@ -179,6 +224,22 @@ systemUtils = (function($) {
 		isValidSession: function() {
 
 			return isValidSession();
+		},
+		updateSessionToken: function(token) {
+
+			updateSessionToken(token);
+		},
+		storeIncidentReports: function(reports) { // reports = object
+
+			storeIncidentReports(reports);
+		},
+		getIncidentReports: function() {
+
+			return getIncidentReports();
+		},
+		loadIncidentReports: function() {
+
+			loadIncidentReports();
 		},
 		login: function() {
 

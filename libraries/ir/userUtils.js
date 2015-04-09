@@ -20,6 +20,8 @@ userUtils = (function($) {
 
 					systemUtils.sendMessage("Incident Report submitted.");
 
+					// Store updated token from response
+
 					// Clear form
 					$('#incident-report').trigger("reset");
 				}
@@ -39,55 +41,11 @@ userUtils = (function($) {
 		systemUtils.doAjax(requestObj);
 	};
 
-	loadIncidentReports = function() {
-
-		requestObj = {
-
-			type: "GET",
-			url: service_url + _getReportData,
-			dataType: "json", 
-			success: function (response) {
-
-				alert(response.data);
-
-				// if(response.status == "success") { 		// check 'typeof status' ?
-
-				// 	systemUtils.storeIncidentReports(JSON.stringify(response.data));
-				// }
-				// else {
-
-				// 	console.log("loadIncidentReports: Cannot retrieve report data");
-				// 	systemUtils.sendMessage("Server error: Please contact Systems support");
-				// }
-			},
-            error: function ( jqXHR, textStatus, errorThrown ) {
-
-                console.log("loadIncidentReports Status: " + textStatus + " Message: " + errorThrown);
-               	systemUtils.sendMessage("Server error: Please contact Systems support");
-            }
-		};
-
-		systemUtils.doAjax(requestObj);
-	};
-
-	getIncidentReports = function() {
-
-		return sessionStorage.getItem("report_data");
-	};
-
 	return {
 
 		submitIncidentReportForm: function() {
 
 			submitIncidentReportForm();
-		},
-		loadIncidentReports: function() {
-
-			loadIncidentReports();
-		},
-		getIncidentReports: function() {
-
-			getIncidentReports();
 		}
 	};
 
