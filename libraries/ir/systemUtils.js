@@ -53,13 +53,10 @@ systemUtils = (function($) {
 
 	validateLocalSession = function() {
 
-		var sessionToken = sessionStorage.getItem("user_token");
-		var postData = {token:sessionToken};
 		requestObj = {
 
 			type: "POST",
 			dataType: "text",
-			data: postData,
 			url: service_url + "session/validate",
 			success: function (response) {
 
@@ -69,7 +66,7 @@ systemUtils = (function($) {
 					sessionStorage.setItem("user_token", response);
 					viewUtils.showAuthenticatedMenulinks(true);
 				}
-				else if(sessionToken != null) {
+				else if(isValidSession()) {
 
 					logout();
 					$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
