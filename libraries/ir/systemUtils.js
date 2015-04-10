@@ -51,6 +51,7 @@ systemUtils = (function($) {
 		}, msgTimeout);
 	};
 
+	// Sends empty post request, server will verify header.
 	validateLocalSession = function() {
 
 		requestObj = {
@@ -63,7 +64,7 @@ systemUtils = (function($) {
 				// Only update local token and menu links
 				if(response != "invalid") {
 
-					sessionStorage.setItem("user_token", response);
+					sessionStorage.setItem("user_token", response); // store token with current timestamp
 					viewUtils.showAuthenticatedMenulinks(true);
 				}
 				else if(isValidSession()) {
@@ -153,6 +154,7 @@ systemUtils = (function($) {
 
 	loadDashboard = function() {
 
+		// Request data from all reports in the database, for the dashboard display
 		requestObj = {
 
 			type: "GET",
@@ -160,10 +162,10 @@ systemUtils = (function($) {
 			dataType: "json", 
 			success: function (response) {
 
+				// Cache the data and render the dashboard
 				if(typeof response.status != 'undefined' && response.status == "success") { 		
 
 					storeIncidentReports(response.data); // cache data
-					updateSessionToken(response.token); // with current timestamp
 					viewUtils.renderTemplate('dashboard', response.data);
 				}
 				else {

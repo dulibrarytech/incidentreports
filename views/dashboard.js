@@ -6,13 +6,12 @@ dashboard = {
 	init: function(tableData) {
 		
 		// namestring
-
 		this.construct(tableData);
 	},
 
 	construct: function(tableData) {
 
-		//alert(tableData[0]);
+		//alert("C " + tableData[0][0]);
 	}
 };
 
