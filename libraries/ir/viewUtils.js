@@ -14,6 +14,11 @@ viewUtils = (function($) {
 
 		renderTemplate = function(template,data) {
 
+			if(typeof data == 'undefined') {
+
+				data = null;
+			}
+
 			$(viewFrame).empty();
 			$.get('templates/' + template + '.html', function(html) {
 				

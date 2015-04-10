@@ -35,7 +35,7 @@ $(function() {
         if(systemUtils.isValidSession()) {
 
             // Get data from cache.  If cache empty, re-get from server
-            var data = sessionUtils.getSessionData();
+            var data = systemUtils.getIncidentReports();
             viewUtils.renderTemplate('dashboard',data); // if not null but bad, server will return message to dashboard.init(), which will display it in div
         }
         else {
@@ -43,6 +43,11 @@ $(function() {
             $("#main").html("<h2>401 Forbidden</h2>");
             viewUtils.setURL("error");
         }
+    }); 
+
+    Path.map("#/test").to(function(){
+
+        testLibFunctions.genericTestBlock();
     }); 
 
     systemUtils.initIRApp();

@@ -113,16 +113,11 @@ systemUtils = (function($) {
 					// establishSesion() ?
 					sessionStorage.setItem("user_token", response.token);
 					sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
-					
-					// Get all reports, store in local storage
-					loadIncidentReports();
 
 					viewUtils.showAuthenticatedMenulinks(true);
 					loginView.close();
 
-					// Get reports from cache and render the dashboard
-					var data = getIncidentReports();
-					viewUtils.renderTemplate('dashboard', data);
+					loadDashboard();
 				}
 				else {
 
@@ -147,15 +142,16 @@ systemUtils = (function($) {
 
 	storeIncidentReports = function(reports) {
 
-		sessionStorage.setItem("report_data");
+		var reportString = JSON.stringify(reports);
+		sessionStorage.setItem("report_data", reportString);
 	};
 
 	getIncidentReports = function() {
 
-		return sessionStorage.getItem("report_data");
+		return JSON.parse(sessionStorage.getItem("report_data"));
 	};
 
-	loadIncidentReports = function() {
+	loadDashboard = function() {
 
 		requestObj = {
 
@@ -166,23 +162,24 @@ systemUtils = (function($) {
 
 				if(typeof response.status != 'undefined' && response.status == "success") { 		
 
-					systemUtils.storeIncidentReports(response.data);
-					systemUtils.updateSessionToken(response.token);
+					storeIncidentReports(response.data); // cache data
+					updateSessionToken(response.token); // with current timestamp
+					viewUtils.renderTemplate('dashboard', response.data);
 				}
 				else {
 
 					console.log("loadIncidentReports: Cannot retrieve report data");
-					systemUtils.sendMessage("Server error: Please contact Systems support");
+					sendMessage("Server error: Please contact Systems support");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
                 console.log("loadIncidentReports Status: " + textStatus + " Message: " + errorThrown);
-               	systemUtils.sendMessage("Server error: Please contact Systems support");
+               	sendMessage("Server error: Please contact Systems support");
             }
 		};
 
-		systemUtils.doAjax(requestObj);
+		doAjax(requestObj);
 	};
 
 	// System calls to remove session token will land here.  These calls will be initiated by ajax refusals by the server.  
@@ -237,9 +234,9 @@ systemUtils = (function($) {
 
 			return getIncidentReports();
 		},
-		loadIncidentReports: function() {
+		loadDashboard: function() {
 
-			loadIncidentReports();
+			loadDashboard();
 		},
 		login: function() {
 
