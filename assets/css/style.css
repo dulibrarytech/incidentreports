@@ -21,7 +21,7 @@ span#logout-link {
 
 div#wrapper {
 
-	width: 80%;
+	width: 60%;
 	margin: auto;
 	margin-top: 100px;
 	border-style: solid;
@@ -121,6 +121,22 @@ div.form-row {
 div.input-group {
 
 
+}
+
+div#dashboard-links {
+
+	margin-top: 1.2em;
+}
+
+table#reports-table {
+
+	margin-top: 0.8em;
+}
+
+table#reports-table th {
+
+	font-size: 0.8em;
+	padding: 0.5em;
 }
 
 
