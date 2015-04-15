@@ -1,6 +1,5 @@
 viewUtils = (function($) {
 
-
 	var initMenu,
 		renderTemplate,
 		showAuthenticatedMenulinks;

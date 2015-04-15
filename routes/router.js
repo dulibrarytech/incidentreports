@@ -34,8 +34,12 @@ $(function() {
         systemUtils.validateLocalSession(); 
         if(systemUtils.isValidSession()) {
 
-            // Get data from cache.  If cache empty, re-get from server
+            // Get data from cache.  If cache empty, reload dashboard
             var data = systemUtils.getIncidentReports();
+            if(data == null) {
+
+                systemUtils.loadDashboard();
+            }
             viewUtils.renderTemplate('dashboard',data); // if not null but bad, server will return message to dashboard.init(), which will display it in div
         }
         else {
