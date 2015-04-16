@@ -34,7 +34,7 @@ $(function() {
         systemUtils.validateLocalSession(); 
         if(systemUtils.isValidSession()) {
 
-            // Get data from cache.  If cache empty, reload dashboard
+            // Get data from cache.  If cache empty, reload dashboard 
             var data = systemUtils.getIncidentReports();
             if(data == null) {
 
