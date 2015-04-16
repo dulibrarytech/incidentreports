@@ -130,12 +130,17 @@ div#dashboard-links {
 
 div#reports-table-section {
 
-	max-height: 700px;
-	overflow: hidden;
+	/*max-height: 700px;
+	overflow: hidden;*/
 	border-style: solid;
 	border-width: 1px;
-	overflow-y: scroll;
+	/*overflow-y: scroll;*/
 	margin-top: 2.5em;
+	margin-left: 3.3em;
+}
+
+table#reports-table {
+
 }
 
 table#reports-table tr {
