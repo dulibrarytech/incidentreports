@@ -12,11 +12,11 @@ userUtils = (function($) {
 
 			type: "POST",
 			url: service_url + _submitIRForm,
-			dataType: "text", 
+			dataType: "json", 
 			data: formData,
 			success: function (response) {
 
-				if(response == "success") {
+	 			if(response.status == "success") {
 
 					systemUtils.sendMessage("Incident Report submitted.");
 
@@ -28,7 +28,7 @@ userUtils = (function($) {
 				else {
 
 					console.log("submitIncidentReportForm: Server reports error when writing to the database");
-					systemUtils.sendMessage("Database error: Please contact Systems support");
+					systemUtils.sendMessage("Server error: Please contact Systems support");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
