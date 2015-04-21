@@ -177,6 +177,29 @@ table#reports-table td#offense-narrative {
   background-color: #d9d9d9;
 }
 
+div#modalFrame {
+
+	width: auto;
+	border-style: solid;
+	border-color: black;
+	position: fixed;
+	top: 50px;
+	left: 30%;
+	z-index: 1000;
+	border-radius: 2px;
+	background-color: white;
+}
+
+div#modalFrame a {
+
+	/* place at right side */
+}
+
+div#modalFrame a:hover {
+
+	cursor: pointer;
+}
+
 
 
 

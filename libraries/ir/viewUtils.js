@@ -63,12 +63,27 @@ viewUtils = (function($) {
 
 		openModalView = function(template,data,loader) { // appends template to wrapper.  Disables and shades all wrapper children
 
-			
+			//$("#wrapper").children().prop('disabled',true);
+
+			$('#wrapper').append('<div id="modalFrame"></div>');
+
+			var closeButton = '<a onclick="killModal()">close</a>';
+			$('#modalFrame').append(closeButton);
+
+			$.get(template, function(html) {
+				
+				$("#modalFrame").append(html);
+				loader.render(data);
+			});
+
+			$("#modalFrame").children().prop('disabled',true);
 		};
 
 		killModal = function() {
 
+			alert("killmodal");
 			// Remove 'modalFrame' div and all children from wrapper, re-activate all wrapper children
+			//$('#wrapper').removeChild('#modalFrame');  ???
 		};
 
 	return {
