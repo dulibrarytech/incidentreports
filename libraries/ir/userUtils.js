@@ -1,7 +1,10 @@
 userUtils = (function($) {
 
+	var detailsDialogLoaderPath = "templates/partials/ir-form.html";
+
 	var submitIncidentReportForm,
-		retrieveAllIncidentReports;
+		retrieveAllIncidentReports,
+		openDetailsDialogWindow;
 
 	submitIncidentReportForm = function() {
 
@@ -49,11 +52,33 @@ userUtils = (function($) {
 		systemUtils.doAjax(requestObj);
 	};
 
+	openDetailsDialogWindow = function(reportID) {
+
+		// Get instance of the renderDetails object
+		var reportDetailsLoader = window['reportDetails'];
+
+		// Get report data from cache
+		var report = systemUtils.getCachedReport(reportID);
+
+		if(typeof reportDetails != "undefined") {
+
+			viewUtils.openModalView(detailsDialogLoaderPath, report, reportDetailsLoader);
+		}
+		else {
+
+			console.log("openDetailsDialogWindow() error: loader object not found for template!");
+		}
+	};
+
 	return {
 
 		submitIncidentReportForm: function() {
 
 			submitIncidentReportForm();
+		},
+		openDetailsDialogWindow: function(reportID) {
+
+			openDetailsDialogWindow(reportID);
 		}
 	};
 

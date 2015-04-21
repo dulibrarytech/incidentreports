@@ -24,11 +24,15 @@ viewUtils = (function($) {
 			$.get('templates/' + template + '.html', function(html) {
 				
 				$(viewFrame).append(html);
+
+				// Get an instance of the view loader object and call its init function
 				var view = window[template];
 				if(typeof view != "undefined") {
+
 					view.init(data);
 				}
 				else {
+
 					console.log("renderTemplate() error: view not found for template '" + template + "'!");
 				}
 			});
@@ -57,9 +61,9 @@ viewUtils = (function($) {
 			history.pushState('', '', base_url + url);
 		};
 
-		openModalView = function(template,data,callback) { // appends template to wrapper.  Disables and shades all wrapper children
+		openModalView = function(template,data,loader) { // appends template to wrapper.  Disables and shades all wrapper children
 
-			alert("OMV");
+			alert("template: " + template + " data: " + data + " loader: " + loader);
 		};
 
 	return {
@@ -80,9 +84,9 @@ viewUtils = (function($) {
 
 			setURL(url);
 		},
-		openModalView: function(template,data,callback) { // appends template to wrapper.  Disables and shades all wrapper children
+		openModalView: function(template,data,loader) { // appends template to wrapper.  Disables and shades all wrapper children
 
-			openModalView(template,data,callback);
+			openModalView(template,data,loader);
 		}
 	};
 

@@ -161,6 +161,11 @@ table#reports-table td {
 	text-align: center;
 }
 
+table#reports-table td a:hover {
+
+	cursor: pointer;
+}
+
 table#reports-table td#offense-narrative {
 
 	text-align: left;

@@ -13,6 +13,7 @@ dashboard = {
 	construct: function(tableData) {
 
 		var tableString = "";
+		var detailsLink;
 		var truncatedOffenseNarrative;
 
 		// Header
@@ -22,6 +23,8 @@ dashboard = {
 
 		var maxLength = this.truncLength;
 		$.each(tableData, function(index, value) {
+
+			detailsLink = '<a onclick="userUtils.openDetailsDialogWindow(' + value.ReportID + ')"><img src="assets/img/man-big-magnifying-glass.png" alt="Report details" width="22" height="22" /></a>'
 
 			// Truncate offense narrative and add 'more' link
 			if(value.OffenseNarrative.length > maxLength) {
@@ -34,7 +37,7 @@ dashboard = {
 				truncatedOffenseNarrative = value.OffenseNarrative;
 			}
 
-			tableString += '<tr><td></td><td>' + value.ReportID + '</td><td>' + value.DateOfReport + '</td><td>' + value.DateOfOffense + '</td><td>' + value.ReportCompletedBy + '</td><td>' + value.Department + '</td><td>' + value.NatureOfOffense + '</td><td id="offense-narrative">' + truncatedOffenseNarrative + '</td></tr>';
+			tableString += '<tr><td>' + detailsLink + '</td><td>' + value.ReportID + '</td><td>' + value.DateOfReport + '</td><td>' + value.DateOfOffense + '</td><td>' + value.ReportCompletedBy + '</td><td>' + value.Department + '</td><td>' + value.NatureOfOffense + '</td><td id="offense-narrative">' + truncatedOffenseNarrative + '</td></tr>';
 		});
 
 
