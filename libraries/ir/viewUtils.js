@@ -2,7 +2,9 @@ viewUtils = (function($) {
 
 	var initMenu,
 		renderTemplate,
-		showAuthenticatedMenulinks;
+		showAuthenticatedMenulinks,
+		setURL,
+		openModalView;
 
 	var setURL;
 
@@ -55,6 +57,11 @@ viewUtils = (function($) {
 			history.pushState('', '', base_url + url);
 		};
 
+		openModalView = function(template,data,callback) { // appends template to wrapper.  Disables and shades all wrapper children
+
+			alert("OMV");
+		};
+
 	return {
 
 		initMenu: function() {
@@ -72,6 +79,10 @@ viewUtils = (function($) {
 		setURL: function(url) {
 
 			setURL(url);
+		},
+		openModalView: function(template,data,callback) { // appends template to wrapper.  Disables and shades all wrapper children
+
+			openModalView(template,data,callback);
 		}
 	};
 
