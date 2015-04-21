@@ -63,7 +63,12 @@ viewUtils = (function($) {
 
 		openModalView = function(template,data,loader) { // appends template to wrapper.  Disables and shades all wrapper children
 
-			alert("template: " + template + " data: " + data + " loader: " + loader);
+			
+		};
+
+		killModal = function() {
+
+			// Remove 'modalFrame' div and all children from wrapper, re-activate all wrapper children
 		};
 
 	return {
@@ -87,6 +92,10 @@ viewUtils = (function($) {
 		openModalView: function(template,data,loader) { // appends template to wrapper.  Disables and shades all wrapper children
 
 			openModalView(template,data,loader);
+		},
+		killModal: function() {
+
+			killModal();
 		}
 	};
 

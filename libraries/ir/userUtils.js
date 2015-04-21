@@ -60,6 +60,11 @@ userUtils = (function($) {
 		// Get report data from cache
 		var report = systemUtils.getCachedReport(reportID);
 
+		if(report == null) {
+
+			// TODO: Display message in message div on dialog form?
+		}
+
 		if(typeof reportDetails != "undefined") {
 
 			viewUtils.openModalView(detailsDialogLoaderPath, report, reportDetailsLoader);

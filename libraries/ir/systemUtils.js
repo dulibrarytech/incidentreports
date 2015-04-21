@@ -12,6 +12,10 @@ systemUtils = (function($) {
 		submitLoginForm,
 		isValidSession,
 		updateSessionToken,
+		storeIncidentReports,
+		getIncidentReports,
+		loadDashboard,
+		getCachedReport,
 		login,
 		logout;
 
@@ -90,8 +94,8 @@ systemUtils = (function($) {
 
 	isValidSession = function() {
 
-		return (sessionStorage.getItem("user_token") != null) && (sessionStorage.getItem("report_data") != null); 
-		// check token 
+		return (sessionStorage.getItem("user_token") != null) && (getIncidentReports() != null); 
+		// check token ?
 	};
 
 	submitLoginForm = function() {
@@ -140,6 +144,27 @@ systemUtils = (function($) {
 
 		sessionStorage.setItem("user_token", token);
 	};
+
+	getCachedReport = function(reportID) {
+
+		var report = null;
+		var allReports = getIncidentReports();
+
+		for(var i=0; i<allReports.length; i++) {
+
+			if(allReports[i].ReportID == reportID) {
+
+				report = allReports[i];
+			}
+		}
+
+		if(report == null) {
+
+			console.log("Error: Can not retrieve reportID " + reportID + " from local cache");
+		}
+
+		return report;
+	}
 
 	storeIncidentReports = function(reports) {
 
@@ -227,6 +252,10 @@ systemUtils = (function($) {
 		updateSessionToken: function(token) {
 
 			updateSessionToken(token);
+		},
+		getCachedReport: function(reportID) {
+
+			return getCachedReport(reportID);
 		},
 		storeIncidentReports: function(reports) { // reports = object
 
