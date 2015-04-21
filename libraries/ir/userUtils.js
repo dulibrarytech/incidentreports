@@ -18,7 +18,15 @@ userUtils = (function($) {
 
 	 			if(response.status == "success") {
 
-					systemUtils.sendMessage("Incident Report submitted.");
+					if(response.emailStatus == "success") {
+
+						 systemUtils.sendMessage("Incident Report submitted.");
+					}
+					else {
+
+						systemUtils.sendMessage("Incident Report submitted, error sending email notifications");
+						console.log("submitIncidentReportForm: Server reports email error, email notifications not sent");
+					}
 
 					// Store updated token from response
 
