@@ -59,6 +59,7 @@ userUtils = (function($) {
 
 		// Get report data from cache
 		var report = systemUtils.getCachedReport(reportID);
+		console.log(report);
 
 		if(report == null) {
 

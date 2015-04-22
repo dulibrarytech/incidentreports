@@ -98,14 +98,15 @@ div#login-dialog form {
 }
 
 /* Homepage form */
-div.ir-form {
+div#homepage-form {
 
-
+	overflow: hidden;
+	overflow-x: scroll;
 }
 
 form.inner-form {
 
-
+	width: 100%;
 }
 
 form.ir-form fieldset {

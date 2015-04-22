@@ -18,24 +18,31 @@ reportDetails = {
 			$("input[name=wasCampusSafetyNotified][value=No]").prop("checked", true);
 		}
 
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
-		// $("#").val(data.);
+		$("#locationOfOffense").val(data.LocationOfOffense);
+		$("#offenseNarrative").val(data.OffenseNarrative);
+		$("#victimName").val(data.VictimName);
+		$("#victimGender").val(data.VictimGender);
+		$("#victimApproximateAge").val(data.VictimApproximateAge);
+		$("#victimRace").val(data.VictimRace);
+		$("#victimUniversityAffiliation").val(data.VictimUniversityAffiliation);
+		$("#suspectName").val(data.SuspectName);
+		$("#suspectGender").val(data.SuspectGender);
+		$("#suspectApproximateAge").val(data.SuspectApproximateAge);
+		$("#suspectRace").val(data.SuspectRace);
+		$("#suspectUniversityAffiliation").val(data.SuspectUniversityAffiliation);
+		$("#suspectClothing").val(data.SuspectClothing);
+		$("#suspectHair").val(data.SuspectHair);
+		$("#suspectApproximateHeight").val(data.SuspectApproximateHeight);
+		$("#suspectApproximateWeight").val(data.SuspectApproximateWeight);
+		$("#suspectFacialHair").val(data.SuspectFacialHair);
+
+		if(data.SuspectGlasses == "Yes" || data.SuspectGlasses == "yes") {
+			$("input[name=suspectGlasses][value=Yes]").prop("checked", true);
+		}
+		else {
+			$("input[name=suspectGlasses][value=No]").prop("checked", true);
+		}
+
+		$("#otherPhysicalCharacteristics").val(data.OtherPhysicalCharacteristics);
 	}
 };
