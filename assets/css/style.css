@@ -180,12 +180,19 @@ table#reports-table td#offense-narrative {
 div#modalFrame {
 
 	width: auto;
-	border-style: solid;
-	border-color: black;
+	height: 800px;
+	overflow: hidden;
+	overflow-y: scroll;
+
 	position: fixed;
 	top: 50px;
 	left: 30%;
 	z-index: 1000;
+	border-radius: 2px;
+	background-color: white;
+
+	border-style: solid;
+	border-color: black;
 	border-radius: 2px;
 	background-color: white;
 }
