@@ -70,14 +70,23 @@ viewUtils = (function($) {
 			var closeButton = '<a onclick="killModal()">close</a>';
 			$('#modalFrame').append(closeButton);
 
-			// Get html content to display in the dialog frame, append it, and append a blackout frame to deactivate all elements 
-			// other than the dialog window
-			$.get(template, function(html) {
-				
-				$("#modalFrame").append(html);
-				loader.render(data);
+			// *** if loader is null or undefined, append template to modalFrame, ignore data ***
+			if(typeof loader == 'undefined' || loader == null) {
+
+				$('#modalFrame').append(template);
 				$("#wrapper").append('<div id="blackout"></div>');
-			});
+			}
+			else {
+
+				// Get html content from template file to display in the dialog frame, append it, and append a blackout frame to  
+				// deactivate all elements other than the dialog window
+				$.get(template, function(html) {
+					
+					$("#modalFrame").append(html);
+					loader.render(data);
+					$("#wrapper").append('<div id="blackout"></div>');
+				});
+			}
 		};
 
 		killModal = function() {

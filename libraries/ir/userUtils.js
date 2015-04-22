@@ -59,8 +59,6 @@ userUtils = (function($) {
 
 		// Get report data from cache
 		var report = systemUtils.getCachedReport(reportID);
-		console.log(report);
-
 		if(report == null) {
 
 			// TODO: Display message in message div on dialog form?
@@ -76,6 +74,18 @@ userUtils = (function($) {
 		}
 	};
 
+	openFullNarrativeWindow = function(reportID) {
+
+		var report = systemUtils.getCachedReport(reportID);
+		if(report == null) {
+
+			// TODO: Display message in message div on dialog form?
+		}
+
+		var narrativeWindow = '<div id="full-narrative-view"><p>' + report.OffenseNarrative + '</p></div>';
+		viewUtils.openModalView(narrativeWindow, null, null);
+	};
+
 	return {
 
 		submitIncidentReportForm: function() {
@@ -85,6 +95,10 @@ userUtils = (function($) {
 		openDetailsDialogWindow: function(reportID) {
 
 			openDetailsDialogWindow(reportID);
+		},
+		openFullNarrativeWindow: function(reportID) {
+
+			openFullNarrativeWindow(reportID);
 		}
 	};
 

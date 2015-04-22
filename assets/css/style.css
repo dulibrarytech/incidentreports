@@ -21,7 +21,7 @@ span#logout-link {
 
 div#wrapper {
 
-	width: 60%;
+	width: 70%;
 	margin: auto;
 	margin-top: 100px;
 	border-style: solid;
@@ -100,8 +100,6 @@ div#login-dialog form {
 /* Homepage form */
 div#homepage-form {
 
-	overflow: hidden;
-	overflow-x: scroll;
 }
 
 form.inner-form {
@@ -138,10 +136,14 @@ div#reports-table-section {
 	/*overflow-y: scroll;*/
 	margin-top: 2.5em;
 	margin-left: 3.3em;
+
+	overflow: hidden;
+	overflow-x: scroll;
 }
 
 table#reports-table {
 
+	width: 100%;
 }
 
 table#reports-table tr {
@@ -181,7 +183,7 @@ table#reports-table td#offense-narrative {
 div#modalFrame {
 
 	width: auto;
-	height: 800px;
+	max-height: 800px;
 	overflow: hidden;
 	overflow-y: scroll;
 
@@ -218,6 +220,14 @@ div#blackout {
 	z-index: 500;
 	background-color: black;
 	opacity: 0.3;
+}
+
+div#full-narrative-view {
+
+	width: 300px;
+	height: 400px;
+/*	overflow: hidden;
+	overflow-y: scroll;*/
 }
 
 
