@@ -42,7 +42,6 @@ viewUtils = (function($) {
 
 		showAuthenticatedMenulinks = function(show, isAdmin) {
 
-			alert("S: " + show + " A:" + isAdmin);
 			// Show authenticated user links
 			if(show == true) {
 

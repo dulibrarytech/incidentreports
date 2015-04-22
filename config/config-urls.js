@@ -16,3 +16,4 @@ var service_url = "http://" + document.domain + "/incidentReports_SERVICE/";
 var _submitIRForm = "submit/report";
 var _submitLoginForm = "login/authenticate";
 var _getReportData = "reports/all";
+var _getUserData = "users/all"

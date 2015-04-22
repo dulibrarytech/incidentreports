@@ -8,14 +8,19 @@ systemUtils = (function($) {
 	var initIRApp,
 		doAjax,
 		sendMessage,
+
 		validateLocalSession,
 		submitLoginForm,
 		isValidSession,
+		isAdminUser,
 		updateSessionToken,
+
 		storeIncidentReports,
 		getIncidentReports,
 		loadDashboard,
+		loadUsersPage,
 		getCachedReport,
+
 		login,
 		logout;
 
@@ -125,7 +130,6 @@ systemUtils = (function($) {
 					sessionStorage.setItem("user_token", response.token);
 					sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
 
-					alert("pre");
 					viewUtils.showAuthenticatedMenulinks(true,isAdminUser());
 					loginView.close();
 
@@ -199,6 +203,38 @@ systemUtils = (function($) {
 
 					storeIncidentReports(response.data); // cache data
 					viewUtils.renderTemplate('dashboard', response.data);
+				}
+				else {
+
+					console.log("loadDashboard: Cannot retrieve report data");
+					sendMessage("Server error: Please contact Systems support");
+				}
+			},
+            error: function ( jqXHR, textStatus, errorThrown ) {
+
+                console.log("loadDashboard Status: " + textStatus + " Message: " + errorThrown);
+               	sendMessage("Server error: Please contact Systems support");
+            }
+		};
+
+		doAjax(requestObj);
+	};
+
+	loadUsersPage = function() {
+
+		// Request data from all reports in the database, for the dashboard display
+		requestObj = {
+
+			type: "GET",
+			url: service_url + _getUserData,
+			dataType: "json", 
+			success: function (response) {
+
+				// Cache the data and render the dashboard
+				if(typeof response.status != 'undefined' && response.status == "success") { 		
+
+					// storeIncidentReports(response.data); // cache data
+					viewUtils.renderTemplate('users', response.data);
 				}
 				else {
 
@@ -279,6 +315,10 @@ systemUtils = (function($) {
 		loadDashboard: function() {
 
 			loadDashboard();
+		},
+		loadUsersPage: function() {
+
+			loadUsersPage();
 		},
 		login: function() {
 
