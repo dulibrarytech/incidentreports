@@ -63,11 +63,15 @@ viewUtils = (function($) {
 
 		openModalView = function(template,data,loader) { // appends template to wrapper.  Disables and shades all wrapper children
 
+			// Append dialog frame
 			$('#main').append('<div id="modalFrame"></div>');
 
+			// Add close button
 			var closeButton = '<a onclick="killModal()">close</a>';
 			$('#modalFrame').append(closeButton);
 
+			// Get html content to display in the dialog frame, append it, and append a blackout frame to deactivate all elements 
+			// other than the dialog window
 			$.get(template, function(html) {
 				
 				$("#modalFrame").append(html);
@@ -78,9 +82,9 @@ viewUtils = (function($) {
 
 		killModal = function() {
 
-			alert("killmodal");
-			// Remove 'modalFrame' div and all children from wrapper, re-activate all wrapper children
-			//$('#wrapper').removeChild('#modalFrame');  ???
+			// Remove 'modalFrame' div and modal blackout frame
+			$('#modalFrame').remove();  
+			$('#blackout').remove(); 
 		};
 
 	return {
