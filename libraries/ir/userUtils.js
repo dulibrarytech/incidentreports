@@ -1,6 +1,6 @@
 userUtils = (function($) {
 
-	var detailsDialogLoaderPath = "templates/partials/ir-form.html";
+	var detailsViewPath = "templates/partials/ir-form.html";
 
 	var submitIncidentReportForm,
 		retrieveAllIncidentReports,
@@ -67,7 +67,7 @@ userUtils = (function($) {
 
 		if(typeof reportDetails != "undefined") {
 
-			viewUtils.openModalView(detailsDialogLoaderPath, report, reportDetailsLoader);
+			viewUtils.openModalView(detailsViewPath, report, reportDetailsLoader);
 		}
 		else {
 

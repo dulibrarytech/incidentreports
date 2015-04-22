@@ -63,9 +63,7 @@ viewUtils = (function($) {
 
 		openModalView = function(template,data,loader) { // appends template to wrapper.  Disables and shades all wrapper children
 
-			//$("#wrapper").children().prop('disabled',true);
-
-			$('#wrapper').append('<div id="modalFrame"></div>');
+			$('#main').append('<div id="modalFrame"></div>');
 
 			var closeButton = '<a onclick="killModal()">close</a>';
 			$('#modalFrame').append(closeButton);
@@ -74,9 +72,8 @@ viewUtils = (function($) {
 				
 				$("#modalFrame").append(html);
 				loader.render(data);
+				$("#wrapper").append('<div id="blackout"></div>');
 			});
-
-			$("#modalFrame").children().prop('disabled',true);
 		};
 
 		killModal = function() {
