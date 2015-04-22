@@ -10,7 +10,7 @@ viewUtils = (function($) {
 
 		initMenu = function() {
 
-			$('#menu-items').append('<a href="#/home" id="home-link">Home</a><a href="#/login" id="login-link">Login</a><a href="#/dashboard" id="dashboard-link">Dashboard</a><a href="#/logout" id="logout-link">Logout</a>');
+			$('#menu-items').append('<a href="#/home" id="home-link">Home</a><a href="#/login" id="login-link">Login</a><a href="#/dashboard" id="dashboard-link">Dashboard</a><a href="#/dashboard/users" id="users-link">Users</a><a href="#/logout" id="logout-link">Logout</a>');
 		};
 
 		renderTemplate = function(template,data) {
@@ -40,19 +40,30 @@ viewUtils = (function($) {
 			setURL("#/" + template);
 		};
 
-		showAuthenticatedMenulinks = function(show) {
+		showAuthenticatedMenulinks = function(show, isAdmin) {
 
+			alert("S: " + show + " A:" + isAdmin);
+			// Show authenticated user links
 			if(show == true) {
 
 				$('#login-link').hide();
 				$('#logout-link').show();
-				$('#dashboard-link').show();	
+				$('#dashboard-link').show();
+
+				// Show admin links
+				if(isAdmin == true) {
+
+					$('#users-link').show();
+				}	
 			}
+
+			// For non-authenticated users, show only Home and Logout
 			else if(show == false) {
 
 				$('#login-link').show();
 				$('#logout-link').hide();
-				$('#dashboard-link').hide();	
+				$('#dashboard-link').hide();
+				$('#users-link').hide();	
 			}
 		};
 
@@ -106,9 +117,9 @@ viewUtils = (function($) {
 
 			renderTemplate(template,data);
 		},
-		showAuthenticatedMenulinks: function(show) {
+		showAuthenticatedMenulinks: function(show, isAdmin) {
 
-			showAuthenticatedMenulinks(show);
+			showAuthenticatedMenulinks(show, isAdmin);
 		},
 		setURL: function(url) {
 

@@ -69,7 +69,7 @@ systemUtils = (function($) {
 				if(response != "invalid") {
 
 					sessionStorage.setItem("user_token", response); // store token with current timestamp
-					viewUtils.showAuthenticatedMenulinks(true);
+					viewUtils.showAuthenticatedMenulinks(true, isAdminUser());
 				}
 				else if(isValidSession()) {
 
@@ -125,7 +125,8 @@ systemUtils = (function($) {
 					sessionStorage.setItem("user_token", response.token);
 					sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
 
-					viewUtils.showAuthenticatedMenulinks(true);
+					alert("pre");
+					viewUtils.showAuthenticatedMenulinks(true,isAdminUser());
 					loginView.close();
 
 					loadDashboard();
