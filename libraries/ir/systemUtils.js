@@ -98,6 +98,12 @@ systemUtils = (function($) {
 		// check token ?
 	};
 
+	isAdminUser = function() {
+
+		var profile = JSON.parse(sessionStorage.getItem("user_profile"));
+		return (profile['admin'] == "1") ? true : false;
+	};
+
 	submitLoginForm = function() {
 
 		// Get credentials from form, construct post string
@@ -248,6 +254,10 @@ systemUtils = (function($) {
 		isValidSession: function() {
 
 			return isValidSession();
+		},
+		isAdminUser: function() {
+
+			return isAdminUser();
 		},
 		updateSessionToken: function(token) {
 

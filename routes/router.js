@@ -40,7 +40,29 @@ $(function() {
 
                 systemUtils.loadDashboard();
             }
-            viewUtils.renderTemplate('dashboard',data); // if not null but bad, server will return message to dashboard.init(), which will display it in div
+            viewUtils.renderTemplate('dashboard',data); 
+        }
+        else {
+
+            $("#main").html("<h2>401 Forbidden</h2>");
+            viewUtils.setURL("error");
+        }
+    }); 
+
+    Path.map("#/dashboard/users").to(function(){
+        
+        systemUtils.validateLocalSession(); 
+        if(systemUtils.isValidSession()) {
+
+            if(systemUtils.isAdminUser()) {
+
+                
+            }
+            else {
+
+                $("#main").html("<h2>403 Unauthorized</h2>");
+                viewUtils.setURL("error");
+            }
         }
         else {
 
