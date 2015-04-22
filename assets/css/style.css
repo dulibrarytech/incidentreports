@@ -188,7 +188,7 @@ div#modalFrame {
 	overflow-y: scroll;
 
 	position: fixed;
-	top: 50px;
+	top: 10%;
 	left: 30%;
 	z-index: 1000;
 	border-radius: 2px;
