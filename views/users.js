@@ -16,6 +16,7 @@ users = {
 	construct: function(tableData) {
 
 		var tableString = "";
+		var isAdmin;
 		var editLink;
 
 		// Add new user link
@@ -27,10 +28,14 @@ users = {
 
 		$.each(tableData, function(index, value) {
 
+			// Add human readable value
+			isAdmin = value.isAdmin == '1' ? "Yes" : "No";
+
+			// Set crud links with current iteration userID
 			editLink = '<a onclick="userUtils.editUserData(' + value.EmailID + ')">Edit</a>';
 			removeLink = '<a onclick="userUtils.removeUserData(' + value.EmailID + ')">Remove</a>';
 
-			tableString += '<tr><td id="username-' + value.EmailID + '">' + value.LoginID + '</td><td id="email-' + value.EmailID + '">' + value.Email + '</td><td id="admin-' + value.EmailID + '">' + value.isAdmin + '</td><td id="sendType-' + value.EmailID + '">' + value.SendType + '</td><td>' + editLink + '</td><td>' + removeLink + '</td></tr>';
+			tableString += '<tr><td id="username-' + value.EmailID + '">' + value.LoginID + '</td><td id="email-' + value.EmailID + '">' + value.Email + '</td><td id="admin-' + value.EmailID + '">' + isAdmin + '</td><td id="sendType-' + value.EmailID + '">' + value.SendType + '</td><td>' + editLink + '</td><td>' + removeLink + '</td></tr>';
 		});
 
 		tableString += "</tbody>";

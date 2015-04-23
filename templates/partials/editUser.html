@@ -1,14 +1,27 @@
 <form id="edit-user-data">
-	<label for="userName">Username:</label><br />
+
+	<label for="userName">Username:</label>
 	<input type="text" id="userName" name="userName" />
 
-	<label for="userEmail">Email:</label><br />
+	<label for="userEmail">Email:</label>
 	<input type="text" id="userEmail" name="userEmail" />
 
-	<label for="userName">Admin:</label><br />
-	
+	<label for="admin">Admin:</label>
+	<select name="admin" id="admin">
+		<option value="Yes">Yes</option>
+		<option value="No">No</option>
+	</select>
 
-	<label for="userName">Send Type:</label><br />
+	<label for="sendType">Send Type:</label>
+	<select name="sendType" id="sendType">
+		<option value="to">to</option>
+		<option value="cc">cc</option>
+		<option value="bcc">bcc</option>
+	</select>
+
+	<br />
+	<input type="button" onclick="userUtils.submitUserUpdate()" value="Save"/>
+	<input type="button" onclick="viewUtils.killModal()" value="Cancel"/>
 	
 </form>
 </form>

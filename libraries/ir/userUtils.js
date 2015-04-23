@@ -8,7 +8,8 @@ userUtils = (function($) {
 		openFullNarrativeWindow,
 		editUserData,
 		removeUserData,
-		addNewUser;
+		addNewUser,
+		submitUserUpdate;
 
 	submitIncidentReportForm = function() {
 
@@ -92,6 +93,7 @@ userUtils = (function($) {
 
 	editUserData = function(userID) {
 
+		// Get the user data from the corresponding table row userID
 		var userData = [];
 		userData['username'] = $('td#username-' + userID).text();
 		userData['email'] = $('td#email-' + userID).text();
@@ -101,17 +103,22 @@ userUtils = (function($) {
 		viewUtils.openModalView(editUserTemplatePath, userData, editUser);
 	};
 
+	submitUserUpdate = function() {
+
+		alert("SUU");
+	};
+
 	return {
 
 		submitIncidentReportForm: function() {
 
 			submitIncidentReportForm();
 		},
-		openDetailsDialogWindow: function(reportID) {
+		openDetailsDialogWindow: function(reportID) {	// viewutis
 
 			openDetailsDialogWindow(reportID);
 		},
-		openFullNarrativeWindow: function(reportID) {
+		openFullNarrativeWindow: function(reportID) {	// to viewutils
 
 			openFullNarrativeWindow(reportID);
 		},
@@ -126,6 +133,10 @@ userUtils = (function($) {
 		addNewUser: function() {
 
 			addNewUser();
+		},
+		submitUserUpdate: function() {
+
+			submitUserUpdate();
 		}
 	};
 
