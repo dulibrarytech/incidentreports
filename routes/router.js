@@ -56,7 +56,7 @@ $(function() {
 
             if(systemUtils.isAdminUser()) {
 
-                
+                systemUtils.loadUsersView();
             }
             else {
 

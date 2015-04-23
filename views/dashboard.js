@@ -44,9 +44,7 @@ dashboard = {
 			tableString += '<tr><td>' + detailsLink + '</td><td>' + value.ReportID + '</td><td>' + value.DateOfReport + '</td><td>' + value.DateOfOffense + '</td><td>' + value.ReportCompletedBy + '</td><td>' + value.Department + '</td><td>' + value.NatureOfOffense + '</td><td id="offense-narrative">' + truncatedOffenseNarrative + '</td></tr>';
 		});
 
-
 		tableString += "</tbody>";
-
 		$(this.element).append(tableString);
 	}
 };

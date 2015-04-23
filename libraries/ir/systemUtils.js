@@ -18,7 +18,7 @@ systemUtils = (function($) {
 		storeIncidentReports,
 		getIncidentReports,
 		loadDashboard,
-		loadUsersPage,
+		loadUsersView,
 		getCachedReport,
 
 		login,
@@ -220,7 +220,7 @@ systemUtils = (function($) {
 		doAjax(requestObj);
 	};
 
-	loadUsersPage = function() {
+	loadUsersView = function() {
 
 		// Request data from all reports in the database, for the dashboard display
 		requestObj = {
@@ -235,6 +235,7 @@ systemUtils = (function($) {
 
 					// storeIncidentReports(response.data); // cache data
 					viewUtils.renderTemplate('users', response.data);
+					//alert(test[0].Email);
 				}
 				else {
 
@@ -316,9 +317,9 @@ systemUtils = (function($) {
 
 			loadDashboard();
 		},
-		loadUsersPage: function() {
+		loadUsersView: function() {
 
-			loadUsersPage();
+			loadUsersView();
 		},
 		login: function() {
 
