@@ -30,7 +30,7 @@ users = {
 			editLink = '<a onclick="userUtils.editUserData(' + value.EmailID + ')">Edit</a>';
 			removeLink = '<a onclick="userUtils.removeUserData(' + value.EmailID + ')">Remove</a>';
 
-			tableString += '<tr><td>' + value.LoginID + '</td><td>' + value.Email + '</td><td>' + value.isAdmin + '</td><td>' + value.SendType + '</td><td>' + editLink + '</td><td>' + removeLink + '</td></tr>';
+			tableString += '<tr><td id="username-' + value.EmailID + '">' + value.LoginID + '</td><td id="email-' + value.EmailID + '">' + value.Email + '</td><td id="admin-' + value.EmailID + '">' + value.isAdmin + '</td><td id="sendType-' + value.EmailID + '">' + value.SendType + '</td><td>' + editLink + '</td><td>' + removeLink + '</td></tr>';
 		});
 
 		tableString += "</tbody>";

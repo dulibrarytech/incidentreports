@@ -264,6 +264,7 @@ systemUtils = (function($) {
 		sessionStorage.removeItem("report_data");	
 
 		viewUtils.showAuthenticatedMenulinks(false);
+		viewUtils.killModal();
 		viewUtils.renderTemplate("home");
 	};
 

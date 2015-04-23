@@ -1,6 +1,7 @@
 userUtils = (function($) {
 
-	var detailsViewPath = "templates/partials/ir-form.html";
+	var detailsTemplatePath = "templates/partials/ir-form.html";
+	var editUserTemplatePath = "templates/partials/editUser.html";
 
 	var submitIncidentReportForm,
 		openDetailsDialogWindow,
@@ -58,7 +59,7 @@ userUtils = (function($) {
 	openDetailsDialogWindow = function(reportID) {
 
 		// Get instance of the renderDetails object
-		var reportDetailsLoader = window['reportDetails'];
+		// var reportDetailsLoader = window['reportDetails'];
 
 		// Get report data from cache
 		var report = systemUtils.getCachedReport(reportID);
@@ -69,7 +70,7 @@ userUtils = (function($) {
 
 		if(typeof reportDetails != "undefined") {
 
-			viewUtils.openModalView(detailsViewPath, report, reportDetailsLoader);
+			viewUtils.openModalView(detailsTemplatePath, report, reportDetails);
 		}
 		else {
 
@@ -86,12 +87,18 @@ userUtils = (function($) {
 		}
 
 		var narrativeWindow = '<div id="full-narrative-view"><p>' + report.OffenseNarrative + '</p></div>';
-		viewUtils.openModalView(narrativeWindow, null, null);
+		viewUtils.openModalView(narrativeWindow);
 	};
 
 	editUserData = function(userID) {
 
-		alert("eud id: " + userID);
+		var userData = [];
+		userData['username'] = $('td#username-' + userID).text();
+		userData['email'] = $('td#email-' + userID).text();
+		userData['admin'] = $('td#admin-' + userID).text();
+		userData['sendType'] = $('td#sendType-' + userID).text();
+
+		viewUtils.openModalView(editUserTemplatePath, userData, editUser);
 	};
 
 	return {
