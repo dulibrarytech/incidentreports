@@ -49,7 +49,7 @@ $(function() {
         }
     }); 
 
-    Path.map("#/dashboard/users").to(function(){
+    Path.map("#/users").to(function(){
         
         systemUtils.validateLocalSession(); 
         if(systemUtils.isValidSession()) {

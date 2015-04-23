@@ -10,7 +10,7 @@ viewUtils = (function($) {
 
 		initMenu = function() {
 
-			$('#menu-items').append('<a href="#/home" id="home-link">Home</a><a href="#/login" id="login-link">Login</a><a href="#/dashboard" id="dashboard-link">Dashboard</a><a href="#/dashboard/users" id="users-link">Users</a><a href="#/logout" id="logout-link">Logout</a>');
+			$('#menu-items').append('<a href="#/home" id="home-link">Home</a><a href="#/login" id="login-link">Login</a><a href="#/dashboard" id="dashboard-link">Dashboard</a><a href="#/users" id="users-link">Users</a><a href="#/logout" id="logout-link">Logout</a>');
 		};
 
 		renderTemplate = function(template,data) {
@@ -68,6 +68,10 @@ viewUtils = (function($) {
 
 		setURL = function(url) {
 
+			// if(appendToExisting == true) {
+
+			// }
+			// else
 			history.pushState('', '', base_url + url);
 		};
 

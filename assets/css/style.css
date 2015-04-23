@@ -2,6 +2,26 @@ body {
 
 }
 
+a:hover {
+
+	cursor: pointer;
+}
+
+table th {
+
+	padding: 0.5em;
+}
+
+table td {
+
+	padding: 0.5em;
+}
+
+td.td-centered {
+
+	text-align: center;
+}
+
 div#header {
 
 	/*margin: 1em;*/
@@ -154,13 +174,11 @@ table#reports-table tr {
 table#reports-table th {
 
 	font-size: 0.9em;
-	padding: 0.5em;
 }
 
 table#reports-table td {
 
 	font-size: 0.85em;
-	padding: 0.5em;
 	text-align: center;
 }
 
@@ -170,6 +188,18 @@ table#reports-table td a:hover {
 }
 
 table#reports-table td#offense-narrative {
+
+	text-align: left;
+}
+
+div#users-table-section {
+
+	height: 400px;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+table#users-table th {
 
 	text-align: left;
 }

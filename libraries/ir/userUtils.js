@@ -3,8 +3,11 @@ userUtils = (function($) {
 	var detailsViewPath = "templates/partials/ir-form.html";
 
 	var submitIncidentReportForm,
-		retrieveAllIncidentReports,
-		openDetailsDialogWindow;
+		openDetailsDialogWindow,
+		openFullNarrativeWindow,
+		editUserData,
+		removeUserData,
+		addNewUser;
 
 	submitIncidentReportForm = function() {
 
@@ -86,6 +89,11 @@ userUtils = (function($) {
 		viewUtils.openModalView(narrativeWindow, null, null);
 	};
 
+	editUserData = function(userID) {
+
+		alert("eud id: " + userID);
+	};
+
 	return {
 
 		submitIncidentReportForm: function() {
@@ -99,6 +107,18 @@ userUtils = (function($) {
 		openFullNarrativeWindow: function(reportID) {
 
 			openFullNarrativeWindow(reportID);
+		},
+		editUserData: function(userID) {
+
+			editUserData(userID);
+		},
+		removeUserData: function(userID) {
+
+			removeUserData(userID);
+		},
+		addNewUser: function() {
+
+			addNewUser();
 		}
 	};
 
