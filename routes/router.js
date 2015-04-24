@@ -35,10 +35,10 @@ $(function() {
         if(systemUtils.isValidSession()) {
 
             // Get data from cache.  If cache empty, reload dashboard 
-            var data = systemUtils.getIncidentReports();
+            var data = irUtils.getIncidentReports();
             if(data == null) {
 
-                systemUtils.loadDashboard();
+                irUtils.loadDashboard();
             }
             viewUtils.renderTemplate('dashboard',data); 
         }
@@ -56,7 +56,7 @@ $(function() {
 
             if(systemUtils.isAdminUser()) {
 
-                systemUtils.loadUsersView();
+                irUtils.loadUsersView();
             }
             else {
 

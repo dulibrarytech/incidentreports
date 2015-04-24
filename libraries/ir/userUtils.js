@@ -63,7 +63,7 @@ userUtils = (function($) {
 		// var reportDetailsLoader = window['reportDetails'];
 
 		// Get report data from cache
-		var report = systemUtils.getCachedReport(reportID);
+		var report = irUtils.getCachedReport(reportID);
 		if(report == null) {
 
 			// TODO: Display message in message div on dialog form?
@@ -81,7 +81,7 @@ userUtils = (function($) {
 
 	openFullNarrativeWindow = function(reportID) {
 
-		var report = systemUtils.getCachedReport(reportID);
+		var report = irUtils.getCachedReport(reportID);
 		if(report == null) {
 
 			// TODO: Display message in message div on dialog form?

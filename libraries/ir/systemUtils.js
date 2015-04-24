@@ -15,11 +15,11 @@ systemUtils = (function($) {
 		isAdminUser,
 		updateSessionToken,
 
-		storeIncidentReports,
-		getIncidentReports,
-		loadDashboard,
-		loadUsersView,
-		getCachedReport,
+		// storeIncidentReports,
+		// getIncidentReports,
+		// loadDashboard,
+		// loadUsersView,
+		// getCachedReport,
 
 		login,
 		logout;
@@ -74,6 +74,7 @@ systemUtils = (function($) {
 				if(response != "invalid") {
 
 					sessionStorage.setItem("user_token", response); // store token with current timestamp
+					// irUtils.storeToken(response);  // FOR ABSTRACTION, that method will retrieve token per ir specs
 					viewUtils.showAuthenticatedMenulinks(true, isAdminUser());
 				}
 				else if(isValidSession()) {
@@ -99,7 +100,7 @@ systemUtils = (function($) {
 
 	isValidSession = function() {
 
-		return (sessionStorage.getItem("user_token") != null) && (getIncidentReports() != null); 
+		return (sessionStorage.getItem("user_token") != null) && (irUtils.getIncidentReports() != null); 
 		// check token ?
 	};
 
@@ -133,7 +134,7 @@ systemUtils = (function($) {
 					viewUtils.showAuthenticatedMenulinks(true,isAdminUser());
 					loginView.close();
 
-					loadDashboard();
+					irUtils.loadDashboard();
 				}
 				else {
 
@@ -156,102 +157,102 @@ systemUtils = (function($) {
 		sessionStorage.setItem("user_token", token);
 	};
 
-	getCachedReport = function(reportID) {
+	// getCachedReport = function(reportID) {
 
-		var report = null;
-		var allReports = getIncidentReports();
+	// 	var report = null;
+	// 	var allReports = getIncidentReports();
 
-		for(var i=0; i<allReports.length; i++) {
+	// 	for(var i=0; i<allReports.length; i++) {
 
-			if(allReports[i].ReportID == reportID) {
+	// 		if(allReports[i].ReportID == reportID) {
 
-				report = allReports[i];
-			}
-		}
+	// 			report = allReports[i];
+	// 		}
+	// 	}
 
-		if(report == null) {
+	// 	if(report == null) {
 
-			console.log("Error: Can not retrieve reportID " + reportID + " from local cache");
-		}
+	// 		console.log("Error: Can not retrieve reportID " + reportID + " from local cache");
+	// 	}
 
-		return report;
-	}
+	// 	return report;
+	// }
 
-	storeIncidentReports = function(reports) {
+	// storeIncidentReports = function(reports) {
 
-		var reportString = JSON.stringify(reports);
-		sessionStorage.setItem("report_data", reportString);
-	};
+	// 	var reportString = JSON.stringify(reports);
+	// 	sessionStorage.setItem("report_data", reportString);
+	// };
 
-	getIncidentReports = function() {
+	// getIncidentReports = function() {
 
-		return JSON.parse(sessionStorage.getItem("report_data"));
-	};
+	// 	return JSON.parse(sessionStorage.getItem("report_data"));
+	// };
 
-	loadDashboard = function() {
+	// loadDashboard = function() {
 
-		// Request data from all reports in the database, for the dashboard display
-		requestObj = {
+	// 	// Request data from all reports in the database, for the dashboard display
+	// 	requestObj = {
 
-			type: "GET",
-			url: service_url + _getReportData,
-			dataType: "json", 
-			success: function (response) {
+	// 		type: "GET",
+	// 		url: service_url + _getReportData,
+	// 		dataType: "json", 
+	// 		success: function (response) {
 
-				// Cache the data and render the dashboard
-				if(typeof response.status != 'undefined' && response.status == "success") { 		
+	// 			// Cache the data and render the dashboard
+	// 			if(typeof response.status != 'undefined' && response.status == "success") { 		
 
-					storeIncidentReports(response.data); // cache data
-					viewUtils.renderTemplate('dashboard', response.data);
-				}
-				else {
+	// 				storeIncidentReports(response.data); // cache data
+	// 				viewUtils.renderTemplate('dashboard', response.data);
+	// 			}
+	// 			else {
 
-					console.log("loadDashboard: Cannot retrieve report data");
-					sendMessage("Server error: Please contact Systems support");
-				}
-			},
-            error: function ( jqXHR, textStatus, errorThrown ) {
+	// 				console.log("loadDashboard: Cannot retrieve report data");
+	// 				sendMessage("Server error: Please contact Systems support");
+	// 			}
+	// 		},
+ //            error: function ( jqXHR, textStatus, errorThrown ) {
 
-                console.log("loadDashboard Status: " + textStatus + " Message: " + errorThrown);
-               	sendMessage("Server error: Please contact Systems support");
-            }
-		};
+ //                console.log("loadDashboard Status: " + textStatus + " Message: " + errorThrown);
+ //               	sendMessage("Server error: Please contact Systems support");
+ //            }
+	// 	};
 
-		doAjax(requestObj);
-	};
+	// 	doAjax(requestObj);
+	// };
 
-	loadUsersView = function() {
+	// loadUsersView = function() {
 
-		// Request data from all reports in the database, for the dashboard display
-		requestObj = {
+	// 	// Request data from all reports in the database, for the dashboard display
+	// 	requestObj = {
 
-			type: "GET",
-			url: service_url + _getUserData,
-			dataType: "json", 
-			success: function (response) {
+	// 		type: "GET",
+	// 		url: service_url + _getUserData,
+	// 		dataType: "json", 
+	// 		success: function (response) {
 
-				// Cache the data and render the dashboard
-				if(typeof response.status != 'undefined' && response.status == "success") { 		
+	// 			// Cache the data and render the dashboard
+	// 			if(typeof response.status != 'undefined' && response.status == "success") { 		
 
-					// storeIncidentReports(response.data); // cache data
-					viewUtils.renderTemplate('users', response.data);
-					//alert(test[0].Email);
-				}
-				else {
+	// 				// storeIncidentReports(response.data); // cache data
+	// 				viewUtils.renderTemplate('users', response.data);
+	// 				//alert(test[0].Email);
+	// 			}
+	// 			else {
 
-					console.log("loadIncidentReports: Cannot retrieve report data");
-					sendMessage("Server error: Please contact Systems support");
-				}
-			},
-            error: function ( jqXHR, textStatus, errorThrown ) {
+	// 				console.log("loadIncidentReports: Cannot retrieve report data");
+	// 				sendMessage("Server error: Please contact Systems support");
+	// 			}
+	// 		},
+ //            error: function ( jqXHR, textStatus, errorThrown ) {
 
-                console.log("loadIncidentReports Status: " + textStatus + " Message: " + errorThrown);
-               	sendMessage("Server error: Please contact Systems support");
-            }
-		};
+ //                console.log("loadIncidentReports Status: " + textStatus + " Message: " + errorThrown);
+ //               	sendMessage("Server error: Please contact Systems support");
+ //            }
+	// 	};
 
-		doAjax(requestObj);
-	};
+	// 	doAjax(requestObj);
+	// };
 
 	// System calls to remove session token will land here.  These calls will be initiated by ajax refusals by the server.  
 	// Any messages to the user should be created elsewhere, such as in the AJAX response error handler.
@@ -302,26 +303,26 @@ systemUtils = (function($) {
 
 			updateSessionToken(token);
 		},
-		getCachedReport: function(reportID) {
+		// getCachedReport: function(reportID) {
 
-			return getCachedReport(reportID);
-		},
-		storeIncidentReports: function(reports) { // reports = object
+		// 	return getCachedReport(reportID);
+		// },
+		// storeIncidentReports: function(reports) { // reports = object
 
-			storeIncidentReports(reports);
-		},
-		getIncidentReports: function() {
+		// 	storeIncidentReports(reports);
+		// },
+		// getIncidentReports: function() {
 
-			return getIncidentReports();
-		},
-		loadDashboard: function() {
+		// 	return getIncidentReports();
+		// },
+		// loadDashboard: function() {
 
-			loadDashboard();
-		},
-		loadUsersView: function() {
+		// 	loadDashboard();
+		// },
+		// loadUsersView: function() {
 
-			loadUsersView();
-		},
+		// 	loadUsersView();
+		// },
 		login: function() {
 
 			//loadView("login");
