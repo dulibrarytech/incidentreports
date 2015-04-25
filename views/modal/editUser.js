@@ -5,6 +5,9 @@ editUser = {
 		$('input#userName').val(data['username']);
 		$('input#userEmail').val(data['email']);
 
+		// Store userID for PUT
+		$('form#edit-user-data').attr("data-internalid", data['userID']);
+
 		if(data['admin'] == 'Yes') {
 			$('#admin :nth-child(1)').prop('selected', true);
 		}

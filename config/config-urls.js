@@ -17,3 +17,4 @@ var _submitIRForm = "reports/add";
 var _submitLoginForm = "login/authenticate";
 var _getReportData = "reports/all";
 var _getUserData = "users/all"
+var _editUserData = "users/edit";

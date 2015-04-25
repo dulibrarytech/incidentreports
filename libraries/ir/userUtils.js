@@ -99,13 +99,43 @@ userUtils = (function($) {
 		userData['email'] = $('td#email-' + userID).text();
 		userData['admin'] = $('td#admin-' + userID).text();
 		userData['sendType'] = $('td#sendType-' + userID).text();
+		userData['userID'] = userID;
 
 		viewUtils.openModalView(editUserTemplatePath, userData, editUser);
 	};
 
 	submitUserUpdate = function() {
 
-		alert("SUU");
+		// Get data from form
+		var userID = $('form#edit-user-data').attr("data-internalid");	// Get stored userID from form
+		var formData = $('#edit-user-data').serialize() + '&userid=' + userID;
+
+		requestObj = {
+
+			type: "PUT",
+			url: service_url + _editUserData,
+			dataType: "json", 
+			data: formData,
+			success: function (response) {
+
+	 			if(response.status == "success") {
+
+	 				alert(response.status);
+				}
+				else {
+
+					console.log("submitUserUpdate: Server reports error when writing to the database");
+					systemUtils.sendMessage("Server error: Please contact Systems support");
+				}
+			},
+            error: function ( jqXHR, textStatus, errorThrown ) {
+
+                console.log("submitUserUpdate Status: " + textStatus + " Message: " + errorThrown);
+               	systemUtils.sendMessage("Server error: Please contact Systems support");
+            }
+		};
+
+		systemUtils.doAjax(requestObj);
 	};
 
 	return {
