@@ -120,7 +120,8 @@ userUtils = (function($) {
 
 	 			if(response.status == "success") {
 
-	 				alert(response.status);
+	 				// Send message
+	 				systemUtils.sendMessage("User data updated successfully.");
 				}
 				else {
 
