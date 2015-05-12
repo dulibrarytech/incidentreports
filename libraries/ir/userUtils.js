@@ -122,6 +122,7 @@ userUtils = (function($) {
 
 	 				// Send message
 	 				systemUtils.sendMessage("User data updated successfully.");
+	 				systemUtils.updateSessionToken(response.token);
 				}
 				else {
 
@@ -138,6 +139,30 @@ userUtils = (function($) {
 
 		systemUtils.doAjax(requestObj);
 	};
+
+	removeUserData = function(userID) {
+
+		requestObj = {
+
+			type: "POST",
+			url: service_url + _removeUserData,
+			dataType: "json", 
+			data: {ID : userID},
+			success: function (response) {
+
+	 			alert("here2: resp: " + response);
+	 			
+			},
+            error: function ( jqXHR, textStatus, errorThrown ) {
+
+                console.log("removeUserData Status: " + textStatus + " Message: " + errorThrown);
+               	systemUtils.sendMessage("Server error: Please contact Systems support");
+            }
+		};
+
+		systemUtils.doAjax(requestObj);
+	};
+
 
 	return {
 
