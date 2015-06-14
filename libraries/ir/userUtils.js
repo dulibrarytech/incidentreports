@@ -163,6 +163,10 @@ userUtils = (function($) {
 		systemUtils.doAjax(requestObj);
 	};
 
+	addNewUser = function() {
+
+		viewUtils.openModalView(null, null, null);
+	};
 
 	return {
 

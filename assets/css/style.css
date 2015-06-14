@@ -7,6 +7,12 @@ a:hover {
 	cursor: pointer;
 }
 
+a.plain-link {
+
+	cursor: pointer;
+	text-decoration: none;
+}
+
 table th {
 
 	padding: 0.5em;
