@@ -40,5 +40,13 @@ addUser = {
 
 		$("form#edit-user-data input[value='Save']").attr("value", "Add User");
 		$("form#edit-user-data input[value='Add User']").attr("onclick", "userUtils.submitNewUserInfo()");
+	},
+
+	clearFields: function() {
+
+		$('form input#userName').val("");
+		$('form input#userEmail').val("");
+		$('#admin :nth-child(2)').prop('selected', true); // Set admin to 'No'
+		$('#sendType :nth-child(1)').prop('selected', true); // Set sendType to 'to'
 	}
 };

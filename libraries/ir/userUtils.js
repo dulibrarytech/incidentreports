@@ -184,21 +184,20 @@ userUtils = (function($) {
 
 	 			if(response.status == "success") {
 
-	 				alert("snui success");
-
 	 				// Send message
-	 				systemUtils.sendMessage("User data updated successfully.");
-	 				//systemUtils.updateSessionToken(response.token);
+	 				systemUtils.sendMessage("User added successfully.");
+	 				systemUtils.updateSessionToken(response.token);
+	 				addUser.clearFields();
 				}
 				else {
 
-					console.log("submitUserUpdate: Server reports error when writing to the database");
+					console.log("submitNewUserInfo: Server reports error writing to the database");
 					systemUtils.sendMessage("Server error: Please contact Systems support");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
-                console.log("submitUserUpdate Status: " + textStatus + " Message: " + errorThrown);
+                console.log("submitNewUserInfo Status: " + textStatus + " Message: " + errorThrown);
                	systemUtils.sendMessage("Server error: Please contact Systems support");
             }
 		};
