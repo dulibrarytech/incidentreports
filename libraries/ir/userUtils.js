@@ -1,7 +1,7 @@
 userUtils = (function($) {
 
 	var detailsTemplatePath = "templates/partials/ir-form.html";
-	var editUserTemplatePath = "templates/partials/editUser.html";
+	var editUserTemplatePath = "templates/partials/editUser.html";	//  move to config
 
 	var submitIncidentReportForm,
 		openDetailsDialogWindow,
@@ -150,7 +150,7 @@ userUtils = (function($) {
 			data: {ID : userID},
 			success: function (response) {
 
-	 			alert("here2: resp: " + response);
+	 			alert("remove success: " + response);
 	 			
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
@@ -165,7 +165,7 @@ userUtils = (function($) {
 
 	addNewUser = function() {
 
-		viewUtils.openModalView(null, null, null);
+		viewUtils.openModalView(editUserTemplatePath, null, addUser);
 	};
 
 	return {
