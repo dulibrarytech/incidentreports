@@ -151,8 +151,17 @@ userUtils = (function($) {
 			data: {ID : userID},
 			success: function (response) {
 
-	 			alert("remove success: " + response);
-	 			
+	 			if(response.status == "success") {
+
+	 				//systemUtils.sendMessage("User removed successfully.");
+	 				systemUtils.updateSessionToken(response.token);
+	 				location.reload();
+	 			}
+	 			else {
+
+					console.log("removeUserData: Server reports database error");
+					systemUtils.sendMessage("Server error: Please contact Systems support");
+				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
@@ -187,7 +196,9 @@ userUtils = (function($) {
 	 				// Send message
 	 				systemUtils.sendMessage("User added successfully.");
 	 				systemUtils.updateSessionToken(response.token);
-	 				addUser.clearFields();
+	 				//addUser.clearFields();
+	 				viewUtils.killModal();
+	 				location.reload();
 				}
 				else {
 
