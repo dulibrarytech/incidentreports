@@ -7,6 +7,7 @@ viewUtils = (function($) {
 		openModalView;
 
 	var setURL;
+	var viewObject = null;
 
 		initMenu = function() {
 
@@ -77,6 +78,9 @@ viewUtils = (function($) {
 
 		openModalView = function(template,data,loader) { // appends template to wrapper.  Disables and shades all wrapper children
 
+			// Store the view
+			viewObject = loader;
+
 			// Append dialog frame
 			$('#main').append('<div id="modalFrame"></div>');
 
@@ -108,6 +112,8 @@ viewUtils = (function($) {
 			// Remove 'modalFrame' div and modal blackout frame
 			$('#modalFrame').remove();  
 			$('#blackout').remove(); 
+
+			viewObject.close();
 		};
 
 	return {

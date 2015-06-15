@@ -48,5 +48,10 @@ addUser = {
 		$('form input#userEmail').val("");
 		$('#admin :nth-child(2)').prop('selected', true); // Set admin to 'No'
 		$('#sendType :nth-child(1)').prop('selected', true); // Set sendType to 'to'
+	},
+
+	close: function() {
+
+		location.reload();
 	}
 };
