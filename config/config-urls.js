@@ -19,3 +19,4 @@ var _getReportData = "reports/all";
 var _getUserData = "users/all";
 var _editUserData = "users/edit";
 var _removeUserData = "users/remove";
+var _addUserData = "users/add";

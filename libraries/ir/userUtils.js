@@ -9,7 +9,8 @@ userUtils = (function($) {
 		editUserData,
 		removeUserData,
 		addNewUser,
-		submitUserUpdate;
+		submitUserUpdate,
+		submitNewUserInfo;
 
 	submitIncidentReportForm = function() {
 
@@ -168,6 +169,43 @@ userUtils = (function($) {
 		viewUtils.openModalView(editUserTemplatePath, null, addUser);
 	};
 
+	submitNewUserInfo = function() {
+
+		// Get data from form
+		var formData = $('#edit-user-data').serialize();
+
+		requestObj = {
+
+			type: "POST",
+			url: service_url + _addUserData,
+			dataType: "json", 
+			data: formData,
+			success: function (response) {
+
+	 			if(response.status == "success") {
+
+	 				alert("snui success");
+
+	 				// Send message
+	 				systemUtils.sendMessage("User data updated successfully.");
+	 				//systemUtils.updateSessionToken(response.token);
+				}
+				else {
+
+					console.log("submitUserUpdate: Server reports error when writing to the database");
+					systemUtils.sendMessage("Server error: Please contact Systems support");
+				}
+			},
+            error: function ( jqXHR, textStatus, errorThrown ) {
+
+                console.log("submitUserUpdate Status: " + textStatus + " Message: " + errorThrown);
+               	systemUtils.sendMessage("Server error: Please contact Systems support");
+            }
+		};
+
+		systemUtils.doAjax(requestObj);
+	};
+
 	return {
 
 		submitIncidentReportForm: function() {
@@ -197,6 +235,10 @@ userUtils = (function($) {
 		submitUserUpdate: function() {
 
 			submitUserUpdate();
+		},
+		submitNewUserInfo: function() {
+
+			submitNewUserInfo();
 		}
 	};
 

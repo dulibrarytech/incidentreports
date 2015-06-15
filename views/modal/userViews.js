@@ -31,6 +31,14 @@ addUser = {
 
 	render: function(data) {
 
-		alert("AU RENDER");
+		$('#admin :nth-child(2)').prop('selected', true);
+		this.init();
+	},
+
+	// Refactor the edit user template to use for user add
+	init: function() {
+
+		$("form#edit-user-data input[value='Save']").attr("value", "Add User");
+		$("form#edit-user-data input[value='Add User']").attr("onclick", "userUtils.submitNewUserInfo()");
 	}
 };
