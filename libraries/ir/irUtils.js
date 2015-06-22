@@ -120,8 +120,8 @@ irUtils = (function($) {
 
 		$('input#trackingNumber').val("");
 		$('input#offenseType').val("");
-		$('input#fromDate').val("click to select");
-		$('input#toDate').val("click to select");
+		$('input#fromDate').val("");
+		$('input#toDate').val("");
 	};
 
 	return {
