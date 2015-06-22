@@ -119,6 +119,9 @@ irUtils = (function($) {
 	clearReportsSearchForm = function() {
 
 		$('input#trackingNumber').val("");
+		$('input#offenseType').val("");
+		$('input#fromDate').val("click to select");
+		$('input#toDate').val("click to select");
 	};
 
 	return {

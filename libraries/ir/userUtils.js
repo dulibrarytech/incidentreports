@@ -254,6 +254,41 @@ userUtils = (function($) {
 	};
 
 	// search reports
+	searchByOffenseType = function() {
+
+		var formData = $("#report-search-form").serialize();
+
+		requestObj = {
+
+			type: "GET",
+			url: service_url + _searchReports,
+			dataType: "json", 
+			data: formData,
+			success: function (response) {
+
+	 			if(response.status == "success") {
+
+	 				console.log(response);
+	 				systemUtils.updateSessionToken(response.token);
+	 				irUtils.refreshReportsTable(response.data);
+	 				$("#show-all-reports-link").show();
+				}
+				else {
+
+					//systemUtils.error("searchByTrackingNumber", "Server error"); // systemUtils.error(reference, message)  TODO
+					console.log("searchByOffenseType: Server Error");
+					systemUtils.sendMessage("Server error: Please contact Systems support");
+				}
+			},
+            error: function ( jqXHR, textStatus, errorThrown ) {
+
+                console.log("searchByOffenseType Status: " + textStatus + " Message: " + errorThrown);
+               	systemUtils.sendMessage("Server error: Please contact Systems support");
+            }
+		};
+
+		systemUtils.doAjax(requestObj);
+	};
 
 	return {
 
@@ -298,6 +333,10 @@ userUtils = (function($) {
 			$('#show-all-reports-link').hide();
 			irUtils.clearReportsSearchForm();
 			irUtils.refreshReportsTable();
+		},
+		searchByOffenseType: function() {
+
+			searchByOffenseType();
 		}
 	};
 
