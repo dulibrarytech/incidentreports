@@ -10,7 +10,9 @@ userUtils = (function($) {
 		removeUserData,
 		addNewUser,
 		submitUserUpdate,
-		submitNewUserInfo;
+		submitNewUserInfo,
+		searchByTrackingNumber,
+		resetReportsSearch;
 
 	submitIncidentReportForm = function() {
 
@@ -294,7 +296,7 @@ userUtils = (function($) {
 		resetReportsSearch: function() {
 
 			$('#show-all-reports-link').hide();
-			$('input#trackingNumber').val("");
+			irUtils.clearReportsSearchForm();
 			irUtils.refreshReportsTable();
 		}
 	};

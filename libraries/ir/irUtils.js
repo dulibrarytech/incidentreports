@@ -6,7 +6,8 @@ irUtils = (function($) {
 		loadDashboard,
 		loadUsersView,
 		getCachedReport,
-		refreshReportsTable;
+		refreshReportsTable,
+		clearReportsSearchForm;
 
 	getCachedReport = function(reportID) {
 
@@ -115,6 +116,11 @@ irUtils = (function($) {
 		dashboard.buildTable(data);
 	};
 
+	clearReportsSearchForm = function() {
+
+		$('input#trackingNumber').val("");
+	};
+
 	return {
 
 		getCachedReport: function(reportID) {
@@ -140,7 +146,11 @@ irUtils = (function($) {
 		refreshReportsTable: function(data) {
 
 			refreshReportsTable(data);
+		},
+		clearReportsSearchForm: function() {
+
+			clearReportsSearchForm();
 		}
 	};
-
+s
 }(jQuery));
