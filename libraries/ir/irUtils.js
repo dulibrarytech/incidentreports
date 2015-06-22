@@ -107,6 +107,11 @@ irUtils = (function($) {
 
 	refreshReportsTable = function(data) {
 
+		// If no data passed in, refresh from the cache.
+		if(typeof data == 'undefined') {
+			data = getIncidentReports();
+			// TODO reset forms
+		}
 		dashboard.buildTable(data);
 	};
 
