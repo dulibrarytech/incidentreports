@@ -5,7 +5,8 @@ irUtils = (function($) {
 		getIncidentReports,
 		loadDashboard,
 		loadUsersView,
-		getCachedReport;
+		getCachedReport,
+		refreshReportsTable;
 
 	getCachedReport = function(reportID) {
 
@@ -104,6 +105,11 @@ irUtils = (function($) {
 		systemUtils.doAjax(requestObj);
 	};
 
+	refreshReportsTable = function(data) {
+
+		dashboard.buildTable(data);
+	};
+
 	return {
 
 		getCachedReport: function(reportID) {
@@ -125,6 +131,10 @@ irUtils = (function($) {
 		loadUsersView: function() {
 
 			loadUsersView();
+		},
+		refreshReportsTable: function(data) {
+
+			refreshReportsTable(data);
 		}
 	};
 

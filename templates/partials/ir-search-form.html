@@ -1,0 +1,21 @@
+<form class="ir-form" id="tracknum-search-form" method="post">
+	<div class="inline-form-row">
+		<label for="trackingNumber">Search by Tracking Number:</label>
+		<input id="trackingNumber" name="id" type="text"/>
+		<input type="button" onclick="userUtils.searchByTrackingNumber()" value="Search"/>
+	</div>
+</form>
+
+<form class="ir-form" id="report-search-form" method="post">
+	<div class="inline-form-row">
+		<label for="offenseType">Search by Offense Type:</label>
+		<input id="offenseType" name="searchField" type="text" /><br />
+
+		<label>From:</label>
+		<input id="fromDate" name="fromDate" type="text" value="click to select"/>
+		<label>To:</label>
+		<input id="toDate" name="toDate" type="text" value="click to select"/>
+
+		<input type="button" onclick="userUtils.searchByTrackingNumber()" value="Search"/>
+	</div>
+</form>

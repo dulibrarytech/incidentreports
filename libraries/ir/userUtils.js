@@ -216,6 +216,40 @@ userUtils = (function($) {
 		systemUtils.doAjax(requestObj);
 	};
 
+	searchByTrackingNumber = function() {
+
+		var formData = $("#tracknum-search-form").serialize();
+
+		requestObj = {
+
+			type: "GET",
+			url: service_url + _searchByTrackNum,
+			dataType: "json", 
+			data: formData,
+			success: function (response) {
+
+	 			if(response.status == "success") {
+
+	 				systemUtils.updateSessionToken(response.token);
+	 				irUtils.refreshReportsTable(response.data);
+				}
+				else {
+
+					//systemUtils.error("searchByTrackingNumber", "Server error"); // systemUtils.error(reference, message)  TODO
+					console.log("searchByTrackingNumber: Server Error");
+					systemUtils.sendMessage("Server error: Please contact Systems support");
+				}
+			},
+            error: function ( jqXHR, textStatus, errorThrown ) {
+
+                console.log("searchByTrackingNumber Status: " + textStatus + " Message: " + errorThrown);
+               	systemUtils.sendMessage("Server error: Please contact Systems support");
+            }
+		};
+
+		systemUtils.doAjax(requestObj);
+	};
+
 	return {
 
 		submitIncidentReportForm: function() {
@@ -249,6 +283,10 @@ userUtils = (function($) {
 		submitNewUserInfo: function() {
 
 			submitNewUserInfo();
+		},
+		searchByTrackingNumber: function() {
+
+			searchByTrackingNumber();
 		}
 	};
 
