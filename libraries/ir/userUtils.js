@@ -251,6 +251,8 @@ userUtils = (function($) {
 		systemUtils.doAjax(requestObj);
 	};
 
+	// search reports
+
 	return {
 
 		submitIncidentReportForm: function() {
@@ -288,6 +290,12 @@ userUtils = (function($) {
 		searchByTrackingNumber: function() {
 
 			searchByTrackingNumber();
+		},
+		resetReportsSearch: function() {
+
+			$('#show-all-reports-link').hide();
+			$('input#trackingNumber').val("");
+			irUtils.refreshReportsTable();
 		}
 	};
 
