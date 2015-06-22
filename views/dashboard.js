@@ -12,6 +12,17 @@ dashboard = {
 
 	construct: function(tableData) {
 
+		// Add search form
+		$.get('templates/partials/ir-search-form.html', function(html) {
+				
+			$('#dashboard-links').append(html);
+		});
+
+		this.buildTable(tableData);
+	},
+
+	buildTable: function(tableData) {
+
 		var tableString = "";
 		var detailsLink;
 		var truncatedOffenseNarrative;

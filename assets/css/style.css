@@ -28,6 +28,12 @@ td.td-centered {
 	text-align: center;
 }
 
+div.inline-form-row label {
+
+	display: inline;
+	margin-bottom: 1em;
+}
+
 div#header {
 
 	/*margin: 1em;*/
