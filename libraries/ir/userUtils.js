@@ -232,6 +232,7 @@ userUtils = (function($) {
 
 	 				systemUtils.updateSessionToken(response.token);
 	 				irUtils.refreshReportsTable(response.data);
+	 				$("#show-all-reports-link").show();
 				}
 				else {
 

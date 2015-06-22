@@ -16,6 +16,7 @@ dashboard = {
 		$.get('templates/partials/ir-search-form.html', function(html) {
 				
 			$('#dashboard-links').append(html);
+			$('#show-all-reports-link').hide();
 		});
 
 		this.buildTable(tableData);
