@@ -20,4 +20,17 @@
 	</div>
 </form>
 
+<script>
+  $(function() {
+    $( "#fromDate" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+    $( "#toDate" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  });
+</script>
+
 <a onclick="userUtils.resetReportsSearch()" id="show-all-reports-link">Show all reports</a>
