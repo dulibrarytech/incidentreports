@@ -155,5 +155,91 @@
 			</div>
 		</div><br />
 	</fieldset>
-	<input type="button" onclick="userUtils.submitIncidentReportForm()" value="Submit"/><span id="message-view"></span>
+	<input type="submit" action="userUtils.submitIncidentReportForm()" value="Submit"/><span id="message-view"></span>
 </form>
+<script>
+$("#incident-report").validate({
+   rules: {
+     dateOfReport: {
+     	required: true
+     },
+     reportCompletedBy: {
+     	required: true
+     },
+     title: {
+     	required: true
+     },
+     department: {
+     	required: true
+     },
+     extension: {
+     	required: true
+     },
+     dateOfOffense: {
+     	required: true
+     },
+     timeOfOffense: {
+     	required: true
+     },
+     natureOfOffense: {
+     	required: true
+     },
+     locationOfOffense: {
+     	required: true
+     },
+     offenseNarrative: {
+     	required: true
+     },
+
+     victimName: {
+
+     },
+     victimGender: {
+
+     },
+     victimApproximateAge: {
+
+     },
+     victimRace: {
+
+     },
+     victimUniversityAffiliation: {
+
+     },
+
+     suspectName: {
+
+     },
+     suspectGender: {
+
+     },
+     suspectApproximateAge: {
+
+     },
+     suspectRace: {
+
+     },
+     suspectUniversityAffiliation: {
+
+     },
+     suspectClothing: {
+
+     },
+     suspectHair: {
+
+     },
+     suspectApproximateHeight: {
+
+     },
+     suspectApproximateWeight: {
+
+     },
+     suspectFacialHair: {
+
+     },
+     otherPhysicalCharacteristics: {
+
+     }
+   }
+ })
+ </script>
