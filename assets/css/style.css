@@ -34,6 +34,32 @@ div.inline-form-row label {
 	margin-bottom: 1em;
 }
 
+header#du-header {
+
+	width: 100%;
+	background-color: #8b2332;
+}
+
+div#du-red-header-inner {
+
+	background-color: #8b2332;
+	height: 50px;
+	margin: auto;
+	width: 70%;
+}
+
+span#du-logo {
+
+	margin-top: 5px;
+}
+
+span#du-logo a img {
+
+	height: 40px;
+	width: 140px;
+	margin-top: 5px;
+}
+
 div#header {
 
 	/*margin: 1em;*/
