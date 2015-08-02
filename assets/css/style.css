@@ -23,6 +23,11 @@ table td {
 	padding: 0.5em;
 }
 
+table tr {
+
+	background-color: #f7f5f3;
+}
+
 div#main {
 
 	background-color: white;
@@ -90,7 +95,7 @@ div#wrapper {
 	border-style: solid;
 	border-width: 2px;
 	border-color: #757371;
-	border-radius: 2px;
+	border-radius: 5px;
 	background-color: #e5e3e1;
 }
 
@@ -205,6 +210,16 @@ div.form-row {
 	display: inline-flex;
 }
 
+div.inline-form-row {
+
+	margin-bottom: 0.7em;
+}
+
+div.inline-form-row input {
+
+	margin: 0;
+}
+
 div.input-group {
 
 	margin-bottom: 1.3em;
@@ -235,7 +250,7 @@ div#reports-table-section {
 	border-width: 1px;
 	/*overflow-y: scroll;*/
 	margin-top: 2.5em;
-	margin-left: 3.3em;
+	margin-left: 0;
 
 	overflow: hidden;
 	overflow-x: scroll;
@@ -287,7 +302,7 @@ table#users-table th {
 .table-striped tbody > tr:nth-child(odd) > td,
 .table-striped tbody > tr:nth-child(odd) > th {
 
-  background-color: #d9d9d9;
+  background-color: white;
 }
 
 div#modalFrame {
