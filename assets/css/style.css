@@ -28,6 +28,12 @@ table tr {
 	background-color: #f7f5f3;
 }
 
+table thead tr {
+
+	background-color: #757371;
+	color: white;
+}
+
 div#main {
 
 	background-color: white;
@@ -229,6 +235,7 @@ div.input-group input[type=text] {
 
 	margin-bottom: 0.7em;
 	margin-right: 2.5em;
+	width: 85%;
 }
 
 div.input-group input[type=radio] {
