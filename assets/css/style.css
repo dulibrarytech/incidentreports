@@ -146,7 +146,7 @@ div.form-row {
 
 div.input-group {
 
-
+	margin-bottom: 1em;
 }
 
 div#dashboard-links {
@@ -272,6 +272,10 @@ form.ir-form {
 	border-color: #656361;
 }
 
+form.ir-form fieldset {
+
+	padding-bottom: 1.7em;
+}
 
 form.ir-form legend {
 
