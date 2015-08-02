@@ -88,6 +88,9 @@ div#wrapper {
 	margin: auto;
 	margin-top: 100px;
 	border-style: solid;
+	border-width: 2px;
+	border-color: #757371;
+	border-radius: 2px;
 	background-color: #e5e3e1;
 }
 
@@ -103,6 +106,12 @@ div#content-wrapper {
 	margin-bottom: 50px;
 	margin-top: 50px;
 	min-height: 300px;
+}
+
+div#home-wrapper {
+
+	margin: auto;
+	width: 98.5%;
 }
 
 div#content {
@@ -134,11 +143,17 @@ div.navbar {
 	background-color: #757371;
 }
 
+span#menu-items {
+
+	margin-left: 3em;
+}
+
 span#menu-items a {
 
 	padding-right: 0.9em;
 	color: white;
 	font-weight: bold;
+	text-decoration: none;
 }
 
 div#login-dialog {
@@ -165,6 +180,7 @@ div#login-dialog form {
 
 /* Homepage form */
 div#homepage-form {
+
 
 }
 
@@ -318,6 +334,12 @@ form.ir-form {
 	border-color: #656361;
 }
 
+form.well {
+
+	border-width: 1px;
+	border-color: #757371;
+}
+
 form.ir-form fieldset {
 
 	padding-bottom: 1.7em;
@@ -328,6 +350,7 @@ form.ir-form legend {
 
 	background-color: #8b2332;
 	color: white;
+	border-radius: 2px;
 }
 
 form.ir-form legend span {
