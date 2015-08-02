@@ -354,6 +354,7 @@ form.ir-form legend {
 	background-color: #8b2332;
 	color: white;
 	border-radius: 2px;
+	margin-bottom: 2em;
 }
 
 form.ir-form legend span {
@@ -375,6 +376,6 @@ div#header h2 {
 	margin: 0;
 	position: relative;
 	top: 25px;
-	left: 0.6em;
+	left: 0.7em;
 	color: white;
 }
