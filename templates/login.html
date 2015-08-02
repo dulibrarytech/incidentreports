@@ -1,13 +1,15 @@
-<div id="login-dialog" class="modal-header">
+<div id="login-dialog" class="modal-header dialog-window">
 	<h4>Login</h4>
 	<form method="post" class="well">
-		<label for="login-uname">Username:</label><br>
-		<input id="login-uname" type="text"/>
-		<br>
-		<label for="login-passwd">Password:</label><br>
-		<input id="login-passwd" type="text"/>
+		<div class="input-group">
+			<label for="login-uname">Username:</label>
+			<input id="login-uname" type="text"/>
+		</div>
+		<div class="input-group">
+			<label for="login-passwd">Password:</label>
+			<input id="login-passwd" type="text"/>
+		</div>
+			<input id="login-submit" type="button" class="form-button" value="Submit"/>
 
-		<br />
-		<input id="login-submit" type="button" class="form-button" value="Submit"/>
 	</form>
 </div>
