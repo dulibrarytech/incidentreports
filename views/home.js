@@ -29,7 +29,6 @@ home = {
 
 	addFormValidation: function() {
 
-		alert("adding vaidation");
 		$("#incident-report").validate({
 		   rules: {
 		     dateOfReport: {
