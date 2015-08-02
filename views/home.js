@@ -24,6 +24,10 @@ home = {
 
 			alert("S");
 		});
+	},
+
+	close: function() {
+
 	}
 };
 

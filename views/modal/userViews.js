@@ -24,6 +24,10 @@ editUser = {
 		else {
 			$('#sendType :nth-child(3)').prop('selected', true);
 		}
+	},
+
+	close: function() {
+		
 	}
 };
 

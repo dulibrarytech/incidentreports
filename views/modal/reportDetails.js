@@ -44,5 +44,10 @@ reportDetails = {
 		}
 
 		$("#otherPhysicalCharacteristics").val(data.OtherPhysicalCharacteristics);
+	},
+
+	close: function() {
+
+
 	}
 };

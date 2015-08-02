@@ -113,7 +113,8 @@ viewUtils = (function($) {
 			$('#modalFrame').remove();  
 			$('#blackout').remove(); 
 
-			if(typeof viewObject != 'undefined') {
+			// Call the view's close() method
+			if(viewObject != null) {
 				viewObject.close();
 			}
 		};
