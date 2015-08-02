@@ -46,5 +46,9 @@ users = {
 
 		tableString += "</tbody>";
 		$(this.element).append(tableString);
+	},
+
+	close: function() {
+
 	}
 };

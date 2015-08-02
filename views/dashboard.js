@@ -77,6 +77,10 @@ dashboard = {
 			console.log("Error: dashboard.buildTable(): bad table data argument");
 		}
 		$(this.element).append(tableString);
+	},
+
+	close: function() {
+
 	}
 };
 
