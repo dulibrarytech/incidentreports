@@ -23,6 +23,11 @@ table td {
 	padding: 0.5em;
 }
 
+div#main {
+
+	background-color: #f5f3f1;
+}
+
 td.td-centered {
 
 	text-align: center;
@@ -83,6 +88,7 @@ div#wrapper {
 	margin: auto;
 	margin-top: 100px;
 	border-style: solid;
+	background-color: white;
 }
 
 div#wrapper > div#content-wrapper {
@@ -125,7 +131,7 @@ div#message-view {
 
 div.navbar {
 
-	background-color: #e5e3e1;
+	background-color: #a5a3a1;
 }
 
 span#menu-items a {
@@ -331,7 +337,7 @@ form.ir-form legend span {
 div#header {
 
   /*background-color: #FF5B5B;*/
-  background-color: #8b2332;
+  background-color: white;
   height: 90px;
   color: #e5e3e1;
 }
@@ -342,4 +348,5 @@ div#header h2 {
 	position: relative;
 	top: 25px;
 	left: 0.6em;
+	color: #353331;
 }
