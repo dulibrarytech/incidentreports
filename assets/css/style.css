@@ -139,11 +139,6 @@ form.inner-form {
 	width: 100%;
 }
 
-form.ir-form fieldset {
-
-	
-}
-
 div.form-row {
 
 	display: inline-flex;
@@ -272,6 +267,12 @@ div#full-narrative-view {
 	overflow-y: scroll;*/
 }
 
+form.ir-form {
+
+	border-color: #656361;
+}
+
+
 form.ir-form legend {
 
 	background-color: #8b2332;
@@ -281,12 +282,16 @@ form.ir-form legend {
 
 div#header {
 
-  background-color: #FF5B5B;
+  /*background-color: #FF5B5B;*/
+  background-color: #8b2332;
   height: 90px;
-  color: #353331;
+  color: #e5e3e1;
 }
 
 div#header h2 {
 
 	margin: 0;
+	position: relative;
+	top: 25px;
+	left: 0.6em;
 }
