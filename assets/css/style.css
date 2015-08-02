@@ -149,16 +149,16 @@ div.input-group {
 	margin-bottom: 1.3em;
 }
 
-/* A bit extra padding for the radio inputs */
-div.input-group input[type=radio] {
-
-	margin-bottom: 1.6em;
-}
-
-div.input-group input {
+div.input-group input[type=text] {
 
 	margin-bottom: 0.7em;
 	margin-right: 2.5em;
+}
+
+div.input-group input[type=radio] {
+
+	margin-right: 0.2em;
+	margin-left: 0.9em;
 }
 
 div#dashboard-links {
