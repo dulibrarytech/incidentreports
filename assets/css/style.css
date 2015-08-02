@@ -272,6 +272,21 @@ div#full-narrative-view {
 	overflow-y: scroll;*/
 }
 
+form.ir-form legend {
 
+	background-color: #8b2332;
+	color: #e5e3e1;
+	padding-left: 0.5em;
+}
 
+div#header {
 
+  background-color: #FF5B5B;
+  height: 90px;
+  color: #353331;
+}
+
+div#header h2 {
+
+	margin: 0;
+}
