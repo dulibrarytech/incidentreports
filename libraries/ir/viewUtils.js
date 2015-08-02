@@ -30,7 +30,7 @@ viewUtils = (function($) {
 				var view = window[template];
 				if(typeof view != "undefined") {
 
-					view.init(data);
+					view.render(data);
 				}
 				else {
 
@@ -113,7 +113,7 @@ viewUtils = (function($) {
 			$('#modalFrame').remove();  
 			$('#blackout').remove(); 
 
-			if(viewObject != null) {
+			if(typeof viewObject != 'undefined') {
 				viewObject.close();
 			}
 		};

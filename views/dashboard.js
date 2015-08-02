@@ -4,7 +4,7 @@ dashboard = {
 	template: "dashboard",
 	truncLength: 150,
 
-	init: function(tableData) {
+	render: function(tableData) {
 		
 		// namestring
 		this.construct(tableData);
@@ -17,6 +17,7 @@ dashboard = {
 				
 			$('#dashboard-links').append(html);
 			$('#show-all-reports-link').hide();
+
 		});
 
 		this.buildTable(tableData);

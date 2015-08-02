@@ -2,7 +2,7 @@ login = {
 
 	element: '#content',
 
-	init: function() {
+	render: function() {
 
 		this.bindEvents();
 	},

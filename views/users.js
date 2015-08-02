@@ -2,7 +2,13 @@ users = {
 
 	element: '#users-table',
 
-	init: function(tableData) {
+	init: function() {
+
+		this.bindEvents();
+		//this.construct(tableData);
+	},
+
+	render: function(tableData) {
 
 		//this.bindEvents();
 		this.construct(tableData);
