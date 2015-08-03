@@ -21,10 +21,15 @@ home = {
 
 	bindEvents: function() {
 
-		$('#ir-form-submit').click(function(event) {
-            event.preventDefault();
-            userUtils.submitIncidentReportForm();
-        });
+		$( "#incident-report" ).submit(function( event ) {
+			
+			if($("#incident-report").valid()) {
+				userUtils.submitIncidentReportForm();
+			}
+			else {
+				event.preventDefault();
+			}
+		});
 	},
 
 	addFormValidation: function() {

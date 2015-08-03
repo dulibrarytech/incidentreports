@@ -26,7 +26,7 @@ viewUtils = (function($) {
 				
 				$(viewFrame).append(html);
 
-				// Get an instance of the view loader object and call its init function
+				// Get an instance of the view loader object and call its render function
 				var view = window[template];
 				if(typeof view != "undefined") {
 
