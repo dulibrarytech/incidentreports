@@ -95,7 +95,7 @@ span#logout-link {
 
 div#wrapper {
 
-	width: 70%;
+	width: 60%;
 	margin: auto;
 	margin-top: 100px;
 	border-style: solid;
@@ -124,7 +124,7 @@ div#home-wrapper {
 
 div#content {
 
-	width:90%;
+	width:80%;
 	margin: auto;
 }
 
@@ -153,7 +153,8 @@ div.navbar {
 div#menu-inner {
 
 	margin: auto;
-	width: 90%;
+	width: 100%;
+	margin-left: 1.75em;
 }
 
 span#menu-items {
@@ -413,4 +414,9 @@ div#header h2 {
 input.date-input {
 
 	width: 10%;
+}
+
+label.error {
+
+	color: red;
 }
