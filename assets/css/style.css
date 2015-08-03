@@ -215,6 +215,7 @@ form.inner-form {
 div.form-row {
 
 	display: inline-flex;
+	width: 100%;
 }
 
 div.inline-form-row {
@@ -230,6 +231,7 @@ div.inline-form-row input {
 div.input-group {
 
 	margin-bottom: 1.3em;
+	width: 33%;
 }
 
 div.input-group input[type=text] {
