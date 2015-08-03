@@ -61,7 +61,7 @@ div#du-red-header-inner {
 	background-color: #8b2332;
 	height: 50px;
 	margin: auto;
-	width: 70%;
+	width: 60%;
 }
 
 span#du-logo {
@@ -231,6 +231,10 @@ div.inline-form-row input {
 div.input-group {
 
 	margin-bottom: 1.3em;
+}
+
+form#incident-report div.input-group {
+
 	width: 33%;
 }
 
