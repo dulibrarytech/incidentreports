@@ -409,3 +409,8 @@ div#header h2 {
 	left: 0.7em;
 	color: white;
 }
+
+input.date-input {
+
+	width: 10%;
+}
