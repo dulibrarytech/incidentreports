@@ -32,84 +32,94 @@ home = {
 		$("#incident-report").validate({
 		   rules: {
 		     dateOfReport: {
-		     	required: true
+		     	required: true,
+		     	date: true
 		     },
 		     reportCompletedBy: {
-		     	required: true
+		     	required: true,
+		     	maxlength: 30
 		     },
 		     title: {
-		     	required: true
+		     	required: true,
+		     	maxlength: 50
 		     },
 		     department: {
-		     	required: true
+		     	required: true,
+		     	maxlength: 30
 		     },
 		     extension: {
-		     	required: true
+		     	required: true,
+		     	maxlength: 20
 		     },
 		     dateOfOffense: {
-		     	required: true
+		     	required: true,
+		     	date: true
 		     },
 		     timeOfOffense: {
-		     	required: true
+		     	required: true,
+		     	maxlength: 20
 		     },
 		     natureOfOffense: {
-		     	required: true
+		     	required: true,
+		     	maxlength: 100
 		     },
 		     locationOfOffense: {
-		     	required: true
+		     	required: true,
+		     	maxlength: 200
 		     },
 		     offenseNarrative: {
-		     	required: true
+		     	required: true,
+		     	maxlength: 1000
 		     },
 
 		     victimName: {
-
+		     	maxlength: 30
 		     },
 		     victimGender: {
-
+		     	maxlength: 10
 		     },
 		     victimApproximateAge: {
-
+		     	maxlength: 3
 		     },
 		     victimRace: {
-
+		     	maxlength: 20
 		     },
 		     victimUniversityAffiliation: {
-
+		     	maxlength: 100
 		     },
 
 		     suspectName: {
-
+		     	maxlength: 30
 		     },
 		     suspectGender: {
-
+		     	maxlength: 10
 		     },
 		     suspectApproximateAge: {
-
+		     	maxlength: 3
 		     },
 		     suspectRace: {
-
+		     	maxlength: 20
 		     },
 		     suspectUniversityAffiliation: {
-
+		     	maxlength: 100
 		     },
 		     suspectClothing: {
-
+		     	maxlength: 100
 		     },
 		     suspectHair: {
-
+		     	maxlength: 30
 		     },
 		     suspectApproximateHeight: {
-
+		     	maxlength: 10
 		     },
 		     suspectApproximateWeight: {
-
+		     	maxlength: 10
 		     },
 		     suspectFacialHair: {
-
+		     	maxlength: 100
 		     },
 		     otherPhysicalCharacteristics: {
-
+		     	maxlength: 1000
 		     },
 		   }
 		 })
