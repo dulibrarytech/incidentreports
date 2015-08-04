@@ -1,6 +1,6 @@
 <div id="login-dialog" class="modal-header dialog-window">
 	<h4>Login</h4>
-	<form method="post" class="well">
+	<form method="post" class="well" id="login-form">
 		<div class="input-group">
 			<label for="login-uname">Username:</label>
 			<input id="login-uname" type="text"/>
@@ -9,7 +9,7 @@
 			<label for="login-passwd">Password:</label>
 			<input id="login-passwd" type="text"/>
 		</div>
-			<input id="login-submit" type="button" class="form-button" value="Submit"/>
-
+			<input id="login-submit" type="button" class="form-button" value="Submit"/><br />
+			<span id="message-view"></span>
 	</form>
 </div>
