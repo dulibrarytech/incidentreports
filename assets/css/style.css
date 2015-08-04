@@ -1,5 +1,6 @@
 body {
 
+	background-color: #8b2332;
 }
 
 a:hover {
@@ -39,11 +40,11 @@ textarea {
 	width: auto;
 }
 
-/*footer {
+footer {
 
 	height: 75px;
-	background-color: grey;
-}*/
+	background-color: #8b2332;
+}
 
 div#main {
 
