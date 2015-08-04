@@ -338,7 +338,7 @@ div#modalFrame {
 
 	position: fixed;
 	top: 10%;
-	left: 30%;
+	left: 40%;
 	z-index: 1000;
 	border-radius: 2px;
 	background-color: white;
@@ -347,13 +347,22 @@ div#modalFrame {
 	border-color: black;
 	border-radius: 2px;
 	background-color: white;
+
+	padding: 0.9em;
 }
 
-div#modalFrame a#modal-close {
+div#modalFrame a.modal-button {
 
-	margin: 0.5em;
+	/*margin: 0.5em;*/
 	color: black;
-    font-weight: bold;
+    /*font-weight: bold;*/
+    border-style: solid;
+    border-radius: 7px;
+    border-width: 1px;
+    border-color: black;
+    padding: 0.2em;
+    background-color: #757371;
+    color: white;
 }
 
 div#modalFrame a:hover {
@@ -380,6 +389,7 @@ div#full-narrative-view {
 	height: 400px;
 /*	overflow: hidden;
 	overflow-y: scroll;*/
+	margin-top: 2.1em;
 }
 
 form.ir-form {
