@@ -11,7 +11,9 @@ viewUtils = (function($) {
 
 		initMenu = function() {
 
-			$('#menu-items').append('<a href="#/home" id="home-link">HOME</a><a href="#/login" id="login-link">LOGIN</a><a href="#/dashboard" id="dashboard-link">DASHBOARD</a><a href="#/users" id="users-link">USERS</a><a href="#/logout" id="logout-link">LOGOUT</a>');
+			// Added to IR index.html main frame, for portability.
+			// This object is IR independant
+			//$('#menu-items').append('<a href="#/home" id="home-link">HOME</a><a href="#/login" id="login-link">LOGIN</a><a href="#/dashboard" id="dashboard-link">DASHBOARD</a><a href="#/users" id="users-link">USERS</a><a href="#/logout" id="logout-link">LOGOUT</a>');
 		};
 
 		renderTemplate = function(template,data) {
