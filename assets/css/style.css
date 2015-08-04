@@ -31,7 +31,7 @@ table tr {
 table thead tr {
 
 	background-color: #757371;
-	color: white;
+	color: #8b2332;
 }
 
 textarea {
@@ -39,9 +39,17 @@ textarea {
 	width: auto;
 }
 
+/*footer {
+
+	height: 75px;
+	background-color: grey;
+}*/
+
 div#main {
 
-	background-color: white;
+	background-color: #e5e3e1;
+	min-height: 800px;
+	padding-bottom: 50px;
 }
 
 td.td-centered {
@@ -88,7 +96,7 @@ div#header {
 
 div#menu {
 
-	height: 40px;
+	/*height: 40px;*/
 }
 
 span#namestring,
@@ -102,12 +110,12 @@ div#wrapper {
 
 	width: 60%;
 	margin: auto;
-	margin-top: 50px;
-	border-style: solid;
+	margin-top: 75px;
+/*	border-style: solid;
 	border-width: 2px;
 	border-color: #353331;
 	border-radius: 5px;
-	background-color: #e5e3e1;
+	background-color: #e5e3e1;*/
 }
 
 div#wrapper > div#content-wrapper {
@@ -152,7 +160,7 @@ div#message-view {
 
 div.navbar {
 
-	background-color: #757371;
+/*	background-color: #757371;*/
 }
 
 div#menu-inner {
@@ -165,7 +173,8 @@ div#menu-inner {
 span#menu-items {
 
 	position: relative;
-	top: 10px;
+	top: 15px;
+	float: right;
 }
 
 span#menu-items a {
