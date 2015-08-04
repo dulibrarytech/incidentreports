@@ -34,6 +34,11 @@ table thead tr {
 	color: white;
 }
 
+textarea {
+
+	width: auto;
+}
+
 div#main {
 
 	background-color: white;
@@ -331,7 +336,7 @@ div#modalFrame {
 	overflow: hidden;
 	overflow-y: scroll;
 
-	position: absolute;
+	position: fixed;
 	top: 10%;
 	left: 30%;
 	z-index: 1000;
@@ -344,14 +349,17 @@ div#modalFrame {
 	background-color: white;
 }
 
-div#modalFrame a {
+div#modalFrame a#modal-close {
 
-	/* place at right side */
+	margin: 0.5em;
+	color: black;
+    font-weight: bold;
 }
 
 div#modalFrame a:hover {
 
 	cursor: pointer;
+	text-decoration: none;
 }
 
 div#blackout {

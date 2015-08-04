@@ -85,7 +85,7 @@ viewUtils = (function($) {
 			$('#main').append('<div id="modalFrame"></div>');
 
 			// Add close button
-			var closeButton = '<a onclick="killModal()">close</a>';
+			var closeButton = '<a onclick="killModal()" id="modal-close">close</a>';
 			$('#modalFrame').append(closeButton);
 
 			// *** if loader is null or undefined, append template to modalFrame, ignore data ***
