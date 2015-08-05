@@ -15,6 +15,11 @@ login = {
             	systemUtils.submitLoginForm();
             }
         });
+
+        $('#login-cancel').click(function(event) {
+        	loginView.close();
+        	window.location.assign(base_url);
+        });
 	},
 
 	validate: function(uname, passwd) {
