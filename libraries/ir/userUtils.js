@@ -256,7 +256,10 @@ userUtils = (function($) {
 	// search reports
 	searchByOffenseType = function() {
 
-		var formData = $("#report-search-form").serialize();
+		var formData = {};
+		formData['offenseType'] = $("#offenseType").val();
+		formData['fromDate'] = $("#fromDate").val();
+		formData['toDate'] = $("#toDate").val();
 
 		requestObj = {
 
