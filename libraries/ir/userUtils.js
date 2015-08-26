@@ -220,37 +220,49 @@ userUtils = (function($) {
 
 	searchByTrackingNumber = function() {
 
-		var formData = $("#tracknum-search-form").serialize();
+		var trackNum = $("#trackingNumber").val();
 
-		requestObj = {
+		// Validate
+		if(isNaN(trackNum)) { // Check if value is numeric
 
-			type: "GET",
-			url: service_url + _searchByTrackNum,
-			dataType: "json", 
-			data: formData,
-			success: function (response) {
+			$("#trackingNumber").val("Please enter a number");
+		}
+		else if(trackNum.length > 5) { // Check if value exceeds length
 
-	 			if(response.status == "success") {
+			$("#trackingNumber").val("Length exceeded");
+		}
+		else {
 
-	 				systemUtils.updateSessionToken(response.token);
-	 				irUtils.refreshReportsTable(response.data);
-	 				$("#show-all-reports-link").show();
-				}
-				else {
+			requestObj = {
 
-					//systemUtils.error("searchByTrackingNumber", "Server error"); // systemUtils.error(reference, message)  TODO
-					console.log("searchByTrackingNumber: Server Error");
-					systemUtils.sendMessage("Server error: Please contact Systems support");
-				}
-			},
-            error: function ( jqXHR, textStatus, errorThrown ) {
+				type: "GET",
+				url: service_url + _searchByTrackNum,
+				dataType: "json", 
+				data: "id=" + trackNum,
+				success: function (response) {
 
-                console.log("searchByTrackingNumber Status: " + textStatus + " Message: " + errorThrown);
-               	systemUtils.sendMessage("Server error: Please contact Systems support");
-            }
-		};
+		 			if(response.status == "success") {
 
-		systemUtils.doAjax(requestObj);
+		 				systemUtils.updateSessionToken(response.token);
+		 				irUtils.refreshReportsTable(response.data);
+		 				$("#show-all-reports-link").show();
+					}
+					else {
+
+						//systemUtils.error("searchByTrackingNumber", "Server error"); // systemUtils.error(reference, message)  TODO
+						console.log("searchByTrackingNumber: Server Error");
+						systemUtils.sendMessage("Server error: Please contact Systems support");
+					}
+				},
+	            error: function ( jqXHR, textStatus, errorThrown ) {
+
+	                console.log("searchByTrackingNumber Status: " + textStatus + " Message: " + errorThrown);
+	               	systemUtils.sendMessage("Server error: Please contact Systems support");
+	            }
+			};
+
+			systemUtils.doAjax(requestObj);
+		}
 	};
 
 	// search reports
