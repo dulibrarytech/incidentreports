@@ -111,7 +111,7 @@ div#wrapper {
 
 	width: 60%;
 	margin: auto;
-	margin-top: 75px;
+	margin-top: 50px;
 /*	border-style: solid;
 	border-width: 2px;
 	border-color: #353331;
@@ -283,7 +283,7 @@ div#reports-table-section {
 	border-style: solid;
 	border-width: 1px;
 	/*overflow-y: scroll;*/
-	margin-top: 2.5em;
+	margin-top: 55px;
 	margin-left: 0;
 
 	overflow: hidden;
