@@ -4,6 +4,12 @@ dashboard = {
 	template: "dashboard",
 	truncLength: 150,
 
+	init: function() {
+
+		this.bindEvents();
+		this.addFormValidation();
+	},
+
 	render: function(tableData) {
 		
 		// namestring
@@ -17,10 +23,24 @@ dashboard = {
 				
 			$('#dashboard-links').append(html);
 			$('#show-all-reports-link').hide();
-			dashboardView.addFormValidation();
+			dashboardView.init(); // init once form is ready
 		});
 
 		this.buildTable(tableData);
+	},
+
+	bindEvents: function() {
+
+		$( "#report-search-form" ).submit(function( event ) {
+			
+			if($("#report-search-form").valid()) {
+				//userUtils.searchByOffenseType();
+				alert("submitting");
+			}
+			else {
+				event.preventDefault();
+			}
+		});
 	},
 
 	buildTable: function(tableData) {
@@ -81,6 +101,19 @@ dashboard = {
 
 	addFormValidation: function() {
 		
+		$("#report-search-form").validate({
+		   rules: {
+		     searchField: {
+		     	length: 100
+		     },
+		     fromDate: {
+		     	date: true
+		     },
+		     toDate: {
+		     	date: true
+		     }
+		   }
+		 });
 	},
 
 	close: function() {
