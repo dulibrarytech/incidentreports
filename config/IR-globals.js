@@ -4,6 +4,7 @@
 
 var loginView = login;
 var homeView = home;
+var dashboardView = dashboard;
 
 // IR = {
 

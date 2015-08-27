@@ -17,7 +17,7 @@ dashboard = {
 				
 			$('#dashboard-links').append(html);
 			$('#show-all-reports-link').hide();
-
+			dashboardView.addFormValidation();
 		});
 
 		this.buildTable(tableData);
@@ -77,6 +77,10 @@ dashboard = {
 			console.log("Error: dashboard.buildTable(): bad table data argument");
 		}
 		$(this.element).append(tableString);
+	},
+
+	addFormValidation: function() {
+		
 	},
 
 	close: function() {
