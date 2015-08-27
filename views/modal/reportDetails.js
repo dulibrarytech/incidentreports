@@ -54,11 +54,10 @@ reportDetails = {
 
 	bindEvents: function() {
 
-		alert("bind");
 		$( "#incident-report" ).submit(function( event ) {
 			
 			if($("#incident-report").valid()) {
-				alert("edit report");
+				userUtils.editIncidentReport();
 			}
 			else {
 				event.preventDefault();

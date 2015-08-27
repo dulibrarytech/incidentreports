@@ -4,6 +4,7 @@ userUtils = (function($) {
 	var editUserTemplatePath = "templates/partials/editUser.html";	//  move to config
 
 	var submitIncidentReportForm,
+		editIncidentReport,
 		openDetailsDialogWindow,
 		openFullNarrativeWindow,
 		editUserData,
@@ -14,7 +15,7 @@ userUtils = (function($) {
 		searchByTrackingNumber,
 		resetReportsSearch;
 
-	submitIncidentReportForm = function() {
+	 submitIncidentReportForm = function() {
 
 		// Get data from form
 		var formData = $('#incident-report').serialize();
@@ -53,6 +54,39 @@ userUtils = (function($) {
             error: function ( jqXHR, textStatus, errorThrown ) {
 
                 console.log("submitIncidentReportForm Status: " + textStatus + " Message: " + errorThrown);
+               	systemUtils.sendMessage("Server error: Please contact Systems support");
+            }
+		};
+
+		systemUtils.doAjax(requestObj);
+	};
+
+	editIncidentReport = function() {
+
+		//Get data from form
+		var formData = $('#incident-report').serialize();
+
+		requestObj = {
+
+			type: "POST",
+			url: service_url + _editIR,
+			dataType: "json", 
+			data: formData,
+			success: function (response) {
+
+	 			if(response.status == "success") {
+
+					alert("success");
+				}
+				else {
+
+					console.log("editIncidentReport: Server reports error when writing to the database");
+					systemUtils.sendMessage("Server error: Please contact Systems support");
+				}
+			},
+            error: function ( jqXHR, textStatus, errorThrown ) {
+
+                console.log("editIncidentReport Status: " + textStatus + " Message: " + errorThrown);
                	systemUtils.sendMessage("Server error: Please contact Systems support");
             }
 		};
@@ -310,6 +344,10 @@ userUtils = (function($) {
 		submitIncidentReportForm: function() {
 
 			submitIncidentReportForm();
+		},
+		editIncidentReport: function() {
+
+			editIncidentReport();
 		},
 		openDetailsDialogWindow: function(reportID) {	// viewutis
 
