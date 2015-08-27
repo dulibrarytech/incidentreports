@@ -1,5 +1,10 @@
 reportDetails = {
 
+	init: function() {
+
+		this.bindEvents();
+	},
+
 	render: function(data) {
 
 		$("#dateOfReport").val(data.DateOfReport);
@@ -44,6 +49,21 @@ reportDetails = {
 		}
 
 		$("#otherPhysicalCharacteristics").val(data.OtherPhysicalCharacteristics);
+		this.init();
+	},
+
+	bindEvents: function() {
+
+		alert("bind");
+		$( "#incident-report" ).submit(function( event ) {
+			
+			if($("#incident-report").valid()) {
+				alert("edit report");
+			}
+			else {
+				event.preventDefault();
+			}
+		});
 	},
 
 	close: function() {
