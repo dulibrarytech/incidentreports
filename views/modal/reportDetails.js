@@ -57,7 +57,9 @@ reportDetails = {
 		$( "#incident-report" ).submit(function( event ) {
 			
 			if($("#incident-report").valid()) {
+				
 				userUtils.editIncidentReport();
+				event.preventDefault();
 			}
 			else {
 				event.preventDefault();
