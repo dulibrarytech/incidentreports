@@ -324,8 +324,8 @@ table#reports-table td#offense-narrative {
 div#users-table-section {
 
 	height: 400px;
-	overflow: hidden;
-	overflow-y: scroll;
+/*	overflow: hidden;
+	overflow-y: scroll;*/
 }
 
 table#users-table th {
