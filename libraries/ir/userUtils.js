@@ -80,6 +80,7 @@ userUtils = (function($) {
 
 					systemUtils.sendMessage("Incident Report updated.");
 					systemUtils.updateSessionToken(response.token);
+					irUtils.loadDashboard();
 				}
 				else {
 
