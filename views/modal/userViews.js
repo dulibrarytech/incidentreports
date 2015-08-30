@@ -24,6 +24,29 @@ editUser = {
 		else {
 			$('#sendType :nth-child(3)').prop('selected', true);
 		}
+
+		editUser.bindEvents();
+		editUser.addFormValidation();
+	},
+
+	bindEvents: function() {
+
+		$( "#edit-user-data" ).submit(function( event ) {
+			
+			if(true) {  //$("#edit-user-data").valid()
+				
+				userUtils.submitUserUpdate();
+				event.preventDefault();
+			}
+			else {
+				event.preventDefault();
+			}
+		});
+	},
+
+	addFormValidation: function() {
+
+		
 	},
 
 	close: function() {
