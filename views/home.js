@@ -25,6 +25,7 @@ home = {
 			
 			if($("#incident-report").valid()) {
 				userUtils.submitIncidentReportForm();
+				event.preventDefault();
 			}
 			else {
 				event.preventDefault();
