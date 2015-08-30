@@ -32,6 +32,7 @@ userUtils = (function($) {
 
 					if(response.emailStatus == "success") {
 
+						 // token??
 						 systemUtils.sendMessage("Incident Report submitted.");
 					}
 					else {
@@ -76,7 +77,8 @@ userUtils = (function($) {
 
 	 			if(response.status == "success") {
 
-					alert("success");
+					systemUtils.sendMessage("Incident Report updated.");
+					systemUtils.updateSessionToken(response.token);
 				}
 				else {
 
