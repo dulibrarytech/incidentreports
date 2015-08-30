@@ -125,10 +125,16 @@ irUtils = (function($) {
 		$('input#toDate').val("");
 	};
 
-	setCurrentReport = function(reportID) {
+	setCurrentReportID = function(reportID) {
 
 		sessionStorage.setItem("current_report_id", reportID);
-		alert("SET ID " + reportID);
+		alert("SETID " + reportID);
+	}
+
+	getCurrentReportID = function() {
+
+		alert("GETID: " + sessionStorage.getItem("current_report_id"));
+		return sessionStorage.getItem("current_report_id");
 	}
 
 	return {
@@ -161,9 +167,13 @@ irUtils = (function($) {
 
 			clearReportsSearchForm();
 		},
-		setCurrentReport: function(reportID) {
+		setCurrentReportID: function(reportID) {
 
-			setCurrentReport(reportID);
+			setCurrentReportID(reportID);
+		},
+		getCurrentReportID: function() {
+
+			return getCurrentReportID();
 		}
 	};
 s

@@ -3,7 +3,7 @@ reportDetails = {
 	init: function(reportID) {
 
 		this.bindEvents();
-		irUtils.setCurrentReport(reportID);
+		irUtils.setCurrentReportID(reportID);
 	},
 
 	render: function(data) {
@@ -71,6 +71,6 @@ reportDetails = {
 
 	close: function() {
 
-		irUtils.setCurrentReport(0);
+		irUtils.setCurrentReportID(0);
 	}
 };

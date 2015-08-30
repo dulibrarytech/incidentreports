@@ -66,13 +66,14 @@ userUtils = (function($) {
 
 		//Get data from form
 		var formData = $('#incident-report').serialize();
+		var id = irUtils.getCurrentReportID();
 
 		requestObj = {
 
 			type: "POST",
 			url: service_url + _editIR,
 			dataType: "json", 
-			data: formData,
+			data: formData + "&reportID=" + id,
 			success: function (response) {
 
 	 			if(response.status == "success") {
