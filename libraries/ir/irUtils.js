@@ -128,12 +128,10 @@ irUtils = (function($) {
 	setCurrentReportID = function(reportID) {
 
 		sessionStorage.setItem("current_report_id", reportID);
-		alert("SETID " + reportID);
 	}
 
 	getCurrentReportID = function() {
 
-		alert("GETID: " + sessionStorage.getItem("current_report_id"));
 		return sessionStorage.getItem("current_report_id");
 	}
 
