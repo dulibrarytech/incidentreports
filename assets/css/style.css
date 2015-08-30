@@ -253,6 +253,11 @@ div.input-group {
 	margin-bottom: 1.3em;
 }
 
+form#incident-report {
+
+	/*margin-top: 20px;*/
+}
+
 form#incident-report div.input-group {
 
 	width: 33%;
@@ -370,15 +375,21 @@ div#modalFrame a.modal-button {
     border-radius: 7px;
     border-width: 1px;
     border-color: black;
-    padding: 0.2em;
-    background-color: #757371;
+    padding: 0.5em;
+    background-color: #959391;
     color: white;
+    font-weight: bold;
 }
 
 div#modalFrame a:hover {
 
 	cursor: pointer;
 	text-decoration: none;
+}
+
+div#modalFrameInner {
+
+	margin-top: 12px;
 }
 
 div#blackout {
