@@ -348,8 +348,8 @@ div#modalFrame {
 
 	width: auto;
 	max-height: 800px;
-	overflow: hidden;
-	overflow-y: scroll;
+/*	overflow: hidden;
+	overflow-y: scroll;*/
 
 	position: fixed;
 	top: 10%;
@@ -359,8 +359,8 @@ div#modalFrame {
 	background-color: white;
 
 	border-style: solid;
-	border-color: black;
-	border-radius: 2px;
+	border-color: #555351;
+	border-radius: 1px;
 	background-color: white;
 
 	padding: 0.9em;
@@ -376,9 +376,10 @@ div#modalFrame a.modal-button {
     border-width: 1px;
     border-color: black;
     padding: 0.5em;
-    background-color: #959391;
+    background-color: #757371;
     color: white;
     font-weight: bold;
+    
 }
 
 div#modalFrame a:hover {
@@ -390,6 +391,15 @@ div#modalFrame a:hover {
 div#modalFrameInner {
 
 	margin-top: 12px;
+	width: auto;
+	max-height: 700px;
+	overflow: hidden;
+	overflow-y: auto;
+
+/*	border-style: solid;
+    border-radius: 7px;
+    border-width: 1px;
+    border-color: #757371;*/
 }
 
 div#blackout {
