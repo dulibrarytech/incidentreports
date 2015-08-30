@@ -7,7 +7,8 @@ irUtils = (function($) {
 		loadUsersView,
 		getCachedReport,
 		refreshReportsTable,
-		clearReportsSearchForm;
+		clearReportsSearchForm,
+		setCurrentReport;
 
 	getCachedReport = function(reportID) {
 
@@ -124,6 +125,12 @@ irUtils = (function($) {
 		$('input#toDate').val("");
 	};
 
+	setCurrentReport = function(reportID) {
+
+		sessionStorage.setItem("current_report_id", reportID);
+		alert("SET ID " + reportID);
+	}
+
 	return {
 
 		getCachedReport: function(reportID) {
@@ -153,6 +160,10 @@ irUtils = (function($) {
 		clearReportsSearchForm: function() {
 
 			clearReportsSearchForm();
+		},
+		setCurrentReport: function(reportID) {
+
+			setCurrentReport(reportID);
 		}
 	};
 s

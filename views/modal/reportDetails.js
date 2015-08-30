@@ -1,8 +1,9 @@
 reportDetails = {
 
-	init: function() {
+	init: function(reportID) {
 
 		this.bindEvents();
+		irUtils.setCurrentReport(reportID);
 	},
 
 	render: function(data) {
@@ -49,7 +50,8 @@ reportDetails = {
 		}
 
 		$("#otherPhysicalCharacteristics").val(data.OtherPhysicalCharacteristics);
-		this.init();
+
+		this.init(data.ReportID);
 	},
 
 	bindEvents: function() {
@@ -69,6 +71,6 @@ reportDetails = {
 
 	close: function() {
 
-
+		irUtils.setCurrentReport(0);
 	}
 };

@@ -130,6 +130,7 @@ systemUtils = (function($) {
 					// establishSesion() ?
 					sessionStorage.setItem("user_token", response.token);
 					sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
+					sessionStorage.setItem("current_report_id", 0);
 
 					viewUtils.showAuthenticatedMenulinks(true,isAdminUser());
 					loginView.close();
@@ -167,6 +168,7 @@ systemUtils = (function($) {
 		sessionStorage.removeItem("user_token");	
 		sessionStorage.removeItem("user_profile");
 		sessionStorage.removeItem("report_data");	
+		sessionStorage.removeItem("current_report_id");
 
 		viewUtils.showAuthenticatedMenulinks(false);
 		viewUtils.killModal();
