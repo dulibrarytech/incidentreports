@@ -167,8 +167,9 @@ systemUtils = (function($) {
 		//$('#namestring').html("");
 		sessionStorage.removeItem("user_token");	
 		sessionStorage.removeItem("user_profile");
-		sessionStorage.removeItem("report_data");	
-		sessionStorage.removeItem("current_report_id");
+		// sessionStorage.removeItem("report_data");	
+		// sessionStorage.removeItem("current_report_id");
+		irUtils.removeUserSessionData();
 
 		viewUtils.showAuthenticatedMenulinks(false);
 		viewUtils.killModal();

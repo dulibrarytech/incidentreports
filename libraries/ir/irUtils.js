@@ -128,12 +128,18 @@ irUtils = (function($) {
 	setCurrentReportID = function(reportID) {
 
 		sessionStorage.setItem("current_report_id", reportID);
-	}
+	};
 
 	getCurrentReportID = function() {
 
 		return sessionStorage.getItem("current_report_id");
-	}
+	};
+
+	removeUserSessionData = function() {
+
+		sessionStorage.removeItem("report_data");	
+		sessionStorage.removeItem("current_report_id");
+	};
 
 	return {
 
@@ -172,6 +178,10 @@ irUtils = (function($) {
 		getCurrentReportID: function() {
 
 			return getCurrentReportID();
+		},
+		removeUserSessionData: function() {
+
+			removeUserSessionData();
 		}
 	};
 s
