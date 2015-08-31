@@ -85,7 +85,7 @@ home = {
 		     	maxlength: 10
 		     },
 		     victimApproximateAge: {
-		     	maxlength: 3
+		     	maxlength: 10
 		     },
 		     victimRace: {
 		     	maxlength: 20
@@ -101,7 +101,7 @@ home = {
 		     	maxlength: 10
 		     },
 		     suspectApproximateAge: {
-		     	maxlength: 3
+		     	maxlength: 10
 		     },
 		     suspectRace: {
 		     	maxlength: 20

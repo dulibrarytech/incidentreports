@@ -4,6 +4,7 @@ reportDetails = {
 
 		this.bindEvents();
 		irUtils.setCurrentReportID(reportID);
+		homeView.addFormValidation();
 	},
 
 	render: function(data) {
