@@ -60,6 +60,7 @@ editUser = {
 
 	close: function() {
 		
+		location.reload();
 	}
 };
 

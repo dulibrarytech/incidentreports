@@ -236,7 +236,6 @@ userUtils = (function($) {
 	 				systemUtils.updateSessionToken(response.token);
 	 				//addUser.clearFields();
 	 				viewUtils.killModal();
-	 				location.reload();
 				}
 				else {
 
