@@ -360,7 +360,7 @@ div#modalFrame {
 
 	border-style: solid;
 	border-color: #555351;
-	border-radius: 1px;
+	border-width: 1px;
 	background-color: white;
 
 	padding: 0.9em;
@@ -371,7 +371,7 @@ div#modalFrame a.modal-button {
 	/*margin: 0.5em;*/
 	color: black;
     /*font-weight: bold;*/
-    border-style: solid;
+    border-style: none;
     border-radius: 7px;
     border-width: 1px;
     border-color: black;
@@ -379,7 +379,8 @@ div#modalFrame a.modal-button {
     background-color: #757371;
     color: white;
     font-weight: bold;
-    
+    position: relative;
+    left: 180px;
 }
 
 div#modalFrame a:hover {
@@ -390,7 +391,7 @@ div#modalFrame a:hover {
 
 div#modalFrameInner {
 
-	margin-top: 12px;
+	margin-top: 30px;
 	width: auto;
 	max-height: 700px;
 	overflow: hidden;
@@ -479,4 +480,14 @@ input.date-input {
 label.error {
 
 	color: red;
+}
+
+input#save-user-data {
+
+	margin-top: 15px;
+}
+
+form#edit-user-data {
+
+	margin-bottom: 0;
 }
