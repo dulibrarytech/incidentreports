@@ -1,6 +1,6 @@
 var pathArray = window.location.href.split( '/' );
 var base_url = "";
-if(pathArray[2] == "localhost") {
+if(pathArray[2] == "localhost") {  
 
 	base_url     = "http://" + document.domain + "/incidentReports/";
 }

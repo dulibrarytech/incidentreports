@@ -23,12 +23,9 @@ home = {
 
 		$( "#incident-report" ).submit(function( event ) {
 			
+			event.preventDefault();
 			if($("#incident-report").valid()) {
 				userUtils.submitIncidentReportForm();
-				event.preventDefault();
-			}
-			else {
-				event.preventDefault();
 			}
 		});
 	},
@@ -43,7 +40,7 @@ home = {
 		     },
 		     reportCompletedBy: {
 		     	required: true,
-		     	maxlength: 30
+		     	maxlength: 50
 		     },
 		     title: {
 		     	required: true,
@@ -51,11 +48,11 @@ home = {
 		     },
 		     department: {
 		     	required: true,
-		     	maxlength: 30
+		     	maxlength: 50
 		     },
 		     extension: {
 		     	required: true,
-		     	maxlength: 20
+		     	maxlength: 50
 		     },
 		     dateOfOffense: {
 		     	required: true,
@@ -63,7 +60,7 @@ home = {
 		     },
 		     timeOfOffense: {
 		     	required: true,
-		     	maxlength: 20
+		     	maxlength: 50
 		     },
 		     natureOfOffense: {
 		     	required: true,
@@ -79,32 +76,32 @@ home = {
 		     },
 
 		     victimName: {
-		     	maxlength: 30
+		     	maxlength: 50
 		     },
 		     victimGender: {
-		     	maxlength: 10
+		     	maxlength: 50
 		     },
 		     victimApproximateAge: {
-		     	maxlength: 10
+		     	maxlength: 50
 		     },
 		     victimRace: {
-		     	maxlength: 20
+		     	maxlength: 50
 		     },
 		     victimUniversityAffiliation: {
 		     	maxlength: 100
 		     },
 
 		     suspectName: {
-		     	maxlength: 30
+		     	maxlength: 100
 		     },
 		     suspectGender: {
-		     	maxlength: 10
+		     	maxlength: 50
 		     },
 		     suspectApproximateAge: {
-		     	maxlength: 10
+		     	maxlength: 50
 		     },
 		     suspectRace: {
-		     	maxlength: 20
+		     	maxlength: 50
 		     },
 		     suspectUniversityAffiliation: {
 		     	maxlength: 100
@@ -113,22 +110,22 @@ home = {
 		     	maxlength: 100
 		     },
 		     suspectHair: {
-		     	maxlength: 30
+		     	maxlength: 50
 		     },
 		     suspectApproximateHeight: {
-		     	maxlength: 10
+		     	maxlength: 50
 		     },
 		     suspectApproximateWeight: {
-		     	maxlength: 10
+		     	maxlength: 50
 		     },
 		     suspectFacialHair: {
 		     	maxlength: 100
 		     },
 		     otherPhysicalCharacteristics: {
 		     	maxlength: 1000
-		     },
+		     }
 		   }
-		 })
+		 });
 	},
 
 	close: function() {

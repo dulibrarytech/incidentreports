@@ -28,11 +28,11 @@ userUtils = (function($) {
 			data: formData,
 			success: function (response) {
 
+	 			alert(response.status);
 	 			if(response.status == "success") {
 
 					if(response.emailStatus == "success") {
 
-						 // token??
 						 systemUtils.sendMessage("Incident Report submitted.");
 					}
 					else {
@@ -40,8 +40,6 @@ userUtils = (function($) {
 						systemUtils.sendMessage("Incident Report submitted, error sending email notifications");
 						console.log("submitIncidentReportForm: Server reports email error, email notifications not sent");
 					}
-
-					// Store updated token from response
 
 					// Clear form
 					$('#incident-report').trigger("reset");

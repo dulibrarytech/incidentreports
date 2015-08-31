@@ -11,7 +11,7 @@ reportDetails = {
 
 		$("#dateOfReport").val(data.DateOfReport);
 		$("#reportCompletedBy").val(data.ReportCompletedBy);
-		$("#title").val(data.title);
+		$("#title").val(data.Title);
 		$("#department").val(data.Department);
 		$("#extension").val(data.Extension);
 		$("#dateOfOffense").val(data.DateOfOffense);
@@ -59,13 +59,10 @@ reportDetails = {
 
 		$( "#incident-report" ).submit(function( event ) {
 			
+			event.preventDefault();
 			if($("#incident-report").valid()) {
 				
 				userUtils.editIncidentReport();
-				event.preventDefault();
-			}
-			else {
-				event.preventDefault();
 			}
 		});
 	},

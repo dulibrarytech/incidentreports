@@ -25,28 +25,37 @@ editUser = {
 			$('#sendType :nth-child(3)').prop('selected', true);
 		}
 
-		editUser.bindEvents();
 		editUser.addFormValidation();
+		editUser.bindEvents();
 	},
 
 	bindEvents: function() {
 
-		$( "#edit-user-data" ).submit(function( event ) {
+		$( "#save-user-data" ).click(function( event ) {
 			
-			if(true) {  //$("#edit-user-data").valid()
+			event.preventDefault();
+			//var form = $("#edit-user-data").valid();
+			if($("#edit-user-data").valid()) {  //$("#edit-user-data").valid()
 				
 				userUtils.submitUserUpdate();
-				event.preventDefault();
-			}
-			else {
-				event.preventDefault();
 			}
 		});
 	},
 
 	addFormValidation: function() {
 
-		
+		$("#edit-user-data").validate({
+		   rules: {
+		     userName: {
+		     	required: true,
+		     	maxlength: 50
+		     },
+		     userEmail: {
+		     	required: true,
+		     	maxlength: 100
+		     }
+		   }
+		 });
 	},
 
 	close: function() {
@@ -59,14 +68,29 @@ addUser = {
 	render: function(data) {
 
 		$('#admin :nth-child(2)').prop('selected', true);
+		$("form#edit-user-data input[value='Save']").attr("value", "Add User");
 		this.init();
 	},
 
-	// Refactor the edit user template to use for user add
+	// Refactor the edit user template for user add
 	init: function() {
 
-		$("form#edit-user-data input[value='Save']").attr("value", "Add User");
-		$("form#edit-user-data input[value='Add User']").attr("onclick", "userUtils.submitNewUserInfo()");
+		//$("form#edit-user-data input[value='Save']").attr("value", "Add User");
+		//$("form#edit-user-data input[value='Add User']").attr("onclick", "userUtils.submitNewUserInfo()");
+		editUser.addFormValidation();
+		this.bindEvents();
+	},
+
+	bindEvents: function() {
+
+		$( "#save-user-data" ).click(function( event ) {
+			
+			event.preventDefault();
+			if($("#edit-user-data").valid()) {  
+				
+				userUtils.submitNewUserInfo();
+			}
+		});
 	},
 
 	clearFields: function() {
