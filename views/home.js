@@ -36,6 +36,12 @@ home = {
 		     	$( "#incident-report" ).submit();
 		   }
 		});
+
+		// Set focus on submit button with focusout of any form element (except button!)
+		$( "#incident-report" ).children().not("#ir-form-submit").focusout(function() {
+		   
+		    $( "#ir-form-submit" ).focus();
+		});
 	},
 
 	addFormValidation: function() {

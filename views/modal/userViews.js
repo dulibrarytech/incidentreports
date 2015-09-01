@@ -49,11 +49,11 @@ editUser = {
 		   }
 		});
 
-		// Set focus on Save button with focusout of any form element
-		// $( "#edit-user-data" ).children().focusout(function() {
+		// Set focus on submit button with focusout of any form element (except button!)
+		$( "#edit-user-data" ).children().not("#save-user-data").focusout(function() {
 		   
-		//     $( "#save-user-data" ).focus();
-		// });
+		    $( "#save-user-data" ).focus();
+		});
 	},
 
 	addFormValidation: function() {
