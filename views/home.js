@@ -28,6 +28,14 @@ home = {
 				userUtils.submitIncidentReportForm();
 			}
 		});
+
+		// Trigger submit with 'enter' keypress
+		$( '#incident-report' ).bind('keypress', function(e){
+
+		   if ( e.keyCode == 13 ) {
+		     	$( "#incident-report" ).submit();
+		   }
+		});
 	},
 
 	addFormValidation: function() {

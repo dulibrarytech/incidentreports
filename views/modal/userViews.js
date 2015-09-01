@@ -40,6 +40,20 @@ editUser = {
 				userUtils.submitUserUpdate();
 			}
 		});
+
+		// Trigger submit with 'enter' keypress
+		$( '#edit-user-data' ).bind('keypress', function(e){
+
+		   if ( e.keyCode == 13 ) {
+		     	$( "#save-user-data" ).click();
+		   }
+		});
+
+		// Set focus on Save button with focusout of any form element
+		// $( "#edit-user-data" ).children().focusout(function() {
+		   
+		//     $( "#save-user-data" ).focus();
+		// });
 	},
 
 	addFormValidation: function() {
