@@ -6,8 +6,8 @@ dashboard = {
 
 	init: function() {
 
-		this.bindEvents();
 		this.addFormValidation();
+		this.bindEvents();
 	},
 
 	render: function(tableData) {
@@ -31,14 +31,17 @@ dashboard = {
 
 	bindEvents: function() {
 
-		$( "#report-search-form" ).submit(function( event ) {
+		// jQuery validation seems to be conflicting with the datepicker... using this quick workaround to validate 9-1-15
+		$( "#submit-report-search" ).click(function( event ) {
 			
-			if($("#report-search-form").valid()) {
-				//userUtils.searchByOffenseType();
-				alert("submitting");
-			}
-			else {
-				event.preventDefault();
+			// $("#report-search-form").removeAttr('novalidate');
+			event.preventDefault();
+			// if($("#report-search-form").valid()) {
+			// 	alert("pass validation...");
+			// }
+			if(dashboard.validateSearchForm()) {
+
+				userUtils.searchByOffenseType();
 			}
 		});
 	},
@@ -101,19 +104,21 @@ dashboard = {
 
 	addFormValidation: function() {
 		
-		$("#report-search-form").validate({
-		   rules: {
-		     searchField: {
-		     	length: 100
-		     },
-		     fromDate: {
-		     	date: true
-		     },
-		     toDate: {
-		     	date: true
-		     }
-		   }
-		 });
+		// $("#report-search-form").validate({
+		//    rules: {
+		//      searchField: {
+		//      	length: 100
+		//      }
+		//    }
+		//  });
+	},
+
+	validateSearchForm: function() {
+
+		// Quick workaround for jquery validation issues
+		// Vaidate search field length.  
+		// Datepicker will force (non-malicious) user to use date.  Offense Narrative need only be restricted by length
+		return ($("#fromDate").val().length <= 10) && ($("#toDate").val().length <= 10) && ($("#offenseType").val().length <= 1000);
 	},
 
 	close: function() {

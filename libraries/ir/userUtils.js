@@ -28,7 +28,6 @@ userUtils = (function($) {
 			data: formData,
 			success: function (response) {
 
-	 			alert(response.status);
 	 			if(response.status == "success") {
 
 					if(response.emailStatus == "success") {

@@ -1,4 +1,4 @@
-<form class="ir-form" id="tracknum-search-form" method="post">
+<form class="ir-form" id="tracknum-search-form" >
 	<div class="inline-form-row">
 		<label for="trackingNumber">Search by Tracking Number:</label>
 		<input id="trackingNumber" name="id" type="text"/>
@@ -16,7 +16,7 @@
 		<label>To:</label>
 		<input id="toDate" class="date-input" name="toDate" type="text" />
 
-		<input type="submit" value="Search"/>
+		<input type="button" id="submit-report-search" value="Search"/>
 	</div>
 </form>
 
@@ -24,11 +24,13 @@
   $(function() {
     $( "#fromDate" ).datepicker({
       changeMonth: true,
-      changeYear: true
+      changeYear: true,
+      dateFormat: 'yy-mm-dd'
     });
     $( "#toDate" ).datepicker({
       changeMonth: true,
-      changeYear: true
+      changeYear: true,
+      dateFormat: 'yy-mm-dd'
     });
   });
 </script>
