@@ -106,6 +106,20 @@ addUser = {
 				userUtils.submitNewUserInfo();
 			}
 		});
+
+		// Trigger submit with 'enter' keypress
+		$( '#edit-user-data' ).bind('keypress', function(e){
+
+		   if ( e.keyCode == 13 ) {
+		     	$( "#save-user-data" ).click();
+		   }
+		});
+
+		// Set focus on submit button with focusout of any form element (except button!)
+		$( "#edit-user-data" ).children().not("#save-user-data").focusout(function() {
+		   
+		    $( "#save-user-data" ).focus();
+		});
 	},
 
 	clearFields: function() {
