@@ -158,4 +158,19 @@
 	<input type="submit" id="ir-form-submit" value="Submit"/><span id="message-view"></span>
 </form>
 
+<script>
+  $(function() {
+    $( "#dateOfReport" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: 'yy-mm-dd'
+    });
+    $( "#dateOfOffense" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: 'yy-mm-dd'
+    });
+  });
+</script>
+
 
