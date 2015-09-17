@@ -38,10 +38,10 @@ home = {
 		});
 
 		// Set focus on submit button with focusout of any form element (except button!)
-		$( "#incident-report" ).children().not("#ir-form-submit").focusout(function() {
+		// $( "#incident-report" ).children().not("#ir-form-submit").focusout(function() {
 		   
-		    $( "#ir-form-submit" ).focus();
-		});
+		//     $( "#ir-form-submit" ).focus();
+		// });
 	},
 
 	addFormValidation: function() {

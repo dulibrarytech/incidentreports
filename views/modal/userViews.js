@@ -50,10 +50,10 @@ editUser = {
 		});
 
 		// Set focus on submit button with focusout of any form element (except button!)
-		$( "#edit-user-data" ).children().not("#save-user-data").focusout(function() {
+		// $( "#edit-user-data" ).children().not("#save-user-data").focusout(function() {
 		   
-		    $( "#save-user-data" ).focus();
-		});
+		//     $( "#save-user-data" ).focus();
+		// });
 	},
 
 	addFormValidation: function() {
@@ -116,10 +116,10 @@ addUser = {
 		});
 
 		// Set focus on submit button with focusout of any form element (except button!)
-		$( "#edit-user-data" ).children().not("#save-user-data").focusout(function() {
+		// $( "#edit-user-data" ).children().not("#save-user-data").focusout(function() {
 		   
-		    $( "#save-user-data" ).focus();
-		});
+		//     $( "#save-user-data" ).focus();
+		// });
 	},
 
 	clearFields: function() {
