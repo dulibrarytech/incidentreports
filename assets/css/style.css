@@ -494,3 +494,25 @@ form#edit-user-data {
 
 	margin-bottom: 0;
 }
+
+div#message-window {
+
+	position: fixed;
+	width: 20%;
+	min-height: 150px;
+	background-color: white;
+	z-index: 2000;
+	top: 30%;
+	left: 40%;
+
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 3px;
+
+	text-align: center;
+}
+
+div#message-window p {
+
+	margin-top: 60px;
+}

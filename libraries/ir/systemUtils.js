@@ -52,11 +52,16 @@ systemUtils = (function($) {
 
 	sendMessage = function(message) {
 
-		$('#message-view').html("");
-		$('#message-view').html(message);
+		$('#content-wrapper').append("<div id='message-window'></div>");
+
+		// $('#message-view').html("");
+		// $('#message-view').html(message);
+		var messageHTML = "<p><h4>" + message + "</h4></p>";
+		$('#message-window').html(messageHTML);
 		
 		setTimeout( function() { 
-			$('#message-view').html("");
+			//$('#message-view').html("");
+			$('#message-window').remove();
 		}, msgTimeout);
 	};
 
