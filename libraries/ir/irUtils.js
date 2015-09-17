@@ -61,13 +61,13 @@ irUtils = (function($) {
 				else {
 
 					console.log("Cannot retrieve report data");
-					sendMessage("Server error: Please contact Systems support");
+					systemUtils.sendMessage("Server error: Please contact Systems support");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
                 console.log("Status: " + textStatus + " Message: " + errorThrown);
-               	sendMessage("Server error: Please contact Systems support");
+               	systemUtils.sendMessage("Server error: Please contact Systems support");
             }
 		};
 
@@ -94,13 +94,13 @@ irUtils = (function($) {
 				else {
 
 					console.log("Cannot retrieve report data");
-					sendMessage("Server error: Please contact Systems support");
+					systemUtils.sendMessage("Server error: Please contact Systems support");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
                 console.log("Status: " + textStatus + " Message: " + errorThrown);
-               	sendMessage("Server error: Please contact Systems support");
+               	systemUtils.sendMessage("Server error: Please contact Systems support");
             }
 		};
 
