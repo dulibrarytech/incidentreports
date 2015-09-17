@@ -130,7 +130,7 @@ systemUtils = (function($) {
 			data: postData,
 			success: function (response) {
 
-				if(response != "invalid") {
+				if(response.status == "success") {
 
 					// establishSesion() ?
 					sessionStorage.setItem("user_token", response.token);
