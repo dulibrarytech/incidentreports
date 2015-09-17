@@ -363,7 +363,9 @@ userUtils = (function($) {
 		},
 		removeUserData: function(userID) {
 
-			removeUserData(userID);
+			if(confirm("Remove user?")) {
+				removeUserData(userID);
+			}
 		},
 		addNewUser: function() {
 
