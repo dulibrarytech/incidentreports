@@ -40,10 +40,14 @@ systemUtils = (function($) {
         }
 
 		$(document).ajaxStart(function() {
+            // Disable all submit buttons
+            //$(".submit-button").prop( "disabled", true );
             // $.fancybox.showLoading();
         });
 
         $(document).ajaxStop(function() {
+            // Enable all submit buttons
+            //$(".submit-button").prop( "disabled", false );
             // $.fancybox.hideLoading();
         });
 
@@ -58,10 +62,12 @@ systemUtils = (function($) {
 		// $('#message-view').html(message);
 		var messageHTML = "<p><h4>" + message + "</h4></p>";
 		$('#message-window').html(messageHTML);
+		$(".submit-button").prop( "disabled", true );
 		
 		setTimeout( function() { 
 			//$('#message-view').html("");
 			$('#message-window').remove();
+			$(".submit-button").prop( "disabled", false );
 		}, msgTimeout);
 	};
 
