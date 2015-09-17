@@ -44,6 +44,34 @@ dashboard = {
 				userUtils.searchByOffenseType();
 			}
 		});
+
+		// Trigger submit with 'enter' keypress
+		$( '#tracknum-search-form' ).bind('keypress', function(e){
+
+		   if ( e.keyCode == 13 ) {
+		   	    e.preventDefault();
+		     	$( "#submit-tracknum-search" ).click();
+		   }
+		});
+
+		// Trigger submit with 'enter' keypress
+		$( '#report-search-form' ).bind('keypress', function(e){
+
+		   if ( e.keyCode == 13 ) {
+		     	e.preventDefault();
+		     	$( "#submit-report-search" ).click();
+		   }
+		});
+
+		// Set focus on submit button after entering a date, for easy submit with enter key
+		$( "#fromDate" ).focusout(function() {
+		   
+		    $( "#submit-report-search" ).focus();
+		});
+		$( "#toDate" ).focusout(function() {
+		   
+		    $( "#submit-report-search" ).focus();
+		});
 	},
 
 	buildTable: function(tableData) {
