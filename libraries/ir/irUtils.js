@@ -60,13 +60,13 @@ irUtils = (function($) {
 				}
 				else {
 
-					console.log("loadDashboard: Cannot retrieve report data");
+					console.log("Cannot retrieve report data");
 					sendMessage("Server error: Please contact Systems support");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
-                console.log("loadDashboard Status: " + textStatus + " Message: " + errorThrown);
+                console.log("Status: " + textStatus + " Message: " + errorThrown);
                	sendMessage("Server error: Please contact Systems support");
             }
 		};
@@ -93,13 +93,13 @@ irUtils = (function($) {
 				}
 				else {
 
-					console.log("loadIncidentReports: Cannot retrieve report data");
+					console.log("Cannot retrieve report data");
 					sendMessage("Server error: Please contact Systems support");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
-                console.log("loadIncidentReports Status: " + textStatus + " Message: " + errorThrown);
+                console.log("Status: " + textStatus + " Message: " + errorThrown);
                	sendMessage("Server error: Please contact Systems support");
             }
 		};

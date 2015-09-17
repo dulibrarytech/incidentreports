@@ -37,7 +37,7 @@ userUtils = (function($) {
 					else {
 
 						systemUtils.sendMessage("Incident Report submitted, error sending email notifications");
-						console.log("submitIncidentReportForm: Server reports email error, email notifications not sent");
+						console.log("Server reports email error, email notifications not sent");
 					}
 
 					// Clear form
@@ -45,13 +45,13 @@ userUtils = (function($) {
 				}
 				else {
 
-					console.log("submitIncidentReportForm: Server reports error when writing to the database");
+					console.log("Server reports error when writing to the database");
 					systemUtils.sendMessage("Server error: Please contact Systems support");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
-                console.log("submitIncidentReportForm Status: " + textStatus + " Message: " + errorThrown);
+                console.log("Status: " + textStatus + " Message: " + errorThrown);
                	systemUtils.sendMessage("Server error: Please contact Systems support");
             }
 		};
@@ -81,13 +81,13 @@ userUtils = (function($) {
 				}
 				else {
 
-					console.log("editIncidentReport: Server reports error when writing to the database");
+					console.log("Server reports error when writing to the database");
 					systemUtils.sendMessage("Server error: Please contact Systems support");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
-                console.log("editIncidentReport Status: " + textStatus + " Message: " + errorThrown);
+                console.log("Status: " + textStatus + " Message: " + errorThrown);
                	systemUtils.sendMessage("Server error: Please contact Systems support");
             }
 		};
@@ -113,7 +113,7 @@ userUtils = (function($) {
 		}
 		else {
 
-			console.log("openDetailsDialogWindow() error: loader object not found for template!");
+			console.log("Error: loader object not found for template!");
 		}
 	};
 
@@ -164,13 +164,13 @@ userUtils = (function($) {
 				}
 				else {
 
-					console.log("submitUserUpdate: Server reports error when writing to the database");
+					console.log("Server reports error when writing to the database");
 					systemUtils.sendMessage("Server error: Please contact Systems support");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
-                console.log("submitUserUpdate Status: " + textStatus + " Message: " + errorThrown);
+                console.log("Status: " + textStatus + " Message: " + errorThrown);
                	systemUtils.sendMessage("Server error: Please contact Systems support");
             }
 		};
@@ -196,13 +196,13 @@ userUtils = (function($) {
 	 			}
 	 			else {
 
-					console.log("removeUserData: Server reports database error");
+					console.log("Server reports database error");
 					systemUtils.sendMessage("Server error: Please contact Systems support");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
-                console.log("removeUserData Status: " + textStatus + " Message: " + errorThrown);
+                console.log("Status: " + textStatus + " Message: " + errorThrown);
                	systemUtils.sendMessage("Server error: Please contact Systems support");
             }
 		};
@@ -238,13 +238,13 @@ userUtils = (function($) {
 				}
 				else {
 
-					console.log("submitNewUserInfo: Server reports error writing to the database");
+					console.log("Server reports error writing to the database");
 					systemUtils.sendMessage("Server error: Please contact Systems support");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
-                console.log("submitNewUserInfo Status: " + textStatus + " Message: " + errorThrown);
+                console.log("Status: " + textStatus + " Message: " + errorThrown);
                	systemUtils.sendMessage("Server error: Please contact Systems support");
             }
 		};
@@ -284,13 +284,13 @@ userUtils = (function($) {
 					else {
 
 						//systemUtils.error("searchByTrackingNumber", "Server error"); // systemUtils.error(reference, message)  TODO
-						console.log("searchByTrackingNumber: Server Error");
+						console.log("Server Error");
 						systemUtils.sendMessage("Server error: Please contact Systems support");
 					}
 				},
 	            error: function ( jqXHR, textStatus, errorThrown ) {
 
-	                console.log("searchByTrackingNumber Status: " + textStatus + " Message: " + errorThrown);
+	                console.log("Status: " + textStatus + " Message: " + errorThrown);
 	               	systemUtils.sendMessage("Server error: Please contact Systems support");
 	            }
 			};
@@ -325,13 +325,13 @@ userUtils = (function($) {
 				else {
 
 					//systemUtils.error("searchByTrackingNumber", "Server error"); // systemUtils.error(reference, message)  TODO
-					console.log("searchByOffenseType: Server Error");
+					console.log("Server Error");
 					systemUtils.sendMessage("Server error: Please contact Systems support");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
-                console.log("searchByOffenseType Status: " + textStatus + " Message: " + errorThrown);
+                console.log("Status: " + textStatus + " Message: " + errorThrown);
                	systemUtils.sendMessage("Server error: Please contact Systems support");
             }
 		};

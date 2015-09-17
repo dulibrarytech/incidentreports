@@ -101,7 +101,7 @@ systemUtils = (function($) {
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
-                console.log("validateLocalSession Status: " + textStatus + " Message: " + errorThrown);
+                console.log("Status: " + textStatus + " Message: " + errorThrown);
                 sendMessage("Server error: Please contact Systems support");
             }
 		};
@@ -156,7 +156,7 @@ systemUtils = (function($) {
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
 
-                console.log("submitLoginForm Status: " + textStatus + " Message: " + errorThrown);
+                console.log("Status: " + textStatus + " Message: " + errorThrown);
                	sendMessage("Server error: Please contact Systems support");
             }
 		};

@@ -36,7 +36,7 @@ viewUtils = (function($) {
 				}
 				else {
 
-					console.log("renderTemplate() error: view not found for template '" + template + "'!");
+					console.log("Error: view not found for template '" + template + "'!");
 				}
 			});
 
