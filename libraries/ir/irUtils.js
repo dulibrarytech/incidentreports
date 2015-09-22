@@ -8,7 +8,8 @@ irUtils = (function($) {
 		getCachedReport,
 		refreshReportsTable,
 		clearReportsSearchForm,
-		setCurrentReport;
+		setCurrentReport,
+		getAutoSuggestions;
 
 	getCachedReport = function(reportID) {
 
@@ -141,6 +142,28 @@ irUtils = (function($) {
 		sessionStorage.removeItem("current_report_id");
 	};
 
+	addIRFormAutoSuggest = function() {
+
+		var fieldData = {fields : "freep,freep,freep,freep"};
+
+		// Get data
+		// Request data from all reports in the database, for the dashboard display
+		requestObj = {
+
+			type: "GET",
+			url: service_url + _searchIRFormAutoSuggest,
+			dataType: "json", 
+			data: fieldData,
+			success: function (response) {
+				alert(response);
+			},
+            error: function ( jqXHR, textStatus, errorThrown ) {
+                console.log("Cannot retrieve form auto suggest data. Status: " + textStatus + " Message: " + errorThrown);
+            }
+		};
+		systemUtils.doAjax(requestObj); 
+	};
+
 	return {
 
 		getCachedReport: function(reportID) {
@@ -182,7 +205,11 @@ irUtils = (function($) {
 		removeUserSessionData: function() {
 
 			removeUserSessionData();
+		},
+		addIRFormAutoSuggest: function() {
+
+			return addIRFormAutoSuggest();
 		}
 	};
-s
+
 }(jQuery));

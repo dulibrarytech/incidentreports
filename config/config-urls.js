@@ -23,3 +23,4 @@ var _removeUserData = "users/remove";
 var _addUserData = "users/add";
 var _searchByTrackNum = "search/id";
 var _searchReports = "search/reports";
+var _searchIRFormAutoSuggest = "search/complete";
