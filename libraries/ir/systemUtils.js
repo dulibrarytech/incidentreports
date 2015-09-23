@@ -54,7 +54,15 @@ systemUtils = (function($) {
 		$.ajax(requestObj);
 	};
 
-	sendMessage = function(message) {
+	sendMessage = function(message,timeout) {
+
+		// Use default message timeout if not set
+		if(typeof timeout == 'undefined') {
+			timeout = msgTimeout;
+		}
+		else if(timeout == 0) {
+			timeout = 10000; // keep it open a long time
+		}
 
 		$('#content-wrapper').append("<div id='message-window'></div>");
 
@@ -68,7 +76,7 @@ systemUtils = (function($) {
 			//$('#message-view').html("");
 			$('#message-window').remove();
 			$(".submit-button").prop( "disabled", false );
-		}, msgTimeout);
+		}, timeout);
 	};
 
 	// Sends empty post request, server will verify header.
@@ -91,7 +99,8 @@ systemUtils = (function($) {
 				else if(isValidSession()) {
 
 					logout();
-					$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
+					//$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
+					sendMessage("<h3>Session has expired, please <span class='hot-text' onclick='systemUtils.login()'>login</span> again</h3>",0);
 					viewUtils.showAuthenticatedMenulinks(false);
 				}
 				else {
@@ -197,9 +206,9 @@ systemUtils = (function($) {
 
 			doAjax(requestObj);
 		},
-		sendMessage: function(message) {
+		sendMessage: function(message,timeout) {
 
-			sendMessage(message);
+			sendMessage(message,timeout);
 		},
 		validateLocalSession: function() {
 
