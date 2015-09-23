@@ -517,3 +517,14 @@ div#message-window p {
 	margin-top: 60px;
 	padding: 10px;
 }
+
+span.red-text {
+
+	color: red;
+}
+
+span#required-field-blurb {
+
+/*	float: right;*/
+	
+}
