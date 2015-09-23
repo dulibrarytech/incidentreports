@@ -510,12 +510,18 @@ div#message-window {
 	border-radius: 3px;
 
 	text-align: center;
+	padding: 1em;
 }
 
 div#message-window p {
 
 	margin-top: 60px;
 	padding: 10px;
+}
+
+div#message-window * {
+
+	line-height: 1.5em;
 }
 
 span.red-text {
@@ -526,5 +532,5 @@ span.red-text {
 span#required-field-blurb {
 
 /*	float: right;*/
-	
+
 }
