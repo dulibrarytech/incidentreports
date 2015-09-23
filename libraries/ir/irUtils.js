@@ -177,7 +177,7 @@ irUtils = (function($) {
 			tempStr = field.substring(1,field.length);
 			temp = field.substring(0,1).toLowerCase();
 			tempStr = "#" + temp + tempStr; // create the form ID string
-			$(tempStr).autocomplete({ source : data[field] }); // Add auto suggest data to current field
+			$(tempStr).autocomplete({ source : data[field] }); // Add auto suggest data to corresponding form field (tempStr)
 		}
 	};
 
