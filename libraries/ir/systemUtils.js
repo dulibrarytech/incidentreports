@@ -56,27 +56,39 @@ systemUtils = (function($) {
 
 	sendMessage = function(message,timeout) {
 
+		// Append the window
+		$('#content-wrapper').append("<div id='message-window'></div>");
+
+		// Init the window
+		var messageHTML = "<p><h4>" + message + "</h4></p>";
+		$('#message-window').html(messageHTML);
+		$(".submit-button").prop( "disabled", true );
+
 		// Use default message timeout if not set
 		if(typeof timeout == 'undefined') {
 			timeout = msgTimeout;
 		}
-		else if(timeout == 0) {
-			timeout = 10000; // keep it open a long time
+
+		// If timeout is >= 0, there is no timeout and on-click close.  Message will persist until browser reload  
+		if(timeout > 0) {
+
+			$( "#message-window" ).click(function( event ) {
+			
+				event.preventDefault();
+				closeMessageDialog();
+			});
+
+			setTimeout( function() { 
+				//$('#message-view').html("");
+				closeMessageDialog();
+			}, timeout);
 		}
+	};
 
-		$('#content-wrapper').append("<div id='message-window'></div>");
+	closeMessageDialog = function() {
 
-		// $('#message-view').html("");
-		// $('#message-view').html(message);
-		var messageHTML = "<p><h4>" + message + "</h4></p>";
-		$('#message-window').html(messageHTML);
-		$(".submit-button").prop( "disabled", true );
-		
-		setTimeout( function() { 
-			//$('#message-view').html("");
-			$('#message-window').remove();
-			$(".submit-button").prop( "disabled", false );
-		}, timeout);
+		$('#message-window').remove();
+		$(".submit-button").prop( "disabled", false );
 	};
 
 	// Sends empty post request, server will verify header.
@@ -100,8 +112,9 @@ systemUtils = (function($) {
 
 					logout();
 					//$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
-					sendMessage("<h3>Session has expired, please <span class='hot-text' onclick='systemUtils.login()'>login</span> again</h3>",0);
+					sendMessage("<h3>Session has expired, please <span class='hot-text' onclick='systemUtils.login()'>login</span> again</h3>",-1); // persist message until browser reload
 					viewUtils.showAuthenticatedMenulinks(false);
+					$('#content').find('*').prop('disabled',true); // Disable all on dashboard
 				}
 				else {
 
@@ -193,7 +206,7 @@ systemUtils = (function($) {
 
 		viewUtils.showAuthenticatedMenulinks(false);
 		viewUtils.killModal();
-		viewUtils.renderTemplate("home");
+		//viewUtils.renderTemplate("home");
 	};
 
 	return {
@@ -253,6 +266,7 @@ systemUtils = (function($) {
 		login: function() {
 
 			//loadView("login");
+			closeMessageDialog();
 			viewUtils.renderTemplate('login');
 		},
 		/* External calls to logout() land here.  Display a universal message and re-login link to the user */  

@@ -21,6 +21,7 @@ $(function() {
 
         //viewUtils.renderTemplate('home');
         systemUtils.logout(); 
+        viewUtils.renderTemplate('home');
     }); 
 
     Path.map("#/home").to(function(){
