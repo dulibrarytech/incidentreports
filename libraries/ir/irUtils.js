@@ -142,12 +142,13 @@ irUtils = (function($) {
 		sessionStorage.removeItem("current_report_id");
 	};
 
+	// Init the Incident Reports form auto-suggest fields
 	addIRFormAutoSuggest = function() {
 
-		var fieldData = {fields : "freep,freep,freep,freep"};
+		// List any Incident Reports form input field ids that should provide an auto-suggest dropdown
+		var fieldData = {fields : "ReportCompletedBy"};
 
-		// Get data
-		// Request data from all reports in the database, for the dashboard display
+		// Get requested field data from all reports in the database
 		requestObj = {
 
 			type: "GET",
@@ -155,13 +156,29 @@ irUtils = (function($) {
 			dataType: "json", 
 			data: fieldData,
 			success: function (response) {
-				alert(response);
+				if(response.status == "success") {
+					// Init jquery auto suggest for all fields present in the response data
+					initIRFormAutoSuggest(response.data);
+				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
                 console.log("Cannot retrieve form auto suggest data. Status: " + textStatus + " Message: " + errorThrown);
             }
 		};
 		systemUtils.doAjax(requestObj); 
+	};
+
+	initIRFormAutoSuggest = function(data) {
+
+		// Chop the head off the field id string and replace it with a lower-case head, to match the DB field with the form id!
+		var tempStr = "", temp = "";
+		for(var field in data) {
+
+			tempStr = field.substring(1,field.length);
+			temp = field.substring(0,1).toLowerCase();
+			tempStr = "#" + temp + tempStr; // create the form ID string
+			$(tempStr).autocomplete({ source : data[field] }); // Add auto suggest data to current field
+		}
 	};
 
 	return {
