@@ -142,11 +142,12 @@ irUtils = (function($) {
 		sessionStorage.removeItem("current_report_id");
 	};
 
-	// Init the Incident Reports form auto-suggest fields
+	// Add the Incident Reports form auto-suggest data
 	addIRFormAutoSuggest = function() {
 
 		// List any Incident Reports form input field ids that should provide an auto-suggest dropdown
-		var fieldData = {fields : "ReportCompletedBy"};
+		// Individual fields are separated by a comma
+		var fieldData = {fields : "reportCompletedBy,title,department,extension,natureOfOffense,victimGender,victimRace,suspectGender,suspectRace,victimUniversityAffiliation,suspectUniversityAffiliation"};
 
 		// Get requested field data from all reports in the database
 		requestObj = {
@@ -168,6 +169,7 @@ irUtils = (function($) {
 		systemUtils.doAjax(requestObj); 
 	};
 
+	// Init the Incident Reports form auto-suggest fields
 	initIRFormAutoSuggest = function(data) {
 
 		// Chop the head off the field id string and replace it with a lower-case head, to match the DB field with the form id!
