@@ -42,13 +42,13 @@ systemUtils = (function($) {
 		$(document).ajaxStart(function() {
             // Disable all submit buttons
             //$(".submit-button").prop( "disabled", true );
-            // $.fancybox.showLoading();
+            $.fancybox.showLoading();
         });
 
         $(document).ajaxStop(function() {
             // Enable all submit buttons
             //$(".submit-button").prop( "disabled", false );
-            // $.fancybox.hideLoading();
+            $.fancybox.hideLoading();
         });
 
 		$.ajax(requestObj);
