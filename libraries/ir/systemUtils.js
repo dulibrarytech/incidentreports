@@ -139,8 +139,12 @@ systemUtils = (function($) {
 
 	isAdminUser = function() {
 
+		var admin = false;
 		var profile = JSON.parse(sessionStorage.getItem("user_profile"));
-		return (typeof profile != 'null' && profile['admin'] == "1");
+		if(typeof profile != 'null') {
+			admin = (profile['admin'] == "1");
+		}
+		return admin;
 	};
 
 	submitLoginForm = function() {
