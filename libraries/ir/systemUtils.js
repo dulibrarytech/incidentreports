@@ -140,7 +140,7 @@ systemUtils = (function($) {
 	isAdminUser = function() {
 
 		var profile = JSON.parse(sessionStorage.getItem("user_profile"));
-		return (typeof profile['admin'] != 'null' && profile['admin'] == "1");
+		return (typeof profile != 'null' && profile['admin'] == "1");
 	};
 
 	submitLoginForm = function() {
