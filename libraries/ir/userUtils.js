@@ -217,39 +217,42 @@ userUtils = (function($) {
 
 	submitNewUserInfo = function() {
 
-		// Get data from form
-		var formData = $('#edit-user-data').serialize();
+		if(systemUtils.validateLocalSession()) {
 
-		requestObj = {
+			// Get data from form
+			var formData = $('#edit-user-data').serialize();
 
-			type: "POST",
-			url: service_url + _addUserData,
-			dataType: "json", 
-			data: formData,
-			success: function (response) {
+			requestObj = {
 
-	 			if(response.status == "success") {
+				type: "POST",
+				url: service_url + _addUserData,
+				dataType: "json", 
+				data: formData,
+				success: function (response) {
 
-	 				// Send message
-	 				systemUtils.sendMessage("User added successfully.");
-	 				systemUtils.updateSessionToken(response.token);
-	 				//addUser.clearFields();
-	 				viewUtils.killModal();
-				}
-				else {
+		 			if(response.status == "success") {
 
-					console.log("Server reports error writing to the database");
-					systemUtils.sendMessage("Server error: Please contact Systems support");
-				}
-			},
-            error: function ( jqXHR, textStatus, errorThrown ) {
+		 				// Send message
+		 				systemUtils.sendMessage("User added successfully.");
+		 				systemUtils.updateSessionToken(response.token);
+		 				//addUser.clearFields();
+		 				viewUtils.killModal();
+					}
+					else {
 
-                console.log("Status: " + textStatus + " Message: " + errorThrown);
-               	systemUtils.sendMessage("Server error: Please contact Systems support");
-            }
-		};
+						console.log("Server reports error writing to the database");
+						systemUtils.sendMessage("Server error: Please contact Systems support");
+					}
+				},
+	            error: function ( jqXHR, textStatus, errorThrown ) {
 
-		systemUtils.doAjax(requestObj);
+	                console.log("Status: " + textStatus + " Message: " + errorThrown);
+	               	systemUtils.sendMessage("Server error: Please contact Systems support");
+	            }
+			};
+
+			systemUtils.doAjax(requestObj);
+		}
 	};
 
 	searchByTrackingNumber = function() {

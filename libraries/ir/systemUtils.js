@@ -91,8 +91,13 @@ systemUtils = (function($) {
 		$(".submit-button").prop( "disabled", false );
 	};
 
-	// Sends empty post request, server will verify header.
+	/* Sends empty post request, server will verify header.
+	*
+	*  
+	*/
 	validateLocalSession = function() {
+
+		var isValid = false;
 
 		requestObj = {
 
@@ -107,6 +112,7 @@ systemUtils = (function($) {
 					sessionStorage.setItem("user_token", response); // store token with current timestamp
 					// irUtils.storeToken(response);  // FOR ABSTRACTION, that method will retrieve token per ir specs
 					viewUtils.showAuthenticatedMenulinks(true, isAdminUser());
+					isValid = true;
 				}
 				else if(isValidSession()) {
 
@@ -129,6 +135,8 @@ systemUtils = (function($) {
 		};
 
 		doAjax(requestObj);
+
+		return isValid;
 	};
 
 	isValidSession = function() {
@@ -229,7 +237,7 @@ systemUtils = (function($) {
 		},
 		validateLocalSession: function() {
 
-			validateLocalSession();
+			return validateLocalSession();
 		},
 		submitLoginForm: function() {
 

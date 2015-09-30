@@ -74,7 +74,9 @@ editUser = {
 
 	close: function() {
 		
-		location.reload();
+		if(systemUtils.isValidSession()) {
+			location.reload();
+		}
 	}
 };
 
@@ -132,6 +134,8 @@ addUser = {
 
 	close: function() {
 
-		location.reload();
+		if(systemUtils.isValidSession()) {
+			location.reload();
+		}
 	}
 };
