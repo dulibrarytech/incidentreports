@@ -26,14 +26,12 @@ $(function() {
 
     Path.map("#/home").to(function(){
 
-        systemUtils.validateLocalSession(); 
         viewUtils.renderTemplate('home');
     }); 
 
     Path.map("#/dashboard").to(function(){
         
-        systemUtils.validateLocalSession(); 
-        if(systemUtils.isValidSession()) {
+        if(systemUtils.validateLocalSession()) {
 
             // Get data from cache.  If cache empty, reload dashboard 
             var data = irUtils.getIncidentReports();
@@ -43,38 +41,21 @@ $(function() {
             }
             viewUtils.renderTemplate('dashboard',data); 
         }
-        else {
-
-            $("#main").html("<h2>401 Forbidden</h2>");
-            viewUtils.setURL("error");
-        }
     }); 
 
     Path.map("#/users").to(function(){
-        
-        systemUtils.validateLocalSession(); 
-        if(systemUtils.isValidSession()) {
+         
+        if(systemUtils.validateLocalSession()) {
 
-            if(systemUtils.isAdminUser()) {
-
-                irUtils.loadUsersView();
-            }
-            else {
-
-                $("#main").html("<h2>403 Unauthorized</h2>");
-                viewUtils.setURL("error");
-            }
-        }
-        else {
-
-            $("#main").html("<h2>401 Forbidden</h2>");
-            viewUtils.setURL("error");
+            irUtils.loadUsersView();
         }
     }); 
 
     Path.map("#/test").to(function(){
 
-        testLibFunctions.genericTestBlock();
+        if(systemUtils.isAdminUser()) {
+            testLibFunctions.genericTestBlock();
+        }
     }); 
 
     systemUtils.initIRApp();

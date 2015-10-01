@@ -94,11 +94,13 @@ systemUtils = (function($) {
 	// Sends empty post request, server will verify header.
 	validateLocalSession = function() {
 
+		var isValid = false;
 		requestObj = {
 
 			type: "POST",
 			dataType: "text",
 			url: service_url + "session/validate",
+			async: false,
 			success: function (response) {
 
 				// Only update local token and menu links
@@ -107,8 +109,9 @@ systemUtils = (function($) {
 					sessionStorage.setItem("user_token", response); // store token with current timestamp
 					// irUtils.storeToken(response);  // FOR ABSTRACTION, that method will retrieve token per ir specs
 					viewUtils.showAuthenticatedMenulinks(true, isAdminUser());
+					isValid = true;
 				}
-				else if(isValidSession()) {
+				else if(isValidSession()) { // If there is a local session, but server responds with invalid, assume it is expired
 
 					logout();
 					//$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
@@ -118,7 +121,8 @@ systemUtils = (function($) {
 				}
 				else {
 
-					viewUtils.showAuthenticatedMenulinks(false);
+					$("#main").html("<h2>401 Forbidden</h2>");
+            		viewUtils.setURL("error");
 				}
 			},
             error: function ( jqXHR, textStatus, errorThrown ) {
@@ -129,6 +133,8 @@ systemUtils = (function($) {
 		};
 
 		doAjax(requestObj);
+
+		return isValid;
 	};
 
 	isValidSession = function() {
