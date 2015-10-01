@@ -92,6 +92,9 @@ systemUtils = (function($) {
 	};
 
 	// Sends empty post request, server will verify header.
+	// Will store updated token received from server if current token was valid
+	// Will lock UI and display expiration message if token was valid but expired
+	// Will redirect to 403 if token was invalid
 	validateLocalSession = function() {
 
 		var isValid = false;
@@ -121,7 +124,7 @@ systemUtils = (function($) {
 				}
 				else {
 
-					$("#main").html("<h2>401 Forbidden</h2>");
+					$("#main").html("<h2>403 Unauthorized</h2>");
             		viewUtils.setURL("error");
 				}
 			},
