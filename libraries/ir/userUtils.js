@@ -283,7 +283,7 @@ userUtils = (function($) {
 			var trackNum = $("#trackingNumber").val();
 
 			// Validate
-			if(tracknum == "" || isNaN(trackNum)) { // Check if value is numeric
+			if(trackNum == "" || isNaN(trackNum)) { // Check if value is numeric
 
 				$("#trackingNumber").val("Please enter a number");
 			}
