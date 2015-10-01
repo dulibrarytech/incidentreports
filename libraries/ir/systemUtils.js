@@ -130,7 +130,8 @@ systemUtils = (function($) {
 
 					logout();
 					//$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
-					var messageText = "<h3>Session has expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>";
+					var messageText = "<h3>Session has expired, please <span class='hot-text' onclick='systemUtils.login()'>login</span> again</h3>";
+					//var messageText = "<h3>Session has expired, please <a href='#/login' id='login-link'>login</a> again</h3>";
 					sendMessage(messageText,-1,true); // persist message until browser reload
 					viewUtils.showAuthenticatedMenulinks(false);
 				}
@@ -288,6 +289,7 @@ systemUtils = (function($) {
 		// },
 		login: function() {
 
+			logout();
 			closeMessageDialog();
 			viewUtils.renderTemplate('login');
 		},

@@ -42,7 +42,6 @@ $(function() {
 
     Path.map("#/users").to(function(){
          
-        //alert("users");
         if(systemUtils.validateLocalSession()) {
            
             irUtils.loadUsersView();
