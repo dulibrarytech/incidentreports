@@ -197,34 +197,37 @@ userUtils = (function($) {
 
 		if(systemUtils.validateLocalSession()) {
 
-			requestObj = {
+			if(confirm("Remove user?")) {
 
-				type: "POST",
-				url: service_url + _removeUserData,
-				dataType: "json", 
-				data: {ID : userID},
-				success: function (response) {
+				requestObj = {
 
-		 			if(response.status == "success") {
+					type: "POST",
+					url: service_url + _removeUserData,
+					dataType: "json", 
+					data: {ID : userID},
+					success: function (response) {
 
-		 				//systemUtils.sendMessage("User removed successfully.");
-		 				systemUtils.updateSessionToken(response.token);
-		 				location.reload();
-		 			}
-		 			else {
+			 			if(response.status == "success") {
 
-						console.log("Server reports database error");
-						systemUtils.sendMessage("Server error: Please contact Systems support");
-					}
-				},
-	            error: function ( jqXHR, textStatus, errorThrown ) {
+			 				//systemUtils.sendMessage("User removed successfully.");
+			 				systemUtils.updateSessionToken(response.token);
+			 				location.reload();
+			 			}
+			 			else {
 
-	                console.log("Status: " + textStatus + " Message: " + errorThrown);
-	               	systemUtils.sendMessage("Server error: Please contact Systems support");
-	            }
-			};
+							console.log("Server reports database error");
+							systemUtils.sendMessage("Server error: Please contact Systems support");
+						}
+					},
+		            error: function ( jqXHR, textStatus, errorThrown ) {
 
-			systemUtils.doAjax(requestObj);
+		                console.log("Status: " + textStatus + " Message: " + errorThrown);
+		               	systemUtils.sendMessage("Server error: Please contact Systems support");
+		            }
+				};
+
+				systemUtils.doAjax(requestObj);
+			}
 		}
 	};
 
@@ -390,9 +393,7 @@ userUtils = (function($) {
 		},
 		removeUserData: function(userID) {
 
-			if(confirm("Remove user?")) {
-				removeUserData(userID);
-			}
+			removeUserData(userID);
 		},
 		addNewUser: function() {
 
