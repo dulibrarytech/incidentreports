@@ -247,7 +247,7 @@ systemUtils = (function($) {
 		},
 		validateLocalSession: function() {
 
-			validateLocalSession();
+			return validateLocalSession();
 		},
 		submitLoginForm: function() {
 
