@@ -128,7 +128,6 @@ systemUtils = (function($) {
 				}
 				else if(isValidSession()) { // If there is a local session, but server responds with invalid, assume it is expired
 
-					logout();
 					//$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
 					var messageText = "<h3>Session has expired, please <span class='hot-text' onclick='systemUtils.login()'>login</span> again</h3>";
 					//var messageText = "<h3>Session has expired, please <a href='#/login' id='login-link'>login</a> again</h3>";

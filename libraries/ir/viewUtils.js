@@ -113,7 +113,7 @@ viewUtils = (function($) {
 
 			// Remove 'modalFrame' div and modal blackout frame
 			$('#modalFrame').remove();  
-			//$('#blackout').remove(); 
+			$('#blackout').remove(); 
 
 			// Call the view's close() method
 			if(viewObject != null) {
