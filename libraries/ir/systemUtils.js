@@ -54,7 +54,11 @@ systemUtils = (function($) {
 		$.ajax(requestObj);
 	};
 
-	sendMessage = function(message,timeout) {
+	// Show the user a message in a modal window
+	// param string message 	The message to display
+	// param int timeout 		The amount of time to display the message window.  <0: persist until browser is reloaded; null: use default timeout; >0 set timeout to this value
+	// param boolean blackout	Blackout the UI under the message window (disable all)
+	sendMessage = function(message,timeout,blackout) {
 
 		// Append the window
 		$('#content-wrapper').append("<div id='message-window'></div>");
@@ -65,8 +69,13 @@ systemUtils = (function($) {
 		$(".submit-button").prop( "disabled", true );
 
 		// Use default message timeout if not set
-		if(typeof timeout == 'undefined') {
+		if(typeof timeout == 'undefined' || timeout == null) {
 			timeout = msgTimeout;
+		}
+
+		// Blackout and disable the UI under the message window
+		if(typeof blackout != 'undefined' && blackout == true) {
+			$("#wrapper").append('<div id="blackout"></div>');
 		}
 
 		// If timeout is >= 0, there is no timeout and on-click close.  Message will persist until browser reload  
@@ -89,6 +98,7 @@ systemUtils = (function($) {
 
 		$('#message-window').remove();
 		$(".submit-button").prop( "disabled", false );
+		$('#blackout').remove();
 	};
 
 	// Sends empty post request, server will verify header.
@@ -118,9 +128,8 @@ systemUtils = (function($) {
 
 					logout();
 					//$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
-					sendMessage("<h3>Session has expired, please <span class='hot-text' onclick='systemUtils.login()'>login</span> again</h3>",-1); // persist message until browser reload
+					sendMessage("<h3>Session has expired, please <span class='hot-text' onclick='systemUtils.login()'>login</span> again</h3>",-1,true); // persist message until browser reload
 					viewUtils.showAuthenticatedMenulinks(false);
-					$('#content').find('*').prop('disabled',true); // Disable all on dashboard
 				}
 				else {
 
@@ -232,9 +241,9 @@ systemUtils = (function($) {
 
 			doAjax(requestObj);
 		},
-		sendMessage: function(message,timeout) {
+		sendMessage: function(message,timeout,blackout) {
 
-			sendMessage(message,timeout);
+			sendMessage(message,timeout,blackout);
 		},
 		validateLocalSession: function() {
 
