@@ -7,14 +7,11 @@ $(function() {
     Path.map("#/login").to(function(){
         
         // check for local session.  If present do not load login view
-        if(systemUtils.isValidSession() == false) {
+        if(systemUtils.isValidSession() != false) {
 
-            viewUtils.renderTemplate('login');
+            systemUtils.logout(); 
         }
-        else {
-
-            history.go(-1);
-        }
+        viewUtils.renderTemplate('login');
     }); 
 
     Path.map("#/logout").to(function(){
@@ -45,6 +42,7 @@ $(function() {
 
     Path.map("#/users").to(function(){
          
+        alert("users");
         if(systemUtils.validateLocalSession()) {
            
             irUtils.loadUsersView();
