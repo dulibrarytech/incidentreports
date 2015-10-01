@@ -61,72 +61,81 @@ userUtils = (function($) {
 
 	editIncidentReport = function() {
 
-		//Get data from form
-		var formData = $('#incident-report').serialize();
-		var id = irUtils.getCurrentReportID();
+		if(systemUtils.validateLocalSession()) {
 
-		requestObj = {
+			//Get data from form
+			var formData = $('#incident-report').serialize();
+			var id = irUtils.getCurrentReportID();
 
-			type: "POST",
-			url: service_url + _editIR,
-			dataType: "json", 
-			data: formData + "&reportID=" + id,
-			success: function (response) {
+			requestObj = {
 
-	 			if(response.status == "success") {
+				type: "POST",
+				url: service_url + _editIR,
+				dataType: "json", 
+				data: formData + "&reportID=" + id,
+				success: function (response) {
 
-					systemUtils.sendMessage("Incident Report updated.");
-					systemUtils.updateSessionToken(response.token);
-					irUtils.loadDashboard();
-				}
-				else {
+		 			if(response.status == "success") {
 
-					console.log("Server reports error when writing to the database");
-					systemUtils.sendMessage("Server error: Please contact Systems support");
-				}
-			},
-            error: function ( jqXHR, textStatus, errorThrown ) {
+						systemUtils.sendMessage("Incident Report updated.");
+						systemUtils.updateSessionToken(response.token);
+						irUtils.loadDashboard();
+					}
+					else {
 
-                console.log("Status: " + textStatus + " Message: " + errorThrown);
-               	systemUtils.sendMessage("Server error: Please contact Systems support");
-            }
-		};
+						console.log("Server reports error when writing to the database");
+						systemUtils.sendMessage("Server error: Please contact Systems support");
+					}
+				},
+	            error: function ( jqXHR, textStatus, errorThrown ) {
 
-		systemUtils.doAjax(requestObj);
+	                console.log("Status: " + textStatus + " Message: " + errorThrown);
+	               	systemUtils.sendMessage("Server error: Please contact Systems support");
+	            }
+			};
+
+			systemUtils.doAjax(requestObj);
+		}
 	};
 
 	openDetailsDialogWindow = function(reportID) {
 
-		// Get instance of the renderDetails object
-		// var reportDetailsLoader = window['reportDetails'];
+		if(systemUtils.validateLocalSession()) {
 
-		// Get report data from cache
-		var report = irUtils.getCachedReport(reportID);
-		if(report == null) {
+			// Get instance of the renderDetails object
+			// var reportDetailsLoader = window['reportDetails'];
 
-			// TODO: Display message in message div on dialog form?
-		}
+			// Get report data from cache
+			var report = irUtils.getCachedReport(reportID);
+			if(report == null) {
 
-		if(typeof reportDetails != "undefined") {
+				// TODO: Display message in message div on dialog form?
+			}
 
-			viewUtils.openModalView(detailsTemplatePath, report, reportDetails);
-		}
-		else {
+			if(typeof reportDetails != "undefined") {
 
-			console.log("Error: loader object not found for template!");
+				viewUtils.openModalView(detailsTemplatePath, report, reportDetails);
+			}
+			else {
+
+				console.log("Error: loader object not found for template!");
+			}
 		}
 	};
 
 	openFullNarrativeWindow = function(reportID) {
 
-		var report = irUtils.getCachedReport(reportID);
-		if(report == null) {
+		if(systemUtils.validateLocalSession()) {
 
-			// TODO: Display message in message div on dialog form?
+			var report = irUtils.getCachedReport(reportID);
+			if(report == null) {
+
+				// TODO: Display message in message div on dialog form?
+			}
+
+			var narrativeWindow = '<div id="full-narrative-view"><p>' + report.OffenseNarrative + '</p></div>';
+			viewUtils.openModalView(narrativeWindow);
 		}
-
-		var narrativeWindow = '<div id="full-narrative-view"><p>' + report.OffenseNarrative + '</p></div>';
-		viewUtils.openModalView(narrativeWindow);
 	};
 
 	editUserData = function(userID) {
