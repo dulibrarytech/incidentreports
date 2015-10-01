@@ -128,7 +128,8 @@ systemUtils = (function($) {
 
 					logout();
 					//$('#content').html("<h3>Session expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>");
-					sendMessage("<h3>Session has expired, please <span class='hot-text' onclick='systemUtils.login()'>login</span> again</h3>",-1,true); // persist message until browser reload
+					var messageText = "<h3>Session has expired, please <span class='hot-text' onclick=' systemUtils.login()'>login</span> again</h3>";
+					sendMessage(messageText,-1,true); // persist message until browser reload
 					viewUtils.showAuthenticatedMenulinks(false);
 				}
 				else {
@@ -222,9 +223,7 @@ systemUtils = (function($) {
 		//$('#namestring').html("");
 		sessionStorage.removeItem("user_token");	
 		sessionStorage.removeItem("user_profile");
-		// sessionStorage.removeItem("report_data");	
-		// sessionStorage.removeItem("current_report_id");
-		irUtils.removeUserSessionData();
+		irUtils.removeUserSessionData(); // Local user vars
 
 		viewUtils.showAuthenticatedMenulinks(false);
 		viewUtils.killModal();
@@ -287,7 +286,6 @@ systemUtils = (function($) {
 		// },
 		login: function() {
 
-			//loadView("login");
 			closeMessageDialog();
 			viewUtils.renderTemplate('login');
 		},

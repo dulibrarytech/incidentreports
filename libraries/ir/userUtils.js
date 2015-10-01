@@ -140,83 +140,92 @@ userUtils = (function($) {
 
 	editUserData = function(userID) {
 
-		// Get the user data from the corresponding table row userID
-		var userData = [];
-		userData['username'] = $('td#username-' + userID).text();
-		userData['email'] = $('td#email-' + userID).text();
-		userData['admin'] = $('td#admin-' + userID).text();
-		userData['sendType'] = $('td#sendType-' + userID).text();
-		userData['userID'] = userID;
+		if(systemUtils.validateLocalSession()) {
 
-		viewUtils.openModalView(editUserTemplatePath, userData, editUser);
+			// Get the user data from the corresponding table row userID
+			var userData = [];
+			userData['username'] = $('td#username-' + userID).text();
+			userData['email'] = $('td#email-' + userID).text();
+			userData['admin'] = $('td#admin-' + userID).text();
+			userData['sendType'] = $('td#sendType-' + userID).text();
+			userData['userID'] = userID;
+
+			viewUtils.openModalView(editUserTemplatePath, userData, editUser);
+		}
 	};
 
 	submitUserUpdate = function() {
 
-		// Get data from form
-		var userID = $('form#edit-user-data').attr("data-internalid");	// Get stored userID from form
-		var formData = $('#edit-user-data').serialize() + '&userid=' + userID;
+		if(systemUtils.validateLocalSession()) {
 
-		requestObj = {
+			// Get data from form
+			var userID = $('form#edit-user-data').attr("data-internalid");	// Get stored userID from form
+			var formData = $('#edit-user-data').serialize() + '&userid=' + userID;
 
-			type: "PUT",
-			url: service_url + _editUserData,
-			dataType: "json", 
-			data: formData,
-			success: function (response) {
+			requestObj = {
 
-	 			if(response.status == "success") {
+				type: "PUT",
+				url: service_url + _editUserData,
+				dataType: "json", 
+				data: formData,
+				success: function (response) {
 
-	 				// Send message
-	 				systemUtils.sendMessage("User data updated successfully.");
-	 				systemUtils.updateSessionToken(response.token);
-				}
-				else {
+		 			if(response.status == "success") {
 
-					console.log("Server reports error when writing to the database");
-					systemUtils.sendMessage("Server error: Please contact Systems support");
-				}
-			},
-            error: function ( jqXHR, textStatus, errorThrown ) {
+		 				// Send message
+		 				systemUtils.sendMessage("User data updated successfully.");
+		 				systemUtils.updateSessionToken(response.token);
+					}
+					else {
 
-                console.log("Status: " + textStatus + " Message: " + errorThrown);
-               	systemUtils.sendMessage("Server error: Please contact Systems support");
-            }
-		};
+						console.log("Server reports error when writing to the database");
+						systemUtils.sendMessage("Server error: Please contact Systems support");
+					}
+				},
+	            error: function ( jqXHR, textStatus, errorThrown ) {
 
-		systemUtils.doAjax(requestObj);
+	                console.log("Status: " + textStatus + " Message: " + errorThrown);
+	               	systemUtils.sendMessage("Server error: Please contact Systems support");
+	            }
+			};
+
+			systemUtils.doAjax(requestObj);
+		}
 	};
 
 	removeUserData = function(userID) {
 
-		requestObj = {
+		if(systemUtils.validateLocalSession()) {
 
-			type: "POST",
-			url: service_url + _removeUserData,
-			dataType: "json", 
-			data: {ID : userID},
-			success: function (response) {
+			requestObj = {
 
-	 			if(response.status == "success") {
+				type: "POST",
+				url: service_url + _removeUserData,
+				dataType: "json", 
+				data: {ID : userID},
+				success: function (response) {
 
-	 				//systemUtils.sendMessage("User removed successfully.");
-	 				systemUtils.updateSessionToken(response.token);
-	 				location.reload();
-	 			}
-	 			else {
+		 			if(response.status == "success") {
 
-					console.log("Server reports database error");
-					systemUtils.sendMessage("Server error: Please contact Systems support");
-				}
-			},
-            error: function ( jqXHR, textStatus, errorThrown ) {
+		 				//systemUtils.sendMessage("User removed successfully.");
+		 				systemUtils.updateSessionToken(response.token);
+		 				location.reload();
+		 			}
+		 			else {
 
-                console.log("Status: " + textStatus + " Message: " + errorThrown);
-               	systemUtils.sendMessage("Server error: Please contact Systems support");
-            }
-		};
+						console.log("Server reports database error");
+						systemUtils.sendMessage("Server error: Please contact Systems support");
+					}
+				},
+	            error: function ( jqXHR, textStatus, errorThrown ) {
 
-		systemUtils.doAjax(requestObj);
+	                console.log("Status: " + textStatus + " Message: " + errorThrown);
+	               	systemUtils.sendMessage("Server error: Please contact Systems support");
+	            }
+			};
+
+			systemUtils.doAjax(requestObj);
+		}
 	};
 
 	addNewUser = function() {
@@ -226,66 +235,115 @@ userUtils = (function($) {
 
 	submitNewUserInfo = function() {
 
-		// Get data from form
-		var formData = $('#edit-user-data').serialize();
+		if(systemUtils.validateLocalSession()) {
 
-		requestObj = {
-
-			type: "POST",
-			url: service_url + _addUserData,
-			dataType: "json", 
-			data: formData,
-			success: function (response) {
-
-	 			if(response.status == "success") {
-
-	 				// Send message
-	 				systemUtils.sendMessage("User added successfully.");
-	 				systemUtils.updateSessionToken(response.token);
-	 				//addUser.clearFields();
-	 				viewUtils.killModal();
-				}
-				else {
-
-					console.log("Server reports error writing to the database");
-					systemUtils.sendMessage("Server error: Please contact Systems support");
-				}
-			},
-            error: function ( jqXHR, textStatus, errorThrown ) {
-
-                console.log("Status: " + textStatus + " Message: " + errorThrown);
-               	systemUtils.sendMessage("Server error: Please contact Systems support");
-            }
-		};
-
-		systemUtils.doAjax(requestObj);
-	};
-
-	searchByTrackingNumber = function() {
-
-		var trackNum = $("#trackingNumber").val();
-
-		// Validate
-		if(isNaN(trackNum)) { // Check if value is numeric
-
-			$("#trackingNumber").val("Please enter a number");
-		}
-		else if(trackNum.length > 5) { // Check if value exceeds length
-
-			$("#trackingNumber").val("Length exceeded");
-		}
-		else {
+			// Get data from form
+			var formData = $('#edit-user-data').serialize();
 
 			requestObj = {
 
-				type: "GET",
-				url: service_url + _searchByTrackNum,
+				type: "POST",
+				url: service_url + _addUserData,
 				dataType: "json", 
-				data: "id=" + trackNum,
+				data: formData,
 				success: function (response) {
 
 		 			if(response.status == "success") {
 
+		 				// Send message
+		 				systemUtils.sendMessage("User added successfully.");
+		 				systemUtils.updateSessionToken(response.token);
+		 				//addUser.clearFields();
+		 				viewUtils.killModal();
+					}
+					else {
+
+						console.log("Server reports error writing to the database");
+						systemUtils.sendMessage("Server error: Please contact Systems support");
+					}
+				},
+	            error: function ( jqXHR, textStatus, errorThrown ) {
+
+	                console.log("Status: " + textStatus + " Message: " + errorThrown);
+	               	systemUtils.sendMessage("Server error: Please contact Systems support");
+	            }
+			};
+
+			systemUtils.doAjax(requestObj);
+		}
+	};
+
+	searchByTrackingNumber = function() {
+
+		if(systemUtils.validateLocalSession()) {
+
+			var trackNum = $("#trackingNumber").val();
+
+			// Validate
+			if(isNaN(trackNum)) { // Check if value is numeric
+
+				$("#trackingNumber").val("Please enter a number");
+			}
+			else if(trackNum.length > 5) { // Check if value exceeds length
+
+				$("#trackingNumber").val("Length exceeded");
+			}
+			else {
+
+				requestObj = {
+
+					type: "GET",
+					url: service_url + _searchByTrackNum,
+					dataType: "json", 
+					data: "id=" + trackNum,
+					success: function (response) {
+
+			 			if(response.status == "success") {
+
+			 				systemUtils.updateSessionToken(response.token);
+			 				irUtils.refreshReportsTable(response.data);
+			 				$("#show-all-reports-link").show();
+						}
+						else {
+
+							//systemUtils.error("searchByTrackingNumber", "Server error"); // systemUtils.error(reference, message)  TODO
+							console.log("Server Error");
+							systemUtils.sendMessage("Server error: Please contact Systems support");
+						}
+					},
+		            error: function ( jqXHR, textStatus, errorThrown ) {
+
+		                console.log("Status: " + textStatus + " Message: " + errorThrown);
+		               	systemUtils.sendMessage("Server error: Please contact Systems support");
+		            }
+				};
+
+				systemUtils.doAjax(requestObj);
+			}
+		}
+	};
+
+	// search reports
+	searchByOffenseType = function() {
+
+		if(systemUtils.validateLocalSession()) {
+
+			var formData = {};
+			formData['offenseType'] = $("#offenseType").val();
+			formData['fromDate'] = $("#fromDate").val();
+			formData['toDate'] = $("#toDate").val();
+
+			requestObj = {
+
+				type: "GET",
+				url: service_url + _searchReports,
+				dataType: "json", 
+				data: formData,
+				success: function (response) {
+
+		 			if(response.status == "success") {
+
+		 				console.log(response);
 		 				systemUtils.updateSessionToken(response.token);
 		 				irUtils.refreshReportsTable(response.data);
 		 				$("#show-all-reports-link").show();
@@ -306,46 +364,6 @@ userUtils = (function($) {
 
 			systemUtils.doAjax(requestObj);
 		}
-	};
-
-	// search reports
-	searchByOffenseType = function() {
-
-		var formData = {};
-		formData['offenseType'] = $("#offenseType").val();
-		formData['fromDate'] = $("#fromDate").val();
-		formData['toDate'] = $("#toDate").val();
-
-		requestObj = {
-
-			type: "GET",
-			url: service_url + _searchReports,
-			dataType: "json", 
-			data: formData,
-			success: function (response) {
-
-	 			if(response.status == "success") {
-
-	 				console.log(response);
-	 				systemUtils.updateSessionToken(response.token);
-	 				irUtils.refreshReportsTable(response.data);
-	 				$("#show-all-reports-link").show();
-				}
-				else {
-
-					//systemUtils.error("searchByTrackingNumber", "Server error"); // systemUtils.error(reference, message)  TODO
-					console.log("Server Error");
-					systemUtils.sendMessage("Server error: Please contact Systems support");
-				}
-			},
-            error: function ( jqXHR, textStatus, errorThrown ) {
-
-                console.log("Status: " + textStatus + " Message: " + errorThrown);
-               	systemUtils.sendMessage("Server error: Please contact Systems support");
-            }
-		};
-
-		systemUtils.doAjax(requestObj);
 	};
 
 	return {
