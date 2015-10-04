@@ -19,6 +19,12 @@ userUtils = (function($) {
 
 		// Get data from form
 		var formData = $('#incident-report').serialize();
+		
+		// Get client email setting, piggyback the data on the form data
+		if(sendEmailNotifications) {
+
+			formData += "&sendNotifications=true";
+		}
 
 		requestObj = {
 
@@ -30,11 +36,16 @@ userUtils = (function($) {
 
 	 			if(response.status == "success") {
 
-					if(response.emailStatus == "success") {
+					if(response.emailStatus == "success") { 
 
 						 systemUtils.sendMessage("Incident Report submitted.");
 					}
-					else {
+					else if(response.emailStatus == "disabled") {
+
+						systemUtils.sendMessage("Incident Report submitted.");
+						console.log("Email notifications are disabled");
+					}
+					else if(response.emailStatus == "error") { 
 
 						systemUtils.sendMessage("Incident Report submitted, error sending email notifications");
 						console.log("Server reports email error, email notifications not sent");
