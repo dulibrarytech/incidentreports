@@ -20,6 +20,15 @@ login = {
         	loginView.close();
         	window.location.assign(base_url);
         });
+
+        // Trigger submit with 'enter' keypress
+		$('#login-form').bind('keypress', function(e){
+
+		   if ( e.keyCode == 13 ) {
+		     	e.preventDefault();
+		     	$( "#login-submit" ).click();
+		   }
+		});
 	},
 
 	validate: function(uname, passwd) {
