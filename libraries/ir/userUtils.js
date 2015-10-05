@@ -161,7 +161,20 @@ userUtils = (function($) {
 			userData['sendType'] = $('td#sendType-' + userID).text();
 			userData['userID'] = userID;
 
-			viewUtils.openModalView(editUserTemplatePath, userData, editUser);
+			if(userData['userID'] == superUserID) {
+
+				// Only let the superuser edit their own profile
+				var userProfile = irUtils.getUserProfile();
+				if(userProfile.userID == superUserID) {
+					viewUtils.openModalView(editUserTemplatePath, userData, editUser);
+				}
+				else {
+					console.log("Only the superuser can edit this profile");
+				}
+			}
+			else {
+				viewUtils.openModalView(editUserTemplatePath, userData, editUser);
+			}
 		}
 	};
 
@@ -208,7 +221,7 @@ userUtils = (function($) {
 
 		if(systemUtils.validateLocalSession()) {
 
-			if(confirm("Remove user?")) {
+			if(userID != superUserID && confirm("Remove user?")) {
 
 				requestObj = {
 
@@ -239,6 +252,9 @@ userUtils = (function($) {
 
 				systemUtils.doAjax(requestObj);
 			}
+			// else {
+			// 	console.log("User remove cancelled or attempt to delete the superuser");
+			// }
 		}
 	};
 

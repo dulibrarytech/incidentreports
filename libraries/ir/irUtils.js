@@ -9,7 +9,8 @@ irUtils = (function($) {
 		refreshReportsTable,
 		clearReportsSearchForm,
 		setCurrentReport,
-		getAutoSuggestions;
+		getAutoSuggestions,
+		getUserProfile;
 
 	getCachedReport = function(reportID) {
 
@@ -183,6 +184,11 @@ irUtils = (function($) {
 		}
 	};
 
+	getUserProfile = function() {
+
+       	return json.PARSE(sessionStorage("user_profile"));
+	};
+
 	return {
 
 		getCachedReport: function(reportID) {
@@ -228,6 +234,10 @@ irUtils = (function($) {
 		addIRFormAutoSuggest: function() {
 
 			return addIRFormAutoSuggest();
+		},
+		getUserProfile: function() {
+
+			return getUserProfile();
 		}
 	};
 
