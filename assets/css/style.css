@@ -3,6 +3,13 @@ body {
 	background-color: #8b2332;
 }
 
+footer {
+
+	text-align: center;
+	padding-top: 50px;
+	color: #e5e3e1;
+}
+
 a:hover {
 
 	cursor: pointer;
