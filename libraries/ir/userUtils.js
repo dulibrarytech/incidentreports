@@ -13,7 +13,8 @@ userUtils = (function($) {
 		submitUserUpdate,
 		submitNewUserInfo,
 		searchByTrackingNumber,
-		resetReportsSearch;
+		resetReportsSearch,
+		searchByOffenseType;
 
 	 submitIncidentReportForm = function() {
 
@@ -373,7 +374,6 @@ userUtils = (function($) {
 
 		 			if(response.status == "success") {
 
-		 				console.log(response);
 		 				systemUtils.updateSessionToken(response.token);
 		 				irUtils.refreshReportsTable(response.data);
 		 				$("#show-all-reports-link").show();
