@@ -42,14 +42,14 @@ systemUtils = (function($) {
 		$(document).ajaxStart(function() {
             // Disable all submit buttons
             //$(".submit-button").prop( "disabled", true );
-            $("#wrapper").append('<div id="blackout"></div>');
+            $("#wrapper").append('<div id="blockout"></div>');
             $.fancybox.showLoading();
         });
 
         $(document).ajaxStop(function() {
             // Enable all submit buttons
             //$(".submit-button").prop( "disabled", false );
-            $("#blackout").remove();
+            $("#blockout").remove();
             $.fancybox.hideLoading();
         });
 
