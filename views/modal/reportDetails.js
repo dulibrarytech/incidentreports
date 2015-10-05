@@ -53,6 +53,18 @@ reportDetails = {
 		$("#otherPhysicalCharacteristics").val(data.OtherPhysicalCharacteristics);
 
 		this.init(data.ReportID);
+
+		$("#dateOfReport").prop("disabled", "true");
+		$("#reportCompletedBy").prop("disabled", "true");
+		$("#title").prop("disabled", "true");
+		$("#department").prop("disabled", "true");
+		$("#extension").prop("disabled", "true");
+		$("#dateOfOffense").prop("disabled", "true");
+		$("#timeOfOffense").prop("disabled", "true");
+		$("#natureOfOffense").prop("disabled", "true");
+		$('input[name=wasCampusSafetyNotified]').prop("disabled", "true");
+		$("#locationOfOffense").prop("disabled", "true");
+		$("#offenseNarrative").prop("disabled", "true");
 	},
 
 	bindEvents: function() {
