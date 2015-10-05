@@ -551,3 +551,9 @@ span#required-field-blurb {
 /*	float: right;*/
 
 }
+
+i.fa {
+
+	margin-right: 5px;
+	color: white;
+}
