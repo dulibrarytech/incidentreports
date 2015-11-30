@@ -10,13 +10,13 @@ var base_url = "";
 // 	base_url     = "http://" + document.domain + "/incidentReports/";		// DEV
 // }
 if(isSsl == true) {
-	base_url     = "https://" + document.domain + "/incidentReports/";
+	base_url     = "https://" + document.domain + "/" + appFolder + "/";
 }
 else {
-	base_url     = "http://" + document.domain + "/incidentReports/"
+	base_url     = "http://" + document.domain + "/" + appFolder + "/"
 }
 
-var service_url = "http://" + document.domain + "/incidentReports_SERVICE/";
+var service_url = "http://" + document.domain + "/" + serviceURL + "/";
 
 // Service API endpoints
 var _submitIRForm = "reports/add";
