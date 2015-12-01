@@ -411,6 +411,7 @@ div#modalFrameInner {
     border-color: #757371;
 
     padding: 0.5em;
+    padding-right: 1.3em; /* Compensate for vertical scrollbar if present */
 }
 
 div#blackout {
