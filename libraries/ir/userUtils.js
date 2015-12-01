@@ -162,11 +162,11 @@ userUtils = (function($) {
 			userData['sendType'] = $('td#sendType-' + userID).text();
 			userData['userID'] = userID;
 
-			if(userData['userID'] == superUserID) {
+			if(userData['userID'] == SID) {
 
 				// Only let the superuser edit their own profile
 				var userProfile = irUtils.getUserProfile();
-				if(userProfile.userID == superUserID) {
+				if(userProfile.userID == SID) {
 					viewUtils.openModalView(editUserTemplatePath, userData, editUser);
 				}
 				else {
@@ -222,7 +222,7 @@ userUtils = (function($) {
 
 		if(systemUtils.validateLocalSession()) {
 
-			if(userID != superUserID && confirm("Remove user?")) {
+			if(userID != SID && confirm("Remove user?")) {
 
 				requestObj = {
 
