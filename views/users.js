@@ -38,8 +38,8 @@ users = {
 			// Add human readable value
 			isAdmin = value.isAdmin == '1' ? "Yes" : "No";
 
-			// Don't display "null" in table data
-			duidString = value.DUID == null ? "" : value.DUID;
+			// Don't display "null" values in table data
+			duidString = (value.DUID == null || value.DUID == 0) ? "" : value.DUID;
 
 			// Set crud links with current iteration userID
 			editLink = '<a onclick="userUtils.editUserData(' + value.EmailID + ')">Edit</a>';
