@@ -60,6 +60,10 @@ editUser = {
 
 		$("#edit-user-data").validate({
 		   rules: {
+		     userName: {
+		     	required: true,
+		     	maxlength: 9
+		     },
 		     userEmail: {
 		     	required: true,
 		     	maxlength: 100
