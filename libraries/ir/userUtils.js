@@ -22,10 +22,10 @@ userUtils = (function($) {
 		var formData = $('#incident-report').serialize();
 		
 		// Get client email setting, piggyback the data on the form data
-		if(sendEmailNotifications) {
+		// if(sendEmailNotifications) {
 
-			formData += "&sendNotifications=true";
-		}
+		// 	formData += "&sendNotifications=true";
+		// }
 
 		requestObj = {
 
