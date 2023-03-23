@@ -340,6 +340,15 @@ div#users-table-section {
 	overflow-y: auto;*/
 }
 
+div.users-table-content-section {
+    height: 500px;
+    overflow-y: scroll;
+}
+
+div.users-table-content-section table {
+    width: 100%;
+}
+
 table#users-table th {
 
 	text-align: left;
