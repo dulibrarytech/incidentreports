@@ -1,28 +1,26 @@
 $(function() {
 
-    function clearPanel(){
-        // You can put some code in here to do fancy DOM transitions, such as fade-out or slide-in.
-    }
-
     Path.map("#/login").to(function(){
         
-        // check for local session.  If present do not load login view
         if(systemUtils.isValidSession() != false) {
-
-            systemUtils.logout(); 
+            window.location.replace('/'); //home
         }
-        viewUtils.renderTemplate('login');
+        window.location.replace(`${ssoUrl}?app_url=${ssoResponseUrl}`); //sso
+    }); 
+
+    Path.map("#/loginSSO/:token").to(function(params){
+
+        let token = params.token || null;
+        systemUtils.login(token);
     }); 
 
     Path.map("#/logout").to(function(){
 
-        //viewUtils.renderTemplate('home');
         systemUtils.logout(); 
-        viewUtils.renderTemplate('home');
     }); 
 
     Path.map("#/home").to(function(){
-
+        
         viewUtils.renderTemplate('home');
     }); 
 

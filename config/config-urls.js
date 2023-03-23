@@ -2,13 +2,13 @@ var pathArray = window.location.href.split( '/' );
 var base_url = "";
 
 if(isSsl == true) {
-	base_url     = "https://" + document.domain + "/" + appFolder + "/";
+	base_url     = "https://" + location.host + "/" + appFolder
 }
 else {
-	base_url     = "http://" + document.domain + "/" + appFolder + "/"
+	base_url     = "http://" + location.host + "/" + appFolder
 }
 
-var service_url = "http://" + document.domain + "/" + serviceURL + "/";
+var service_url = "http://" + location.host + "/" + serviceURL + "/";
 
 // Service API endpoints
 var _submitIRForm = "reports/add";
@@ -22,3 +22,4 @@ var _addUserData = "users/add";
 var _searchByTrackNum = "search/id";
 var _searchReports = "search/reports";
 var _searchIRFormAutoSuggest = "search/complete";
+var _validateTokenString = "login/validateToken";

@@ -1,9 +1,12 @@
 var Path = {
     'version': "0.8.4",
     'map': function (path) {
+        console.log("T map() path:", path)
         if (Path.routes.defined.hasOwnProperty(path)) {
+            console.log("A")
             return Path.routes.defined[path];
         } else {
+            console.log("B")
             return new Path.core.route(path);
         }
     },
@@ -132,6 +135,7 @@ var Path = {
             this.do_enter = [];
             this.do_exit = null;
             this.params = {};
+
             Path.routes.defined[path] = this;
         }
     },
@@ -186,7 +190,7 @@ Path.core.route.prototype = {
             }
         }
         if (!halt_execution) {
-            Path.routes.defined[this.path].action();
+            Path.routes.defined[this.path].action(this.params);
         }
     }
 };

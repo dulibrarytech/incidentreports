@@ -34,10 +34,11 @@ systemUtils = (function($) {
 
 		// Append local session id
 		var sessionToken = sessionStorage.getItem("user_token");
-		requestObj.beforeSend = function (request) {
-
-            request.setRequestHeader("x-access-token", sessionToken);
-        }
+		if(sessionToken) {
+			requestObj.beforeSend = function (request) {
+				request.setRequestHeader("x-access-token", sessionToken);
+			}
+		}
 
 		$(document).ajaxStart(function() {
             // Disable all submit buttons
@@ -109,6 +110,8 @@ systemUtils = (function($) {
 	// Will redirect to 403 if token was invalid
 	validateLocalSession = function() {
 
+		console.log("TEST validateLocalSession")
+
 		var isValid = false;
 		requestObj = {
 
@@ -133,6 +136,9 @@ systemUtils = (function($) {
 					//var messageText = "<h3>Session has expired, please <a href='#/login' id='login-link'>login</a> again</h3>";
 					sendMessage(messageText,-1,true); // persist message until browser reload
 					viewUtils.showAuthenticatedMenulinks(false);
+
+					// sso
+					// redirect to sso IDP
 				}
 				else {
 
@@ -216,20 +222,52 @@ systemUtils = (function($) {
 		sessionStorage.setItem("user_token", token);
 	};
 
+	login = function(token) {
 
-	// System calls to remove session token will land here.  These calls will be initiated by ajax refusals by the server.  
-	// Any messages to the user should be created elsewhere, such as in the AJAX response error handler.
+		if(token != null) {
+			// Send to server to validate
+			let requestObj = {
+
+				type: "GET",
+				url: service_url + _validateTokenString,
+				dataType: "json", 
+				data: {token},
+				success: function (response) {
+
+					if(response.status == "success") {
+						sessionStorage.setItem("user_token", response.token);
+						sessionStorage.setItem("user_profile", JSON.stringify(response.profile));
+						sessionStorage.setItem("current_report_id", 0);
+
+						viewUtils.showAuthenticatedMenulinks(true,isAdminUser());
+						irUtils.loadDashboard();
+					}
+					else {
+						console.log("Login error:", response.error);
+						systemUtils.sendMessage("Server error: Please contact Systems support");
+					}
+				},
+				error: function ( jqXHR, textStatus, errorThrown ) {
+
+					console.log("Status: " + textStatus + " Message: " + errorThrown);
+					systemUtils.sendMessage("Server error: Please contact Systems support");
+				}
+			};
+			doAjax(requestObj);
+		}
+		else {
+			window.location.replace('/');
+		}
+	};
+
 	logout = function() {
 
-		//$('#message-view').html("");
-		//$('#namestring').html("");
 		sessionStorage.removeItem("user_token");	
 		sessionStorage.removeItem("user_profile");
-		irUtils.removeUserSessionData(); // Local user vars
-
+		irUtils.removeUserSessionData();
 		viewUtils.showAuthenticatedMenulinks(false);
 		viewUtils.killModal();
-		//viewUtils.renderTemplate("home");
+		window.location.replace(ssoLogoutUrl);
 	};
 
 	return {
@@ -266,48 +304,14 @@ systemUtils = (function($) {
 
 			updateSessionToken(token);
 		},
-		// getCachedReport: function(reportID) {
+		login: function(token=null) {
 
-		// 	return getCachedReport(reportID);
-		// },
-		// storeIncidentReports: function(reports) { // reports = object
-
-		// 	storeIncidentReports(reports);
-		// },
-		// getIncidentReports: function() {
-
-		// 	return getIncidentReports();
-		// },
-		// loadDashboard: function() {
-
-		// 	loadDashboard();
-		// },
-		// loadUsersView: function() {
-
-		// 	loadUsersView();
-		// },
-		login: function() {
-
-			logout();
-			closeMessageDialog();
-			viewUtils.renderTemplate('login');
+			login(token);
 		},
 		/* External calls to logout() land here.  Display a universal message and re-login link to the user */  
 		logout: function() {
 
 			logout();
-			//viewUtils.renderTemplate('home');
-			// if(sessionStorage.getItem("user_token") != null) {
-
-			// 	// sendMessage("Goodbye");
-			// 	$('#namestring').html("Goodbye");
-
-			// 	setTimeout( function() { 
-			// 		logout();
-			// 		$('#content').html("<h3>You are now logged out. <span class='hot-text' onclick='systemUtils.login()'>Login</span> again</h3>");
-			// 	}, 2000);
-			// }
-			// $('#content').html("<h3>You are now logged out. <span class='hot-text' onclick='systemUtils.login()'>Login</span> again</h3>");
 		}
 	};
 
