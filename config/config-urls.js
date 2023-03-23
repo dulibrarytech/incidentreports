@@ -1,14 +1,7 @@
 var pathArray = window.location.href.split( '/' );
-var base_url = "";
-
-if(isSsl == true) {
-	base_url     = "https://" + location.host + "/" + appFolder
-}
-else {
-	base_url     = "http://" + location.host + "/" + appFolder
-}
-
-var service_url = "http://" + location.host + "/" + serviceURL + "/";
+var protocol = isSsl == true ? "https://" : "http://";
+var	base_url  = protocol + location.host + "/" + appFolder
+var service_url = protocol + location.host + "/" + serviceURL + "/";
 
 // Service API endpoints
 var _submitIRForm = "reports/add";
