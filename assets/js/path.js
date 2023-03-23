@@ -1,12 +1,9 @@
 var Path = {
     'version': "0.8.4",
     'map': function (path) {
-        console.log("T map() path:", path)
         if (Path.routes.defined.hasOwnProperty(path)) {
-            console.log("A")
             return Path.routes.defined[path];
         } else {
-            console.log("B")
             return new Path.core.route(path);
         }
     },
