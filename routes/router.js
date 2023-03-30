@@ -5,7 +5,7 @@ $(function() {
         if(systemUtils.isValidSession() != false) {
             window.location.replace('/'); //home
         }
-        window.location.replace(`${ssoUrl}?app_url=${ssoResponseUrl}`); //sso
+        window.location.replace(`${ssoUrl}?app_url=${ssoResponseUrl || "unset_sso_redirect_url"}`); //sso
     }); 
 
     Path.map("#/loginSSO/:token").to(function(params){

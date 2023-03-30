@@ -12,18 +12,16 @@ dashboard = {
 
 	render: function(tableData) {
 		
-		// namestring
 		this.construct(tableData);
 	},
 
 	construct: function(tableData) {
 
-		// Add search form
 		$.get('templates/partials/ir-search-form.html', function(html) {
 				
 			$('#dashboard-links').append(html);
 			$('#show-all-reports-link').hide();
-			dashboardView.init(); // init once form is ready
+			dashboardView.init();
 		});
 
 		this.buildTable(tableData);
@@ -34,11 +32,7 @@ dashboard = {
 		// jQuery validation seems to be conflicting with the datepicker... using this quick workaround to validate 9-1-15
 		$( "#submit-report-search" ).click(function( event ) {
 			
-			// $("#report-search-form").removeAttr('novalidate');
 			event.preventDefault();
-			// if($("#report-search-form").valid()) {
-			// 	alert("pass validation...");
-			// }
 			if(dashboard.validateSearchForm()) {
 
 				userUtils.searchByOffenseType();
